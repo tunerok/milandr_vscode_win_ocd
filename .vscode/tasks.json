@@ -52,9 +52,9 @@
 			"problemMatcher": []
 		  },
 		  {
-			  "label": "write hex via OpenOCD",
+			  "label": "Write .elf via OpenOCD",
 			  "type": "shell",
-			  "command":"openocd.exe -f \"${workspaceRoot}/OpenOCD_data/open_ocd_flash.cfg\" -c \"program C:<FULL PATH TO PROJECTS' FOLDER>/milandr_vscode_win_openocd/build/milandr_vscode_test.elf verify reset exit\"",
+			  "command":"openocd.exe -f \"${workspaceRoot}\\OpenOCD_data\\open_ocd_flash.cfg\" -c \"program C:<FULL PATH TO PROJECTS' FOLDER WITH "/" SLASHES>/build/milandr_vscode_test.elf verify reset exit\"",
 			  "options": {
 				"cwd": "${workspaceRoot}",
 				"shell": {
@@ -69,7 +69,41 @@
 			"problemMatcher": []
 		  },
 		  {
-			  "label": "connect to GDB",
+			"label": "Open telnet OpenOCD",
+			"type": "shell",
+			"command":"telnet localhost 4444",
+			"options": {
+			  "cwd": "${workspaceRoot}",
+			  "shell": {
+				  "executable": "cmd.exe",
+				  "args": ["/C"]
+			  }
+		  }, 
+		  "group": {
+			  "kind": "test",
+			  "isDefault": true
+		  },
+		  "problemMatcher": []
+		},
+		{
+			"label": "Read hex via OpenOCD",
+			"type": "shell",
+			"command":"openocd.exe -f \"${workspaceRoot}\\OpenOCD_data\\open_ocd_flash.cfg\" -c \"init\" -c \"reset init\" -c \"flash read_bank 0 C:<FULL PATH TO PROJECTS' FOLDER WITH "/" SLASHES>/firmware.bin\" -c \"exit\"",
+			"options": {
+			  "cwd": "${workspaceRoot}",
+			  "shell": {
+				  "executable": "cmd.exe",
+				  "args": ["/C"]
+			  }
+		  }, 
+		  "group": {
+			  "kind": "test",
+			  "isDefault": true
+		  },
+		  "problemMatcher": []
+		},
+		  {
+			  "label": "Connect to GDB",
 			  "type": "shell",
 			  "command":"arm-none-eabi-gdb ./build/milandr_vscode_test.elf",
 			  "options": {
