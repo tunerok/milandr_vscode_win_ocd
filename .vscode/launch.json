@@ -1,0 +1,23 @@
+  
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "openocd debug",
+			"request": "launch",
+			"type": "cortex-debug",
+			"cwd": "${workspaceRoot}",
+			"servertype": "openocd",
+			"executable": "./build/milandr_vscode_test.elf",
+			"svdFile": "./MDR32F9_1986VE4_2015/IDE/keil/SVD/MDR1986BE92.svd",
+			"configFiles": [
+				"${workspaceRoot}\\OpenOCD_data\\open_ocd_flash.cfg"
+			],
+			"showDevDebugOutput": true,
+			"searchDir": [
+				"C:\\openocd\\share\\openocd\\scripts"
+			]
+		}
+
+	]
+}

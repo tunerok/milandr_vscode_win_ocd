@@ -1,0 +1,300 @@
+###############################################################################
+#                                                                             #
+# IAR ANSI C/C++ Compiler V6.40.2.53884/W32 for ARM     22/Sep/2015  17:26:01 #
+# Copyright 1999-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\src\adc.c                                    #
+#    Command line =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\src\adc.c --preprocess                       #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lCN            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lB             #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -o              #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\ --debug          #
+#                    --endian=little --cpu=Cortex-M3 -e --fpu=None            #
+#                    --dlib_config "C:\Program Files (x86)\IAR                #
+#                    Systems\Embedded Workbench 6.4\arm\INC\c\DLib_Config_Nor #
+#                    mal.h" -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Proj #
+#                    ects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\config\ -I  #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\ -I                            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\USB_Library\ -I                #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CMSIS #
+#                    \CM3\CoreSupport\ -I C:\WORK\Milandr.MDR1986BExx.1.4.0\E #
+#                    xample_Projects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\ #
+#                    ..\..\Libraries\CMSIS\CM3\DeviceSupport\MDR32F9Qx\inc\   #
+#                    -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MD #
+#                    R1986VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CM #
+#                    SIS\CM3\DeviceSupport\MDR32F9Qx\startup\iar\ -I          #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Example_Project #
+#                    s\MDR1986VE91_Eval\inc\ -Ohz                             #
+#    List file    =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\adc.lst          #
+#    Object file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\adc.o             #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1986VE91_Eval\src\adc.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    adc.c
+      4            * @author  Phyton Application Team
+      5            * @version V3.0.0
+      6            * @date    09.09.2011
+      7            * @brief   This file contains all the utilities for work with ADC
+      8            ******************************************************************************
+      9            * <br><br>
+     10            * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+     11            * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+     12            * TIME. AS A RESULT, PHYTON SHALL NOT BE HELD LIABLE FOR ANY
+     13            * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+     14            * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+     15            * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+     16            *
+     17            * <h2><center>&copy; COPYRIGHT 2011 Phyton</center></h2>
+     18            */
+     19          
+     20          /* Includes ------------------------------------------------------------------*/
+     21          #include <MDR32F9Qx_port.h>
+     22          #include <MDR32F9Qx_rst_clk.h>
+     23          #include <MDR32F9Qx_adc.h>
+     24          #include "demo_init.h"
+     25          #include "MDR32F9Qx_board.h"
+     26          
+     27          /** @addtogroup __MDR32F9Qx_Eval_Demo MDR32F9Qx Demonstration Example
+     28            * @{
+     29            */
+     30          
+     31          /** @addtogroup ADC_Routines ADC Routines
+     32            * @{
+     33            */
+     34          
+     35          /** @defgroup ADC_Private_Constants ADC Private Constants
+     36            * @{
+     37            */
+     38          
+     39          /** @} */ /* End of group ADC_Private_Constants */
+     40          
+     41          /** @defgroup ADC_Variables ADC Variables
+     42            * @{
+     43            */
+     44          
+     45          /* ADC Init structures */
+
+   \                                 In section .bss, align 4
+     46          ADC_InitTypeDef  ADC_InitStructure;
+     47          ADCx_InitTypeDef ADCx_InitStructure;
+   \                     ADCx_InitStructure:
+   \   00000000                      DS8 44
+   \                     ADC_InitStructure:
+   \   0000002C                      DS8 28
+     48          
+     49          /** @} */ /* End of group ADC_Variables */
+     50          
+     51          /** @defgroup ADC_Private_Functions ADC Private Functions
+     52            * @{
+     53            */
+     54          
+     55          /*******************************************************************************
+     56          * Function Name  : ADC_Config
+     57          * Description    : Configure the ADC1 for TRIM using.
+     58          * Input          : None
+     59          * Output         : None
+     60          * Return         : None
+     61          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     62          void ADC_Config(void)
+     63          {
+   \                     ADC_Config:
+   \   00000000   0xB510             PUSH     {R4,LR}
+     64            /* Enable the RTCHSE clock on ADC1 */
+     65            RST_CLK_PCLKcmd(RST_CLK_PCLK_ADC, ENABLE);
+   \   00000002   0x.... 0x....      BL       ?Subroutine2
+     66          
+     67            /* ADC Configuration */
+     68            /* Reset all ADC settings */
+     69            ADC_DeInit();
+   \                     ??CrossCallReturnLabel_3:
+   \   00000006   0x.... 0x....      BL       ADC_DeInit
+     70          
+     71            ADC_StructInit(&ADC_InitStructure);
+   \   0000000A   0x.... 0x....      BL       ?Subroutine1
+     72            ADC_InitStructure.ADC_SynchronousMode      = ADC_SyncMode_Independent;
+   \                     ??CrossCallReturnLabel_1:
+   \   0000000E   0x2000             MOVS     R0,#+0
+   \   00000010   0x62E0             STR      R0,[R4, #+44]
+     73            /* Use base voltage source to reduce the power consumption,
+     74             * thus enable the temperature sensor */
+     75            ADC_InitStructure.ADC_TempSensor           = ADC_TEMP_SENSOR_Enable;
+   \   00000012   0xF44F 0x3000      MOV      R0,#+131072
+   \   00000016   0x6360             STR      R0,[R4, #+52]
+     76            ADC_Init(&ADC_InitStructure);
+   \   00000018   0xF104 0x002C      ADD      R0,R4,#+44
+   \   0000001C   0x.... 0x....      BL       ADC_Init
+     77          
+     78            ADCx_StructInit(&ADCx_InitStructure);
+   \   00000020   0x4620             MOV      R0,R4
+   \   00000022   0x.... 0x....      BL       ADCx_StructInit
+     79          
+     80            /* Enable ADC cyclic mode */
+     81            ADCx_InitStructure.ADC_SamplingMode     = ADC_SAMPLING_MODE_CICLIC_CONV;
+   \   00000026   0x2008             MOVS     R0,#+8
+   \   00000028   0x6060             STR      R0,[R4, #+4]
+     82          #if defined (USE_MDR32F9Q3_Rev0) || defined (USE_MDR32F9Q3_Rev1)
+     83            ADCx_InitStructure.ADC_ChannelNumber    = ADC_CH_ADC2;
+     84          #else
+     85            ADCx_InitStructure.ADC_ChannelNumber    = ADC_CH_ADC7;
+   \   0000002A   0x2007             MOVS     R0,#+7
+   \   0000002C   0x60E0             STR      R0,[R4, #+12]
+     86          #endif /* defined (USE_MDR32F9Q3_Rev0) || defined (USE_MDR32F9Q3_Rev1) */
+     87            ADC1_Init(&ADCx_InitStructure);
+   \   0000002E   0x....             B.N      ?Subroutine0
+     88          }
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine0:
+   \   00000000   0x4620             MOV      R0,R4
+   \   00000002   0xE8BD 0x4010      POP      {R4,LR}
+   \   00000006   0x.... 0x....      B.W      ADC1_Init
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine2:
+   \   00000000   0x2101             MOVS     R1,#+1
+   \   00000002   0xF44F 0x3000      MOV      R0,#+131072
+   \   00000006   0x.... 0x....      B.W      RST_CLK_PCLKcmd
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine1:
+   \   00000000   0x....             LDR.N    R4,??DataTable0
+   \   00000002   0xF104 0x002C      ADD      R0,R4,#+44
+   \   00000006   0x.... 0x....      B.W      ADC_StructInit
+     89          
+     90          /*******************************************************************************
+     91          * Function Name  : ADC_Temp_Sensor_Config
+     92          * Description    : Configure the ADC1 for temperature sensor reading.
+     93          * Input          : None
+     94          * Output         : None
+     95          * Return         : None
+     96          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     97          void ADC_Temp_Sensor_Config(void)
+     98          {
+   \                     ADC_Temp_Sensor_Config:
+   \   00000000   0xB510             PUSH     {R4,LR}
+     99            /* Enable the RTCHSE clock on ADC1 */
+    100            RST_CLK_PCLKcmd((RST_CLK_PCLK_ADC), ENABLE);
+   \   00000002   0x.... 0x....      BL       ?Subroutine2
+    101          
+    102            /* ADC Configuration */
+    103            /* Reset all ADC settings */
+    104            ADC_DeInit();
+   \                     ??CrossCallReturnLabel_2:
+   \   00000006   0x.... 0x....      BL       ADC_DeInit
+    105          
+    106            ADC_StructInit(&ADC_InitStructure);
+   \   0000000A   0x.... 0x....      BL       ?Subroutine1
+    107            ADC_InitStructure.ADC_TempSensor           = ADC_TEMP_SENSOR_Enable;
+   \                     ??CrossCallReturnLabel_0:
+   \   0000000E   0xF44F 0x3000      MOV      R0,#+131072
+   \   00000012   0x6360             STR      R0,[R4, #+52]
+    108            ADC_InitStructure.ADC_TempSensorAmplifier  = ADC_TEMP_SENSOR_AMPLIFIER_Enable;
+   \   00000014   0xF44F 0x2080      MOV      R0,#+262144
+   \   00000018   0x63A0             STR      R0,[R4, #+56]
+    109            ADC_InitStructure.ADC_TempSensorConversion = ADC_TEMP_SENSOR_CONVERSION_Enable;
+   \   0000001A   0xF44F 0x2000      MOV      R0,#+524288
+   \   0000001E   0x63E0             STR      R0,[R4, #+60]
+    110          
+    111            ADC_Init (&ADC_InitStructure);
+   \   00000020   0xF104 0x002C      ADD      R0,R4,#+44
+   \   00000024   0x.... 0x....      BL       ADC_Init
+    112            ADCx_InitStructure.ADC_SamplingMode     = ADC_SAMPLING_MODE_CICLIC_CONV;
+   \   00000028   0x2008             MOVS     R0,#+8
+   \   0000002A   0x6060             STR      R0,[R4, #+4]
+    113            ADCx_InitStructure.ADC_ChannelNumber    = ADC_CH_TEMP_SENSOR;
+   \   0000002C   0x201F             MOVS     R0,#+31
+   \   0000002E   0x60E0             STR      R0,[R4, #+12]
+    114            ADCx_InitStructure.ADC_IntVRefSource    = ADC_INT_VREF_SOURCE_EXACT;
+   \   00000030   0x2001             MOVS     R0,#+1
+   \   00000032   0x6220             STR      R0,[R4, #+32]
+    115            ADCx_InitStructure.ADC_Prescaler        = ADC_CLK_div_32768;
+   \   00000034   0xF44F 0x4070      MOV      R0,#+61440
+   \   00000038   0x6260             STR      R0,[R4, #+36]
+    116            ADCx_InitStructure.ADC_DelayGo          = 0x7;
+   \   0000003A   0x2007             MOVS     R0,#+7
+   \   0000003C   0x62A0             STR      R0,[R4, #+40]
+    117            ADC1_Init (&ADCx_InitStructure);
+   \   0000003E                      REQUIRE ?Subroutine0
+   \   0000003E                      ;; // Fall through to label ?Subroutine0
+    118          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable0:
+   \   00000000   0x........         DC32     ADCx_InitStructure
+    119          
+    120          /** @} */ /* End of group ADC_Private_Functions */
+    121          
+    122          /** @} */ /* End of group ADC_Routines */
+    123          
+    124          /** @} */ /* End of group __MDR32F9Qx_Eval_Demo */
+    125          
+    126          /******************* (C) COPYRIGHT 2011 Phyton *********************************
+    127          *
+    128          * END OF FILE adc.c */
+    129          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+        8  ADC_Config
+             0 -> ADC1_Init
+             8 -> ADC_DeInit
+             8 -> ADC_Init
+             8 -> ADC_StructInit
+             8 -> ADCx_StructInit
+             8 -> RST_CLK_PCLKcmd
+        8  ADC_Temp_Sensor_Config
+             0 -> ADC1_Init
+             8 -> ADC_DeInit
+             8 -> ADC_Init
+             8 -> ADC_StructInit
+             8 -> RST_CLK_PCLKcmd
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable0
+      10  ?Subroutine0
+      10  ?Subroutine1
+      10  ?Subroutine2
+      48  ADC_Config
+      62  ADC_Temp_Sensor_Config
+      72  ADCx_InitStructure
+          ADC_InitStructure
+
+ 
+  72 bytes in section .bss
+ 144 bytes in section .text
+ 
+ 144 bytes of CODE memory
+  72 bytes of DATA memory
+
+Errors: none
+Warnings: none

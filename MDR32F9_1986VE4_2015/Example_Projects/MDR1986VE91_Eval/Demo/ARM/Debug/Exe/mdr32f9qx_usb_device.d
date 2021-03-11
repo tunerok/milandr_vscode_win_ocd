@@ -1,0 +1,16 @@
+.\debug\exe\mdr32f9qx_usb_device.o: ..\..\..\..\Libraries\MDR32F9Qx_StdPeriph_Driver\src\USB_Library\MDR32F9Qx_usb_device.c
+.\debug\exe\mdr32f9qx_usb_device.o: ..\..\Config\MDR32F9Qx_config.h
+.\debug\exe\mdr32f9qx_usb_device.o: ..\..\Config\MDR32F9Qx_board.h
+.\debug\exe\mdr32f9qx_usb_device.o: ..\..\..\..\Libraries\MDR32F9Qx_StdPeriph_Driver\inc\MDR32F9Qx_lib.h
+.\debug\exe\mdr32f9qx_usb_device.o: C:\Keil5\ARM\ARMCC\bin\..\include\stdint.h
+.\debug\exe\mdr32f9qx_usb_device.o: ..\..\..\..\Libraries\CMSIS\CM3\DeviceSupport\MDR32F9Qx\inc\MDR32Fx.h
+.\debug\exe\mdr32f9qx_usb_device.o: ..\..\..\..\Libraries\CMSIS\CM3\CoreSupport\core_cm3.h
+.\debug\exe\mdr32f9qx_usb_device.o: ..\..\..\..\Libraries\CMSIS\CM3\CoreSupport\core_cmInstr.h
+.\debug\exe\mdr32f9qx_usb_device.o: ..\..\..\..\Libraries\CMSIS\CM3\CoreSupport\core_cmFunc.h
+.\debug\exe\mdr32f9qx_usb_device.o: ..\..\..\..\Libraries\CMSIS\CM3\DeviceSupport\MDR32F9Qx\startup\arm\system_MDR32F9Qx.h
+.\debug\exe\mdr32f9qx_usb_device.o: ..\..\..\..\Libraries\MDR32F9Qx_StdPeriph_Driver\inc\MDR32F9Qx_rst_clk.h
+.\debug\exe\mdr32f9qx_usb_device.o: ..\..\..\..\Libraries\MDR32F9Qx_StdPeriph_Driver\inc\USB_Library\MDR32F9Qx_usb_handlers.h
+.\debug\exe\mdr32f9qx_usb_device.o: ..\..\..\..\Libraries\MDR32F9Qx_StdPeriph_Driver\inc\USB_Library\MDR32F9Qx_usb_default_handlers.h
+.\debug\exe\mdr32f9qx_usb_device.o: ..\..\..\..\Libraries\MDR32F9Qx_StdPeriph_Driver\inc\USB_Library\MDR32F9Qx_usb_CDC.h
+.\debug\exe\mdr32f9qx_usb_device.o: ..\..\..\..\Libraries\MDR32F9Qx_StdPeriph_Driver\inc\USB_Library/MDR32F9Qx_usb_device.h
+.\debug\exe\mdr32f9qx_usb_device.o: ..\..\..\..\Libraries\MDR32F9Qx_StdPeriph_Driver\inc\MDR32F9Qx_usb.h

@@ -1,0 +1,223 @@
+###############################################################################
+#                                                                             #
+# IAR ANSI C/C++ Compiler V6.40.2.53884/W32 for ARM     22/Sep/2015  17:26:03 #
+# Copyright 1999-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\src\joystick.c                               #
+#    Command line =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\src\joystick.c --preprocess                  #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lCN            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lB             #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -o              #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\ --debug          #
+#                    --endian=little --cpu=Cortex-M3 -e --fpu=None            #
+#                    --dlib_config "C:\Program Files (x86)\IAR                #
+#                    Systems\Embedded Workbench 6.4\arm\INC\c\DLib_Config_Nor #
+#                    mal.h" -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Proj #
+#                    ects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\config\ -I  #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\ -I                            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\USB_Library\ -I                #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CMSIS #
+#                    \CM3\CoreSupport\ -I C:\WORK\Milandr.MDR1986BExx.1.4.0\E #
+#                    xample_Projects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\ #
+#                    ..\..\Libraries\CMSIS\CM3\DeviceSupport\MDR32F9Qx\inc\   #
+#                    -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MD #
+#                    R1986VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CM #
+#                    SIS\CM3\DeviceSupport\MDR32F9Qx\startup\iar\ -I          #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Example_Project #
+#                    s\MDR1986VE91_Eval\inc\ -Ohz                             #
+#    List file    =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\joystick.lst     #
+#    Object file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\joystick.o        #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1986VE91_Eval\src\joystick.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    joystick.c
+      4            * @author  Phyton Application Team
+      5            * @version V3.0.0
+      6            * @date    10.09.2011
+      7            * @brief   This file provides all the Joystick driver functions.
+      8            ******************************************************************************
+      9            * <br><br>
+     10            * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+     11            * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+     12            * TIME. AS A RESULT, PHYTON SHALL NOT BE HELD LIABLE FOR ANY
+     13            * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+     14            * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+     15            * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+     16            *
+     17            * <h2><center>&copy; COPYRIGHT 2011 Phyton</center></h2>
+     18            */
+     19          
+     20          /* Includes ------------------------------------------------------------------*/
+     21          #include <MDR32F9Qx_port.h>
+     22          #include "joystick.h"
+     23          
+     24          /** @addtogroup __MDR32F9Qx_Eval_Demo MDR32F9Qx Demonstration Example
+     25            * @{
+     26            */
+     27          
+     28          /** @addtogroup Joystick_Driver Joystick Driver
+     29            * @{
+     30            */
+     31          
+     32          /** @defgroup Joystick_Private_Types Joystick Private Types
+     33            * @{
+     34            */
+     35          
+     36          /**
+     37            * @brief  Joystick key structure definition
+     38            */
+     39          typedef struct
+     40          {
+     41            MDR_PORT_TypeDef * PORT;
+     42            uint16_t PORT_Pin;
+     43          }JoystickKeys_TypeDef;
+     44          
+     45          /** @} */ /* End of group Joystick_Private_Types */
+     46          
+     47          /** @defgroup Joystick_Private_Variables Joystick Private Variables
+     48            * @{
+     49            */
+     50          
+
+   \                                 In section .data, align 4
+     51          static JoystickKeys_TypeDef JoystickKeys[NUM_KEY_CODES - 2] = {
+   \                     JoystickKeys:
+   \   00000000   0x400B8000         DC32 400B8000H
+   \   00000004   0x0400             DC16 1024
+   \   00000006   0x00 0x00          DC8 0, 0
+   \   00000008   0x400B8000         DC32 400B8000H
+   \   0000000C   0x0800             DC16 2048
+   \   0000000E   0x00 0x00          DC8 0, 0
+   \   00000010   0x400B8000         DC32 400B8000H
+   \   00000014   0x1000             DC16 4096
+   \   00000016   0x00 0x00          DC8 0, 0
+   \   00000018   0x400B8000         DC32 400B8000H
+   \   0000001C   0x2000             DC16 8192
+   \   0000001E   0x00 0x00          DC8 0, 0
+   \   00000020   0x400B8000         DC32 400B8000H
+   \   00000024   0x4000             DC16 16384
+   \   00000026   0x00 0x00          DC8 0, 0
+     52            {SEL_PORT, SEL_PIN},                 /*!< SEL pressed   */
+     53            {UP_PORT, UP_PIN},                   /*!< UP pressed    */
+     54            {DOWN_PORT, DOWN_PIN},               /*!< DOWN pressed  */
+     55            {LEFT_PORT, LEFT_PIN},               /*!< LEFT pressed  */
+     56            {RIGHT_PORT, RIGHT_PIN}              /*!< RIGHT pressed */
+     57          };
+     58          
+     59          /** @} */ /* End of group Joystick_Private_Variables */
+     60          
+     61          /** @defgroup Joystick_Private_Functions Joystick Private Functions
+     62            * @{
+     63            */
+     64          
+     65          /*  */
+     66          /*******************************************************************************
+     67          * Function Name  : GetKey
+     68          * Description    : Determines "code" by keys pressed
+     69          * Input          : None
+     70          * Output         : None
+     71          * Return         : "Code" of key pressed; MULTIPLE if several
+     72          *******************************************************************************/
+
+   \                                 In section .text, align 4, keep-with-next
+     73          KeyCode GetKey(void)
+     74          {
+   \                     GetKey:
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+     75            uint32_t i;
+     76            KeyCode key = NOKEY;
+   \   00000002   0x2405             MOVS     R4,#+5
+     77          
+     78            for (i = 0; i < (NUM_KEY_CODES - 2); i++)
+   \   00000004   0x2500             MOVS     R5,#+0
+   \   00000006   0x4E0A             LDR.N    R6,??GetKey_0
+     79            {
+     80              if ((PORT_ReadInputDataBit(JoystickKeys[i].PORT, JoystickKeys[i].PORT_Pin)) == Bit_RESET)
+   \                     ??GetKey_1:
+   \   00000008   0xEB06 0x00C5      ADD      R0,R6,R5, LSL #+3
+   \   0000000C   0x8881             LDRH     R1,[R0, #+4]
+   \   0000000E   0xF856 0x0035      LDR      R0,[R6, R5, LSL #+3]
+   \   00000012   0x.... 0x....      BL       PORT_ReadInputDataBit
+   \   00000016   0xB928             CBNZ.N   R0,??GetKey_2
+     81              {
+     82                if (key != NOKEY)
+   \   00000018   0xB2E4             UXTB     R4,R4
+   \   0000001A   0x2C05             CMP      R4,#+5
+   \   0000001C   0xD001             BEQ.N    ??GetKey_3
+     83                {
+     84                  return MULTIPLE;
+   \   0000001E   0x2006             MOVS     R0,#+6
+   \   00000020   0xBD70             POP      {R4-R6,PC}
+     85                }
+     86                key = ((KeyCode)(i));
+   \                     ??GetKey_3:
+   \   00000022   0x462C             MOV      R4,R5
+     87              }
+     88            }
+   \                     ??GetKey_2:
+   \   00000024   0x1C6D             ADDS     R5,R5,#+1
+   \   00000026   0x2D05             CMP      R5,#+5
+   \   00000028   0xD3EE             BCC.N    ??GetKey_1
+     89            return key;
+   \   0000002A   0xB2E0             UXTB     R0,R4
+   \   0000002C   0xBD70             POP      {R4-R6,PC}       ;; return
+   \   0000002E   0xBF00             Nop      
+   \                     ??GetKey_0:
+   \   00000030   0x........         DC32     JoystickKeys
+     90          }
+     91          
+     92          /** @} */ /* End of group Joystick_Private_Functions */
+     93          
+     94          /** @} */ /* End of group Joystick_Driver */
+     95          
+     96          /** @} */ /* End of group __MDR32F9Qx_Eval_Demo */
+     97          
+     98          /******************* (C) COPYRIGHT 2011 Phyton *********************************
+     99          *
+    100          * END OF FILE joystick.c */
+    101          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       16  GetKey
+             16 -> PORT_ReadInputDataBit
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      52  GetKey
+      40  JoystickKeys
+
+ 
+ 40 bytes in section .data
+ 52 bytes in section .text
+ 
+ 52 bytes of CODE memory
+ 40 bytes of DATA memory
+
+Errors: none
+Warnings: none

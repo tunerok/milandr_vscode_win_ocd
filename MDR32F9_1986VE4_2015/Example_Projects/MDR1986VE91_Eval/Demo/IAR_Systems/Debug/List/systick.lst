@@ -1,0 +1,217 @@
+###############################################################################
+#                                                                             #
+# IAR ANSI C/C++ Compiler V6.40.2.53884/W32 for ARM     22/Sep/2015  17:26:04 #
+# Copyright 1999-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\src\systick.c                                #
+#    Command line =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\src\systick.c --preprocess                   #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lCN            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lB             #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -o              #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\ --debug          #
+#                    --endian=little --cpu=Cortex-M3 -e --fpu=None            #
+#                    --dlib_config "C:\Program Files (x86)\IAR                #
+#                    Systems\Embedded Workbench 6.4\arm\INC\c\DLib_Config_Nor #
+#                    mal.h" -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Proj #
+#                    ects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\config\ -I  #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\ -I                            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\USB_Library\ -I                #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CMSIS #
+#                    \CM3\CoreSupport\ -I C:\WORK\Milandr.MDR1986BExx.1.4.0\E #
+#                    xample_Projects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\ #
+#                    ..\..\Libraries\CMSIS\CM3\DeviceSupport\MDR32F9Qx\inc\   #
+#                    -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MD #
+#                    R1986VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CM #
+#                    SIS\CM3\DeviceSupport\MDR32F9Qx\startup\iar\ -I          #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Example_Project #
+#                    s\MDR1986VE91_Eval\inc\ -Ohz                             #
+#    List file    =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\systick.lst      #
+#    Object file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\systick.o         #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1986VE91_Eval\src\systick.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    systick.c
+      4            * @author  Phyton Application Team
+      5            * @version V2.0.0
+      6            * @date    10.09.2010
+      7            * @brief   This file contains all the low-level utilities for work with
+      8            *          the system timer.
+      9            ******************************************************************************
+     10            * <br><br>
+     11            * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+     12            * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+     13            * TIME. AS A RESULT, PHYTON SHALL NOT BE HELD LIABLE FOR ANY
+     14            * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+     15            * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+     16            * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+     17            *
+     18            * <h2><center>&copy; COPYRIGHT 2010 Phyton</center></h2>
+     19            */
+     20          
+     21          /* Includes ------------------------------------------------------------------*/
+     22          #include "MDR32F9Qx_it.h"
+     23          
+     24          /** @addtogroup __MDR32F9Qx_Eval_Demo MDR32F9Qx Demonstration Example
+     25            * @{
+     26            */
+     27          
+     28          /** @addtogroup Interrupt_Service_Routines Interrupt Service Routines
+     29            * @{
+     30            */
+     31          
+     32          /** @addtogroup Systick_Routines Systick Routines
+     33            * @{
+     34            */
+     35          
+     36          /** @defgroup Systick_Private_Functions Systick Private Functions
+     37            * @{
+     38            */
+     39          
+     40          /*******************************************************************************
+     41          * Function Name  : SysTickStart
+     42          * Description    : Starts the timer
+     43          * Input          : ticks - starting timer value
+     44          * Output         : None
+     45          * Return         : None
+     46          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     47          void SysTickStart(uint32_t ticks)
+     48          {
+     49            SysTick->LOAD = ticks;
+   \                     SysTickStart:
+   \   00000000   0x....             LDR.N    R1,??DataTable2  ;; 0xe000e010
+   \   00000002   0x6048             STR      R0,[R1, #+4]
+     50            SysTick->CTRL = SysTick_CTRL_ENABLE_Msk | SysTick_CTRL_TICKINT_Msk | \
+     51                            SysTick_CTRL_CLKSOURCE_Msk;
+   \   00000004   0x2007             MOVS     R0,#+7
+   \   00000006   0x6008             STR      R0,[R1, #+0]
+     52          }
+   \   00000008   0x4770             BX       LR               ;; return
+     53          
+     54          /*******************************************************************************
+     55          * Function Name  : SysTickStop
+     56          * Description    : Stops the timer
+     57          * Input          : None
+     58          * Output         : None
+     59          * Return         : None
+     60          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     61          void SysTickStop(void)
+     62          {
+     63            SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
+   \                     SysTickStop:
+   \   00000000   0x....             LDR.N    R0,??DataTable2  ;; 0xe000e010
+   \   00000002   0x6801             LDR      R1,[R0, #+0]
+   \   00000004   0x0849             LSRS     R1,R1,#+1
+   \   00000006   0x0049             LSLS     R1,R1,#+1
+   \   00000008   0x6001             STR      R1,[R0, #+0]
+     64          }
+   \   0000000A   0x4770             BX       LR               ;; return
+     65          
+     66          /*******************************************************************************
+     67          * Function Name  : SysTickDelay
+     68          * Description    : Delay function (systick-based)
+     69          * Input          : None
+     70          * Output         : None
+     71          * Return         : None
+     72          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     73          void SysTickDelay(uint32_t ticks)
+     74          {
+     75            if (ticks)
+   \                     SysTickDelay:
+   \   00000000   0xB160             CBZ.N    R0,??SysTickDelay_0
+     76            {
+     77              TimerCounter = ticks;
+   \   00000002   0x....             LDR.N    R1,??DataTable2_1
+   \   00000004   0x6008             STR      R0,[R1, #+0]
+     78              SysTickStart(ticks);
+   \   00000006   0x....             LDR.N    R2,??DataTable2  ;; 0xe000e010
+   \   00000008   0x6050             STR      R0,[R2, #+4]
+   \   0000000A   0x2007             MOVS     R0,#+7
+   \   0000000C   0x6010             STR      R0,[R2, #+0]
+     79              while (TimerCounter);
+   \                     ??SysTickDelay_1:
+   \   0000000E   0x6808             LDR      R0,[R1, #+0]
+   \   00000010   0x2800             CMP      R0,#+0
+   \   00000012   0xD1FC             BNE.N    ??SysTickDelay_1
+     80              SysTickStop();
+   \   00000014   0x6810             LDR      R0,[R2, #+0]
+   \   00000016   0x0840             LSRS     R0,R0,#+1
+   \   00000018   0x0040             LSLS     R0,R0,#+1
+   \   0000001A   0x6010             STR      R0,[R2, #+0]
+     81            }
+     82          }
+   \                     ??SysTickDelay_0:
+   \   0000001C   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \   00000000   0xE000E010         DC32     0xe000e010
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \   00000000   0x........         DC32     TimerCounter
+     83          
+     84          /** @} */ /* End of group Systick_Private_Functions */
+     85          
+     86          /** @} */ /* End of group Systick_Routines */
+     87          
+     88          /** @} */ /* End of group Interrupt_Service_Routines */
+     89          
+     90          /** @} */ /* End of group __MDR32F9Qx_Eval_Demo */
+     91          
+     92          /******************* (C) COPYRIGHT 2010 Phyton *********************************
+     93          *
+     94          * END OF FILE systick.c */
+     95          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+        0  SysTickDelay
+        0  SysTickStart
+        0  SysTickStop
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+       4  ??DataTable2_1
+      30  SysTickDelay
+      10  SysTickStart
+      12  SysTickStop
+
+ 
+ 60 bytes in section .text
+ 
+ 60 bytes of CODE memory
+
+Errors: none
+Warnings: none

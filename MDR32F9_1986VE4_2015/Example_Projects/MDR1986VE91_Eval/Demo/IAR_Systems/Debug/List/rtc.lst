@@ -1,0 +1,219 @@
+###############################################################################
+#                                                                             #
+# IAR ANSI C/C++ Compiler V6.40.2.53884/W32 for ARM     22/Sep/2015  17:26:03 #
+# Copyright 1999-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\src_fatfs\rtc.c                              #
+#    Command line =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\src_fatfs\rtc.c --preprocess                 #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lCN            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lB             #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -o              #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\ --debug          #
+#                    --endian=little --cpu=Cortex-M3 -e --fpu=None            #
+#                    --dlib_config "C:\Program Files (x86)\IAR                #
+#                    Systems\Embedded Workbench 6.4\arm\INC\c\DLib_Config_Nor #
+#                    mal.h" -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Proj #
+#                    ects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\config\ -I  #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\ -I                            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\USB_Library\ -I                #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CMSIS #
+#                    \CM3\CoreSupport\ -I C:\WORK\Milandr.MDR1986BExx.1.4.0\E #
+#                    xample_Projects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\ #
+#                    ..\..\Libraries\CMSIS\CM3\DeviceSupport\MDR32F9Qx\inc\   #
+#                    -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MD #
+#                    R1986VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CM #
+#                    SIS\CM3\DeviceSupport\MDR32F9Qx\startup\iar\ -I          #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Example_Project #
+#                    s\MDR1986VE91_Eval\inc\ -Ohz                             #
+#    List file    =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\rtc.lst          #
+#    Object file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\rtc.o             #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1986VE91_Eval\src_fatfs\rtc.c
+      1          /*------------------------------------------------------------------------/
+      2          /  RTC control module
+      3          /-------------------------------------------------------------------------/
+      4          /
+      5          /  Copyright (C) 2011, ChaN, all right reserved.
+      6          /  Copyright (C) 2012, Milandr.
+      7          /
+      8          / * This software is a free software and there is NO WARRANTY.
+      9          / * No restriction on use. You can use, modify and redistribute it for
+     10          /   personal, non-profit or commercial products UNDER YOUR RESPONSIBILITY.
+     11          / * Redistributions of source code must retain the above copyright notice.
+     12          /
+     13          /-------------------------------------------------------------------------*/
+     14          
+     15          #include "rtc.h"
+     16          #include <MDR32F9Qx_bkp.h>
+     17          
+     18          /*---------------------------------------------------------*/
+     19          /* User Provided RTC Function for FatFs module             */
+     20          /*---------------------------------------------------------*/
+     21          /* This is a real time clock service to be called from     */
+     22          /* FatFs module. Any valid time must be returned even if   */
+     23          /* the system does not support an RTC.                     */
+     24          /* This function is not required in read-only cfg.         */
+     25          
+     26          
+
+   \                                 In section .text, align 2, keep-with-next
+     27          DWORD get_fattime ()
+     28          {
+   \                     get_fattime:
+   \   00000000   0xB500             PUSH     {LR}
+   \   00000002   0xB083             SUB      SP,SP,#+12
+     29          	RTC rtc;
+     30          
+     31          	/* Get local time */
+     32          	rtc_gettime(&rtc);
+   \   00000004   0xA800             ADD      R0,SP,#+0
+   \   00000006   0x.... 0x....      BL       rtc_gettime
+     33          
+     34          	/* Pack date and time into a DWORD variable */
+     35          	return	  ((DWORD)(rtc.year - 1980) << 25)
+     36          			| ((DWORD)rtc.month << 21)
+     37          			| ((DWORD)rtc.mday << 16)
+     38          			| ((DWORD)rtc.hour << 11)
+     39          			| ((DWORD)rtc.min << 5)
+     40          			| ((DWORD)rtc.sec >> 1);
+   \   0000000A   0xF8BD 0x0000      LDRH     R0,[SP, #+0]
+   \   0000000E   0xF2A0 0x70BC      SUBW     R0,R0,#+1980
+   \   00000012   0xF89D 0x1002      LDRB     R1,[SP, #+2]
+   \   00000016   0x0549             LSLS     R1,R1,#+21
+   \   00000018   0xEA41 0x6040      ORR      R0,R1,R0, LSL #+25
+   \   0000001C   0xF89D 0x1003      LDRB     R1,[SP, #+3]
+   \   00000020   0xEA40 0x4001      ORR      R0,R0,R1, LSL #+16
+   \   00000024   0xF89D 0x1005      LDRB     R1,[SP, #+5]
+   \   00000028   0xEA40 0x20C1      ORR      R0,R0,R1, LSL #+11
+   \   0000002C   0xF89D 0x1006      LDRB     R1,[SP, #+6]
+   \   00000030   0xEA40 0x1041      ORR      R0,R0,R1, LSL #+5
+   \   00000034   0xF89D 0x1007      LDRB     R1,[SP, #+7]
+   \   00000038   0xEA40 0x0051      ORR      R0,R0,R1, LSR #+1
+   \   0000003C   0xBD0E             POP      {R1-R3,PC}       ;; return
+     41          }
+     42          
+     43          
+
+   \                                 In section .text, align 2, keep-with-next
+     44          int rtc_initialize (void)
+     45          {
+     46          
+     47          	return 1;
+   \                     rtc_initialize:
+   \   00000000   0x2001             MOVS     R0,#+1
+   \   00000002   0x4770             BX       LR               ;; return
+     48          }
+     49          
+     50          
+     51          
+
+   \                                 In section .text, align 2, keep-with-next
+     52          int rtc_gettime (RTC *rtc)
+     53          {
+   \                     rtc_gettime:
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+   \   00000002   0x4604             MOV      R4,R0
+     54          
+     55            ULONG TimeVar, temp_date;
+     56          
+     57              TimeVar = BKP_RTC_GetCounter();
+   \   00000004   0x.... 0x....      BL       BKP_RTC_GetCounter
+     58              temp_date   = MDR_BKP->REG_01;
+   \   00000008   0x....             LDR.N    R1,??DataTable0  ;; 0x400d8004
+   \   0000000A   0x6809             LDR      R1,[R1, #+0]
+     59          
+     60          	rtc->sec = (BYTE)(((TimeVar) % 3600) % 60);
+   \   0000000C   0xF44F 0x6261      MOV      R2,#+3600
+   \   00000010   0xFBB0 0xF3F2      UDIV     R3,R0,R2
+   \   00000014   0xFB02 0x0013      MLS      R0,R2,R3,R0
+   \   00000018   0x223C             MOVS     R2,#+60
+   \   0000001A   0xFBB0 0xF5F2      UDIV     R5,R0,R2
+   \   0000001E   0xFB02 0x0015      MLS      R0,R2,R5,R0
+   \   00000022   0x71E0             STRB     R0,[R4, #+7]
+     61          	rtc->min = (BYTE)(((TimeVar) % 3600) / 60);
+   \   00000024   0x71A5             STRB     R5,[R4, #+6]
+     62          	rtc->hour = (BYTE)(TimeVar / 3600);
+   \   00000026   0x7163             STRB     R3,[R4, #+5]
+     63          	rtc->wday = 0;
+   \   00000028   0x2000             MOVS     R0,#+0
+   \   0000002A   0x7120             STRB     R0,[R4, #+4]
+     64          	rtc->mday = temp_date >> 24;
+   \   0000002C   0x0E08             LSRS     R0,R1,#+24
+   \   0000002E   0x70E0             STRB     R0,[R4, #+3]
+     65          	rtc->month = (temp_date >> 16) & 0xFF;
+   \   00000030   0x0C08             LSRS     R0,R1,#+16
+   \   00000032   0x70A0             STRB     R0,[R4, #+2]
+     66          	rtc->year = temp_date & 0xFFFF;
+   \   00000034   0x8021             STRH     R1,[R4, #+0]
+     67          	return 1;
+   \   00000036   0x2001             MOVS     R0,#+1
+   \   00000038   0xBD32             POP      {R1,R4,R5,PC}    ;; return
+     68          }
+     69          
+     70          
+     71          
+     72          
+
+   \                                 In section .text, align 2, keep-with-next
+     73          int rtc_settime (const RTC *rtc)
+     74          {
+     75          	return 1;
+   \                     rtc_settime:
+   \   00000000   0x2001             MOVS     R0,#+1
+   \   00000002   0x4770             BX       LR               ;; return
+     76          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable0:
+   \   00000000   0x400D8004         DC32     0x400d8004
+     77          
+     78          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       16  get_fattime
+             16 -> rtc_gettime
+       16  rtc_gettime
+             16 -> BKP_RTC_GetCounter
+        0  rtc_initialize
+        0  rtc_settime
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable0
+      62  get_fattime
+      58  rtc_gettime
+       4  rtc_initialize
+       4  rtc_settime
+
+ 
+ 132 bytes in section .text
+ 
+ 132 bytes of CODE memory
+
+Errors: none
+Warnings: none

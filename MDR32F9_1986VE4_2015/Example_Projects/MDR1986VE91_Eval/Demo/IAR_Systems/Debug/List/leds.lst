@@ -1,0 +1,173 @@
+###############################################################################
+#                                                                             #
+# IAR ANSI C/C++ Compiler V6.40.2.53884/W32 for ARM     22/Sep/2015  17:26:03 #
+# Copyright 1999-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\src\leds.c                                   #
+#    Command line =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\src\leds.c --preprocess                      #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lCN            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lB             #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -o              #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\ --debug          #
+#                    --endian=little --cpu=Cortex-M3 -e --fpu=None            #
+#                    --dlib_config "C:\Program Files (x86)\IAR                #
+#                    Systems\Embedded Workbench 6.4\arm\INC\c\DLib_Config_Nor #
+#                    mal.h" -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Proj #
+#                    ects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\config\ -I  #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\ -I                            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\USB_Library\ -I                #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CMSIS #
+#                    \CM3\CoreSupport\ -I C:\WORK\Milandr.MDR1986BExx.1.4.0\E #
+#                    xample_Projects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\ #
+#                    ..\..\Libraries\CMSIS\CM3\DeviceSupport\MDR32F9Qx\inc\   #
+#                    -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MD #
+#                    R1986VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CM #
+#                    SIS\CM3\DeviceSupport\MDR32F9Qx\startup\iar\ -I          #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Example_Project #
+#                    s\MDR1986VE91_Eval\inc\ -Ohz                             #
+#    List file    =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\leds.lst         #
+#    Object file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\leds.o            #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1986VE91_Eval\src\leds.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    leds.c
+      4            * @author  Phyton Application Team
+      5            * @version V3.0.0
+      6            * @date    10.09.2011
+      7            * @brief   This file provides the LEDs utilities.
+      8            ******************************************************************************
+      9            * <br><br>
+     10            * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+     11            * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+     12            * TIME. AS A RESULT, PHYTON SHALL NOT BE HELD LIABLE FOR ANY
+     13            * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+     14            * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+     15            * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+     16            *
+     17            * <h2><center>&copy; COPYRIGHT 2011 Phyton</center></h2>
+     18            */
+     19          
+     20          /* Includes ------------------------------------------------------------------*/
+     21          #include <MDR32F9Qx_port.h>
+     22          #include "leds.h"
+     23          
+     24          /** @addtogroup __MDR32F9Qx_Eval_Demo MDR32F9Qx Demonstration Example
+     25            * @{
+     26            */
+     27          
+     28          /** @addtogroup LEDs_Control LEDs Control
+     29            * @{
+     30            */
+     31          
+     32          /** @defgroup LEDs_Variables LEDs Variables
+     33            * @{
+     34            */
+     35          
+
+   \                                 In section .bss, align 4
+     36          uint32_t CurrentLights;         /*!< LEDs on mask */
+   \                     CurrentLights:
+   \   00000000                      DS8 4
+     37          
+     38          /** @} */ /* End of group LEDs_Variables */
+     39          
+     40          /** @defgroup LEDs_Private_Functions LEDs Private Functions
+     41            * @{
+     42            */
+     43          
+     44          /*******************************************************************************
+     45          * Function Name  : ShiftLights
+     46          * Description    : Controls LEDs on/off.
+     47          * Input          : None
+     48          * Output         : None
+     49          * Return         : None
+     50          *******************************************************************************/
+
+   \                                 In section .text, align 4, keep-with-next
+     51          void ShiftLights(void)
+     52          {
+   \                     ShiftLights:
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+     53            uint32_t ovf;
+     54            uint32_t portdata;
+     55          
+     56            portdata = PORT_ReadInputData(LEDs_PORT);
+   \   00000002   0x4C09             LDR.N    R4,??ShiftLights_0  ;; 0x400c0000
+   \   00000004   0x4620             MOV      R0,R4
+   \   00000006   0x.... 0x....      BL       PORT_ReadInputData
+     57            PORT_Write(LEDs_PORT, (portdata & ~LEDs_PINs) | (CurrentLights & LEDs_PINs));
+   \   0000000A   0x4D08             LDR.N    R5,??ShiftLights_0+0x4
+   \   0000000C   0xF420 0x40F8      BIC      R0,R0,#0x7C00
+   \   00000010   0x6829             LDR      R1,[R5, #+0]
+   \   00000012   0xF401 0x41F8      AND      R1,R1,#0x7C00
+   \   00000016   0x4301             ORRS     R1,R1,R0
+   \   00000018   0x4620             MOV      R0,R4
+   \   0000001A   0x.... 0x....      BL       PORT_Write
+     58            ovf = (CurrentLights & (1UL << 31)) != 0;
+     59            CurrentLights <<= 1;
+     60            CurrentLights |= ovf;
+   \   0000001E   0x6828             LDR      R0,[R5, #+0]
+   \   00000020   0xEA4F 0x70F0      ROR      R0,R0,#+31
+   \   00000024   0x6028             STR      R0,[R5, #+0]
+     61          }
+   \   00000026   0xBD31             POP      {R0,R4,R5,PC}    ;; return
+   \                     ??ShiftLights_0:
+   \   00000028   0x400C0000         DC32     0x400c0000
+   \   0000002C   0x........         DC32     CurrentLights
+     62          
+     63          /** @} */ /* End of group LEDs_Private_Functions */
+     64          
+     65          /** @} */ /* End of group LEDs_Control */
+     66          
+     67          /** @} */ /* End of group __MDR32F9Qx_Eval_Demo */
+     68          
+     69          /******************* (C) COPYRIGHT 2011 Phyton *********************************
+     70          *
+     71          * END OF FILE leds.c */
+     72          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       16  ShiftLights
+             16 -> PORT_ReadInputData
+             16 -> PORT_Write
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  CurrentLights
+      48  ShiftLights
+
+ 
+  4 bytes in section .bss
+ 48 bytes in section .text
+ 
+ 48 bytes of CODE memory
+  4 bytes of DATA memory
+
+Errors: none
+Warnings: none

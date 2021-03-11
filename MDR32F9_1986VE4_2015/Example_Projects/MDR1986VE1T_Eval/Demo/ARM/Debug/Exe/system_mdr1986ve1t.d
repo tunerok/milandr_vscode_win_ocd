@@ -1,0 +1,11 @@
+.\debug\exe\system_mdr1986ve1t.o: ..\..\..\..\Libraries\CMSIS\CM1\DeviceSupport\MDR1986VE1T\startup\arm\system_MDR1986VE1T.c
+.\debug\exe\system_mdr1986ve1t.o: ..\..\..\..\Libraries\CMSIS\CM1\DeviceSupport\MDR1986VE1T\inc\MDR1986VE1T.h
+.\debug\exe\system_mdr1986ve1t.o: ..\..\Config\MDR32F9Qx_config.h
+.\debug\exe\system_mdr1986ve1t.o: ..\..\Config\MDR32F9Qx_board.h
+.\debug\exe\system_mdr1986ve1t.o: ..\..\..\..\Libraries\MDR32F9Qx_StdPeriph_Driver\inc\MDR32F9Qx_lib.h
+.\debug\exe\system_mdr1986ve1t.o: C:\Keil5\ARM\ARMCC\bin\..\include\stdint.h
+.\debug\exe\system_mdr1986ve1t.o: ..\..\..\..\Libraries\CMSIS\CM1\DeviceSupport\MDR1986VE1T\inc\MDR1986VE1T.h
+.\debug\exe\system_mdr1986ve1t.o: ..\..\..\..\Libraries\CMSIS\CM1\CoreSupport\core_cm1.h
+.\debug\exe\system_mdr1986ve1t.o: ..\..\..\..\Libraries\CMSIS\CM1\CoreSupport\core_cmInstr.h
+.\debug\exe\system_mdr1986ve1t.o: ..\..\..\..\Libraries\CMSIS\CM1\CoreSupport\core_cmFunc.h
+.\debug\exe\system_mdr1986ve1t.o: ..\..\..\..\Libraries\CMSIS\CM1\DeviceSupport\MDR1986VE1T\startup\arm\system_MDR1986VE1T.h

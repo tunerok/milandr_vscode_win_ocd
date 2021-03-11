@@ -1,0 +1,808 @@
+###############################################################################
+#                                                                             #
+# IAR ANSI C/C++ Compiler V6.40.2.53884/W32 for ARM     22/Sep/2015  17:25:56 #
+# Copyright 1999-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Libraries\MDR32F9Qx_St #
+#                    dPeriph_Driver\src\MDR32F9Qx_eeprom.c                    #
+#    Command line =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Libraries\MDR32F9Qx_St #
+#                    dPeriph_Driver\src\MDR32F9Qx_eeprom.c --preprocess       #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lCN            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lB             #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -o              #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\ --debug          #
+#                    --endian=little --cpu=Cortex-M3 -e --fpu=None            #
+#                    --dlib_config "C:\Program Files (x86)\IAR                #
+#                    Systems\Embedded Workbench 6.4\arm\INC\c\DLib_Config_Nor #
+#                    mal.h" -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Proj #
+#                    ects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\config\ -I  #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\ -I                            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\USB_Library\ -I                #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CMSIS #
+#                    \CM3\CoreSupport\ -I C:\WORK\Milandr.MDR1986BExx.1.4.0\E #
+#                    xample_Projects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\ #
+#                    ..\..\Libraries\CMSIS\CM3\DeviceSupport\MDR32F9Qx\inc\   #
+#                    -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MD #
+#                    R1986VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CM #
+#                    SIS\CM3\DeviceSupport\MDR32F9Qx\startup\iar\ -I          #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Example_Project #
+#                    s\MDR1986VE91_Eval\inc\ -Ohz                             #
+#    List file    =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\MDR32F9Qx_eeprom #
+#                    .lst                                                     #
+#    Object file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\MDR32F9Qx_eeprom. #
+#                    o                                                        #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\WORK\Milandr.MDR1986BExx.1.4.0\Libraries\MDR32F9Qx_StdPeriph_Driver\src\MDR32F9Qx_eeprom.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    MDR32F9Qx_eeprom.c
+      4            * @author  Phyton Application Team
+      5            * @version V1.4.0
+      6            * @date    11/06/2010
+      7            * @brief   This file contains all the EEPROM firmware functions.
+      8            ******************************************************************************
+      9            * <br><br>
+     10            *
+     11            * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+     12            * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+     13            * TIME. AS A RESULT, PHYTON SHALL NOT BE HELD LIABLE FOR ANY DIRECT, INDIRECT
+     14            * OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+     15            * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+     16            * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+     17            *
+     18            * <h2><center>&copy; COPYRIGHT 2010 Phyton</center></h2>
+     19            ******************************************************************************
+     20            * FILE MDR32F9Qx_eeprom.c
+     21            */
+     22          
+     23          /* Includes ------------------------------------------------------------------*/
+     24          #include "MDR32F9Qx_config.h"
+     25          #include "MDR32F9Qx_eeprom.h"
+     26          
+     27          
+     28          #define ASSERT_INFO_FILE_ID FILEID__MDR32F9X_EEPROM_C
+     29          
+     30          /** @addtogroup __MDR32F9Qx_StdPeriph_Driver MDR32F9Qx Standard Peripherial Driver
+     31            * @{
+     32            */
+     33          
+     34          /** @defgroup EEPROM EEPROM
+     35            * @{
+     36            */
+     37          
+     38          /** @defgroup EEPROM_Private_Defines EEPROM Private Defines
+     39            * @{
+     40            */
+     41          
+     42          #define EEPROM_REG_ACCESS_KEY           ((uint32_t)0x8AAA5551)
+     43          
+     44          /** @} */ /* End of group EEPROM_Private_Defines */
+     45          
+     46          /** @defgroup EEPROM_Private_Macros EEPROM Private Macros
+     47            * @{
+     48            */
+     49          
+     50          #define IS_TWO_BYTE_ALLIGNED(ADDR)      ((ADDR & 1) == 0)
+     51          #define IS_FOUR_BYTE_ALLIGNED(ADDR)     ((ADDR & 3) == 0)
+     52          
+     53          #define DELAY_LOOP_CYCLES               (8UL)
+     54          #define GET_US_LOOPS(N)                 ((uint32_t)((float)(N) * FLASH_PROG_FREQ_MHZ / DELAY_LOOP_CYCLES))
+     55          
+     56          /** @} */ /* End of group EEPROM_Private_Macros */
+     57          
+     58          /** @defgroup EEPROM_Private_Functions EEPROM Private Functions
+     59            * @{
+     60            */
+     61          
+     62          __RAMFUNC static void ProgramDelay(uint32_t Loops) __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
+     63          
+     64          /**
+     65            * @brief  Program delay.
+     66            * @param  Loops: Number of the loops.
+     67            * @retval None.
+     68            */
+
+   \                                 In section .textrw, align 2, keep-with-next
+     69          __RAMFUNC static void ProgramDelay(uint32_t Loops)
+     70          {
+   \                     ProgramDelay:
+   \   00000000   0xB081             SUB      SP,SP,#+4
+     71            volatile uint32_t i = Loops;
+   \   00000002   0xE001             B.N      ??ProgramDelay_0
+     72            for (; i > 0; i--)
+   \                     ??ProgramDelay_1:
+   \   00000004   0x9800             LDR      R0,[SP, #+0]
+   \   00000006   0x1E40             SUBS     R0,R0,#+1
+   \                     ??ProgramDelay_0:
+   \   00000008   0x9000             STR      R0,[SP, #+0]
+   \   0000000A   0x9800             LDR      R0,[SP, #+0]
+   \   0000000C   0x2800             CMP      R0,#+0
+   \   0000000E   0xD1F9             BNE.N    ??ProgramDelay_1
+     73            {
+     74            }
+     75          }
+   \   00000010   0xB001             ADD      SP,SP,#+4
+   \   00000012   0x4770             BX       LR               ;; return
+     76          
+     77          
+     78          /**
+     79            * @brief  Sets the code latency value.
+     80            * @param  FLASH_Latency: specifies the FLASH Latency value.
+     81            *          This parameter can be one of the following values:
+     82            *            @arg EEPROM_Latency_0: EEPROM Zero Latency cycle
+     83            *            @arg EEPROM_Latency_1: EEPROM One Latency cycle
+     84            *            @arg EEPROM_Latency_2: EEPROM Two Latency cycles
+     85            *            @arg EEPROM_Latency_3: EEPROM Three Latency cycles
+     86            *            @arg EEPROM_Latency_4: EEPROM Four Latency cycles
+     87            *            @arg EEPROM_Latency_5: EEPROM Five Latency cycles
+     88            *            @arg EEPROM_Latency_6: EEPROM Six Latency cycles
+     89            *            @arg EEPROM_Latency_7: EEPROM Seven Latency cycles
+     90            * @retval None
+     91            */
+
+   \                                 In section .text, align 4, keep-with-next
+     92          void EEPROM_SetLatency ( uint32_t EEPROM_Latency )
+     93          {
+     94            /* Check the parameters */
+     95            assert_param(IS_EEPROM_LATENCY(EEPROM_Latency));
+     96          
+     97            /* Set the new latency value */
+     98            MDR_EEPROM->CMD = EEPROM_Latency;
+   \                     EEPROM_SetLatency:
+   \   00000000   0x4901             LDR.N    R1,??EEPROM_SetLatency_0  ;; 0x40018000
+   \   00000002   0x6008             STR      R0,[R1, #+0]
+     99          }
+   \   00000004   0x4770             BX       LR               ;; return
+   \   00000006   0xBF00             Nop      
+   \                     ??EEPROM_SetLatency_0:
+   \   00000008   0x40018000         DC32     0x40018000
+    100          
+    101          /**
+    102            * @brief  Reads the 8-bit EEPROM memory value.
+    103            * @param  Address: The EEPROM memory byte address.
+    104            * @param  BankSelector: Selects EEPROM Bank (Main Bank or Information Bank).
+    105            *         This parameter can be one of the following values:
+    106            *           @arg EEPROM_Main_Bank_Select:      The EEPROM Main Bank selector.
+    107            *           @arg EEPROM_Info_Bank_Select:      The EEPROM Information Bank selector.
+    108            * @retval The selected EEPROM memory value.
+    109            */
+
+   \                                 In section .textrw, align 2, keep-with-next
+    110          __RAMFUNC  uint8_t EEPROM_ReadByte(uint32_t Address, uint32_t BankSelector)
+    111          {
+    112            uint32_t Data;
+    113            uint32_t Command;
+    114            uint32_t Shift;
+    115          
+    116            assert_param(IS_EEPROM_BANK_SELECTOR(BankSelector));
+    117          
+    118            MDR_EEPROM->KEY = EEPROM_REG_ACCESS_KEY;
+   \                     EEPROM_ReadByte:
+   \   00000000   0x....             LDR.N    R2,??DataTable5  ;; 0x40018000
+   \   00000002   0x....             LDR.N    R3,??DataTable5_1  ;; 0x8aaa5551
+   \   00000004   0x6113             STR      R3,[R2, #+16]
+    119            Command = (MDR_EEPROM->CMD & EEPROM_CMD_DELAY_Msk) | EEPROM_CMD_CON;
+   \   00000006   0x6813             LDR      R3,[R2, #+0]
+   \   00000008   0xF003 0x0338      AND      R3,R3,#0x38
+   \   0000000C   0xF043 0x0301      ORR      R3,R3,#0x1
+    120            Command |= (BankSelector == EEPROM_Info_Bank_Select) ? EEPROM_CMD_IFREN : 0;
+   \   00000010   0x2901             CMP      R1,#+1
+   \   00000012   0xBF0C             ITE      EQ 
+   \   00000014   0xF44F 0x7100      MOVEQ    R1,#+512
+   \   00000018   0x2100             MOVNE    R1,#+0
+   \   0000001A   0x4319             ORRS     R1,R1,R3
+    121            MDR_EEPROM->CMD = Command;
+   \   0000001C   0x6011             STR      R1,[R2, #+0]
+    122            MDR_EEPROM->ADR = Address;
+   \   0000001E   0x6050             STR      R0,[R2, #+4]
+    123            MDR_EEPROM->CMD = Command | EEPROM_CMD_XE | EEPROM_CMD_YE | EEPROM_CMD_SE;
+   \   00000020   0xF441 0x73E0      ORR      R3,R1,#0x1C0
+   \   00000024   0x6013             STR      R3,[R2, #+0]
+    124            MDR_EEPROM->DO;   /* Idle Reading for Delay */
+   \   00000026   0x68D3             LDR      R3,[R2, #+12]
+    125            MDR_EEPROM->DO;   /* Idle Reading for Delay */
+   \   00000028   0x68D3             LDR      R3,[R2, #+12]
+    126            MDR_EEPROM->DO;   /* Idle Reading for Delay */
+   \   0000002A   0x68D3             LDR      R3,[R2, #+12]
+    127            Data = MDR_EEPROM->DO;
+   \   0000002C   0x68D3             LDR      R3,[R2, #+12]
+    128            Command &= EEPROM_CMD_DELAY_Msk;
+    129            MDR_EEPROM->CMD = Command;
+   \   0000002E   0xF001 0x0138      AND      R1,R1,#0x38
+   \   00000032   0x6011             STR      R1,[R2, #+0]
+    130            MDR_EEPROM->KEY = 0;
+   \   00000034   0x2100             MOVS     R1,#+0
+   \   00000036   0x6111             STR      R1,[R2, #+16]
+    131          
+    132            Shift = (Address & 3) * 8;
+    133            Data >>= Shift;
+    134            return Data;
+   \   00000038   0xF000 0x0003      AND      R0,R0,#0x3
+   \   0000003C   0x00C0             LSLS     R0,R0,#+3
+   \   0000003E   0xFA23 0xF000      LSR      R0,R3,R0
+   \   00000042   0xB2C0             UXTB     R0,R0
+   \   00000044   0x4770             BX       LR               ;; return
+    135          }
+    136          
+    137          /**
+    138            * @brief  Reads the 16-bit EEPROM memory value.
+    139            * @param  Address: The EEPROM memory half word address (two byte aligned).
+    140            * @param  BankSelector: Selects EEPROM Bank (Main Bank or Information Bank).
+    141            *         This parameter can be one of the following values:
+    142            *           @arg EEPROM_Main_Bank_Select:      The EEPROM Main Bank selector.
+    143            *           @arg EEPROM_Info_Bank_Select:      The EEPROM Information Bank selector.
+    144            * @retval The selected EEPROM memory value.
+    145            */
+
+   \                                 In section .textrw, align 2, keep-with-next
+    146          __RAMFUNC uint16_t EEPROM_ReadHalfWord(uint32_t Address, uint32_t BankSelector)
+    147          {
+    148            uint32_t Data;
+    149            uint32_t Command;
+    150            uint32_t Shift;
+    151          
+    152            assert_param(IS_EEPROM_BANK_SELECTOR(BankSelector));
+    153            assert_param(IS_TWO_BYTE_ALLIGNED(Address));
+    154          
+    155            MDR_EEPROM->KEY = EEPROM_REG_ACCESS_KEY;
+   \                     EEPROM_ReadHalfWord:
+   \   00000000   0x....             LDR.N    R2,??DataTable5  ;; 0x40018000
+   \   00000002   0x....             LDR.N    R3,??DataTable5_1  ;; 0x8aaa5551
+   \   00000004   0x6113             STR      R3,[R2, #+16]
+    156            Command = (MDR_EEPROM->CMD & EEPROM_CMD_DELAY_Msk) | EEPROM_CMD_CON;
+   \   00000006   0x6813             LDR      R3,[R2, #+0]
+   \   00000008   0xF003 0x0338      AND      R3,R3,#0x38
+   \   0000000C   0xF043 0x0301      ORR      R3,R3,#0x1
+    157            Command |= (BankSelector == EEPROM_Info_Bank_Select) ? EEPROM_CMD_IFREN : 0;
+   \   00000010   0x2901             CMP      R1,#+1
+   \   00000012   0xBF0C             ITE      EQ 
+   \   00000014   0xF44F 0x7100      MOVEQ    R1,#+512
+   \   00000018   0x2100             MOVNE    R1,#+0
+   \   0000001A   0x4319             ORRS     R1,R1,R3
+    158            MDR_EEPROM->CMD = Command;
+   \   0000001C   0x6011             STR      R1,[R2, #+0]
+    159            MDR_EEPROM->ADR = Address;
+   \   0000001E   0x6050             STR      R0,[R2, #+4]
+    160            MDR_EEPROM->CMD = Command | EEPROM_CMD_XE | EEPROM_CMD_YE | EEPROM_CMD_SE;
+   \   00000020   0xF441 0x73E0      ORR      R3,R1,#0x1C0
+   \   00000024   0x6013             STR      R3,[R2, #+0]
+    161            MDR_EEPROM->DO;   /* Idle Reading for Delay */
+   \   00000026   0x68D3             LDR      R3,[R2, #+12]
+    162            MDR_EEPROM->DO;   /* Idle Reading for Delay */
+   \   00000028   0x68D3             LDR      R3,[R2, #+12]
+    163            MDR_EEPROM->DO;   /* Idle Reading for Delay */
+   \   0000002A   0x68D3             LDR      R3,[R2, #+12]
+    164            Data = MDR_EEPROM->DO;
+   \   0000002C   0x68D3             LDR      R3,[R2, #+12]
+    165            Command &= EEPROM_CMD_DELAY_Msk;
+    166            MDR_EEPROM->CMD = Command;
+   \   0000002E   0xF001 0x0138      AND      R1,R1,#0x38
+   \   00000032   0x6011             STR      R1,[R2, #+0]
+    167            MDR_EEPROM->KEY = 0;
+   \   00000034   0x2100             MOVS     R1,#+0
+   \   00000036   0x6111             STR      R1,[R2, #+16]
+    168          
+    169            Shift = (Address & 2) * 8;
+    170            Data >>= Shift;
+    171            return Data;
+   \   00000038   0xF000 0x0002      AND      R0,R0,#0x2
+   \   0000003C   0x00C0             LSLS     R0,R0,#+3
+   \   0000003E   0xFA23 0xF000      LSR      R0,R3,R0
+   \   00000042   0xB280             UXTH     R0,R0
+   \   00000044   0x4770             BX       LR               ;; return
+    172          }
+    173          
+    174          /**
+    175            * @brief  Reads the 32-bit EEPROM memory value.
+    176            * @param  Address: The EEPROM memory word address (four byte aligned).
+    177            * @param  BankSelector: Selects EEPROM Bank (Main Bank or Information Bank).
+    178            *         This parameter can be one of the following values:
+    179            *           @arg EEPROM_Main_Bank_Select:      The EEPROM Main Bank selector.
+    180            *           @arg EEPROM_Info_Bank_Select:      The EEPROM Information Bank selector.
+    181            * @retval The selected EEPROM memory value.
+    182            */
+
+   \                                 In section .textrw, align 2, keep-with-next
+    183          __RAMFUNC uint32_t EEPROM_ReadWord(uint32_t Address, uint32_t BankSelector)
+    184          {
+    185            uint32_t Command;
+    186            uint32_t Data;
+    187          
+    188            assert_param(IS_EEPROM_BANK_SELECTOR(BankSelector));
+    189            assert_param(IS_FOUR_BYTE_ALLIGNED(Address));
+    190          
+    191            MDR_EEPROM->KEY = EEPROM_REG_ACCESS_KEY;
+   \                     EEPROM_ReadWord:
+   \   00000000   0x....             LDR.N    R2,??DataTable5  ;; 0x40018000
+   \   00000002   0x....             LDR.N    R3,??DataTable5_1  ;; 0x8aaa5551
+   \   00000004   0x6113             STR      R3,[R2, #+16]
+    192            Command = (MDR_EEPROM->CMD & EEPROM_CMD_DELAY_Msk) | EEPROM_CMD_CON;
+   \   00000006   0x6813             LDR      R3,[R2, #+0]
+   \   00000008   0xF003 0x0338      AND      R3,R3,#0x38
+   \   0000000C   0xF043 0x0301      ORR      R3,R3,#0x1
+    193            Command |= (BankSelector == EEPROM_Info_Bank_Select) ? EEPROM_CMD_IFREN : 0;
+   \   00000010   0x2901             CMP      R1,#+1
+   \   00000012   0xBF0C             ITE      EQ 
+   \   00000014   0xF44F 0x7100      MOVEQ    R1,#+512
+   \   00000018   0x2100             MOVNE    R1,#+0
+   \   0000001A   0x4319             ORRS     R1,R1,R3
+    194            MDR_EEPROM->CMD = Command;
+   \   0000001C   0x6011             STR      R1,[R2, #+0]
+    195            MDR_EEPROM->ADR = Address;
+   \   0000001E   0x6050             STR      R0,[R2, #+4]
+    196            MDR_EEPROM->CMD = Command | EEPROM_CMD_XE | EEPROM_CMD_YE | EEPROM_CMD_SE;
+   \   00000020   0xF441 0x70E0      ORR      R0,R1,#0x1C0
+   \   00000024   0x6010             STR      R0,[R2, #+0]
+    197            MDR_EEPROM->DO;   /* Idle Reading for Delay */
+   \   00000026   0x68D0             LDR      R0,[R2, #+12]
+    198            MDR_EEPROM->DO;   /* Idle Reading for Delay */
+   \   00000028   0x68D0             LDR      R0,[R2, #+12]
+    199            MDR_EEPROM->DO;   /* Idle Reading for Delay */
+   \   0000002A   0x68D0             LDR      R0,[R2, #+12]
+    200            Data = MDR_EEPROM->DO;
+   \   0000002C   0x68D0             LDR      R0,[R2, #+12]
+    201            Command &= EEPROM_CMD_DELAY_Msk;
+    202            MDR_EEPROM->CMD = Command;
+   \   0000002E   0xF001 0x0138      AND      R1,R1,#0x38
+   \   00000032   0x6011             STR      R1,[R2, #+0]
+    203            MDR_EEPROM->KEY = 0;
+   \   00000034   0x2100             MOVS     R1,#+0
+   \   00000036   0x6111             STR      R1,[R2, #+16]
+    204            return Data;
+   \   00000038   0x4770             BX       LR               ;; return
+    205          }
+    206          
+    207          /**
+    208            * @brief  Erases one page of the selected EEPROM memory bank.
+    209            * @param  Address: Page Address in the EEPROM memory.
+    210            * @param  BankSelector: Selects EEPROM Bank (Main Bank or Information Bank).
+    211            *         This parameter can be one of the following values:
+    212            *           @arg EEPROM_Main_Bank_Select:      The EEPROM Main Bank selector.
+    213            *           @arg EEPROM_Info_Bank_Select:      The EEPROM Information Bank selector.
+    214            * @retval None
+    215            */
+
+   \                                 In section .textrw, align 2, keep-with-next
+    216          __RAMFUNC void EEPROM_ErasePage(uint32_t Address, uint32_t BankSelector)
+    217          {
+   \                     EEPROM_ErasePage:
+   \   00000000   0xB5F8             PUSH     {R3-R7,LR}
+   \   00000002   0x4604             MOV      R4,R0
+    218            uint32_t Command;
+    219            uint32_t Offset;
+    220          
+    221            assert_param(IS_EEPROM_BANK_SELECTOR(BankSelector));
+    222          
+    223            MDR_EEPROM->KEY = EEPROM_REG_ACCESS_KEY;
+   \   00000004   0x....             LDR.N    R5,??DataTable5  ;; 0x40018000
+   \   00000006   0x....             LDR.N    R0,??DataTable5_1  ;; 0x8aaa5551
+   \   00000008   0x6128             STR      R0,[R5, #+16]
+    224            Command = (MDR_EEPROM->CMD & EEPROM_CMD_DELAY_Msk) | EEPROM_CMD_CON;
+   \   0000000A   0x6828             LDR      R0,[R5, #+0]
+   \   0000000C   0xF000 0x0038      AND      R0,R0,#0x38
+   \   00000010   0xF040 0x0001      ORR      R0,R0,#0x1
+    225            Command |= (BankSelector == EEPROM_Info_Bank_Select) ? EEPROM_CMD_IFREN : 0;
+   \   00000014   0x2901             CMP      R1,#+1
+   \   00000016   0xBF0C             ITE      EQ 
+   \   00000018   0xF44F 0x7100      MOVEQ    R1,#+512
+   \   0000001C   0x2100             MOVNE    R1,#+0
+   \   0000001E   0xEA41 0x0700      ORR      R7,R1,R0
+    226            MDR_EEPROM->CMD = Command;
+   \   00000022   0x602F             STR      R7,[R5, #+0]
+    227          
+    228            for (Offset = 0; Offset < (4 << 2); Offset += 4)
+   \   00000024   0x2600             MOVS     R6,#+0
+    229            {
+    230              MDR_EEPROM->ADR = Address + Offset;             /* Page Address */
+   \                     ??EEPROM_ErasePage_0:
+   \   00000026   0x1930             ADDS     R0,R6,R4
+   \   00000028   0x6068             STR      R0,[R5, #+4]
+    231              MDR_EEPROM->DI = 0;
+   \   0000002A   0x2000             MOVS     R0,#+0
+   \   0000002C   0x60A8             STR      R0,[R5, #+8]
+    232              Command |= EEPROM_CMD_XE | EEPROM_CMD_ERASE;
+   \   0000002E   0xF447 0x6788      ORR      R7,R7,#0x440
+    233              MDR_EEPROM->CMD = Command;
+   \   00000032   0x602F             STR      R7,[R5, #+0]
+    234              ProgramDelay(GET_US_LOOPS(5));              /* Wait for 5 us */
+   \   00000034   0x.... 0x....      BL       ??Subroutine1_0
+    235              Command |= EEPROM_CMD_NVSTR;
+   \                     ??CrossCallReturnLabel_1:
+   \   00000038   0xF447 0x5700      ORR      R7,R7,#0x2000
+    236              MDR_EEPROM->CMD = Command;
+   \   0000003C   0x602F             STR      R7,[R5, #+0]
+    237              ProgramDelay(GET_US_LOOPS(40000));          /* Wait for 40 ms */
+   \   0000003E   0xF649 0x4040      MOVW     R0,#+40000
+   \   00000042   0x.... 0x....      BL       ProgramDelay
+    238              Command &= ~EEPROM_CMD_ERASE;
+   \   00000046   0xF427 0x6780      BIC      R7,R7,#0x400
+    239              MDR_EEPROM->CMD = Command;
+   \   0000004A   0x602F             STR      R7,[R5, #+0]
+    240              ProgramDelay(GET_US_LOOPS(5));              /* Wait for 5 us */
+   \   0000004C   0x.... 0x....      BL       ??Subroutine1_0
+    241              Command &= ~(EEPROM_CMD_XE | EEPROM_CMD_NVSTR);
+   \                     ??CrossCallReturnLabel_0:
+   \   00000050   0xF427 0x5701      BIC      R7,R7,#0x2040
+    242              MDR_EEPROM->CMD = Command;
+   \   00000054   0x602F             STR      R7,[R5, #+0]
+    243              ProgramDelay(GET_US_LOOPS(1));              /* Wait for 1 us */
+   \   00000056   0x.... 0x....      BL       ??Subroutine2_0
+    244            }
+   \                     ??CrossCallReturnLabel_5:
+   \   0000005A   0x1D36             ADDS     R6,R6,#+4
+   \   0000005C   0x2E10             CMP      R6,#+16
+   \   0000005E   0xD3E2             BCC.N    ??EEPROM_ErasePage_0
+    245            Command &= EEPROM_CMD_DELAY_Msk;
+    246            MDR_EEPROM->CMD = Command;
+   \   00000060   0xF007 0x0038      AND      R0,R7,#0x38
+   \   00000064   0x6028             STR      R0,[R5, #+0]
+    247            MDR_EEPROM->KEY = 0;
+   \   00000066   0x2000             MOVS     R0,#+0
+   \   00000068   0x6128             STR      R0,[R5, #+16]
+    248          }
+   \   0000006A   0xBDF1             POP      {R0,R4-R7,PC}    ;; return
+
+   \                                 In section .textrw, align 2, keep-with-next
+   \                     ?Subroutine2:
+   \   00000000   0x6025             STR      R5,[R4, #+0]
+   \                     ??Subroutine2_0:
+   \   00000002   0x2001             MOVS     R0,#+1
+   \   00000004   0x....             B.N      ProgramDelay
+
+   \                                 In section .textrw, align 2, keep-with-next
+   \                     ?Subroutine1:
+   \   00000000   0x6025             STR      R5,[R4, #+0]
+   \                     ??Subroutine1_0:
+   \   00000002   0x2005             MOVS     R0,#+5
+   \   00000004   0x....             B.N      ProgramDelay
+    249          
+    250          /**
+    251            * @brief  Erases all pages of the selected EEPROM memory bank.
+    252            * @param  BankSelector: Selects EEPROM Bank (Main Bank or Information Bank).
+    253            *         This parameter can be one of the following values:
+    254            *           @arg EEPROM_Main_Bank_Select:      The EEPROM Main Bank selector.
+    255            *           @arg EEPROM_All_Banks_Select:      The EEPROM All Banks selector.
+    256            * @retval None
+    257            */
+
+   \                                 In section .textrw, align 2, keep-with-next
+    258          __RAMFUNC void EEPROM_EraseAllPages(uint32_t BankSelector)
+    259          {
+   \                     EEPROM_EraseAllPages:
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+    260            uint32_t Command;
+    261            uint32_t Offset;
+    262          
+    263            assert_param(IS_EEPROM_ERASE_SELECTOR(BankSelector));
+    264          
+    265            MDR_EEPROM->KEY = EEPROM_REG_ACCESS_KEY;
+   \   00000002   0x....             LDR.N    R4,??DataTable5  ;; 0x40018000
+   \   00000004   0x....             LDR.N    R1,??DataTable5_1  ;; 0x8aaa5551
+   \   00000006   0x6121             STR      R1,[R4, #+16]
+    266            Command = (MDR_EEPROM->CMD & EEPROM_CMD_DELAY_Msk) | EEPROM_CMD_CON;
+   \   00000008   0x6821             LDR      R1,[R4, #+0]
+   \   0000000A   0xF001 0x0138      AND      R1,R1,#0x38
+   \   0000000E   0xF041 0x0101      ORR      R1,R1,#0x1
+    267            Command |= (BankSelector == EEPROM_All_Banks_Select) ? EEPROM_CMD_IFREN : 0;
+   \   00000012   0x2802             CMP      R0,#+2
+   \   00000014   0xBF0C             ITE      EQ 
+   \   00000016   0xF44F 0x7000      MOVEQ    R0,#+512
+   \   0000001A   0x2000             MOVNE    R0,#+0
+   \   0000001C   0xEA40 0x0501      ORR      R5,R0,R1
+    268          
+    269            MDR_EEPROM->CMD = Command;
+   \   00000020   0x6025             STR      R5,[R4, #+0]
+    270          
+    271            for (Offset = 0; Offset < (4 << 2); Offset += 4)
+   \   00000022   0x2600             MOVS     R6,#+0
+    272            {
+    273              MDR_EEPROM->ADR = Offset;
+   \                     ??EEPROM_EraseAllPages_0:
+   \   00000024   0x6066             STR      R6,[R4, #+4]
+    274              MDR_EEPROM->DI = 0;
+   \   00000026   0x2000             MOVS     R0,#+0
+   \   00000028   0x60A0             STR      R0,[R4, #+8]
+    275              Command |= EEPROM_CMD_XE | EEPROM_CMD_MAS1 | EEPROM_CMD_ERASE;
+   \   0000002A   0xF445 0x6544      ORR      R5,R5,#0xC40
+    276              MDR_EEPROM->CMD = Command;
+   \   0000002E   0x.... 0x....      BL       ?Subroutine1
+    277              ProgramDelay(GET_US_LOOPS(5));                /* Wait for 5 us */
+    278              Command |= EEPROM_CMD_NVSTR;
+   \                     ??CrossCallReturnLabel_4:
+   \   00000032   0xF445 0x5500      ORR      R5,R5,#0x2000
+    279              MDR_EEPROM->CMD = Command;
+   \   00000036   0x6025             STR      R5,[R4, #+0]
+    280              ProgramDelay(GET_US_LOOPS(40000));            /* Wait for 40 ms */
+   \   00000038   0xF649 0x4040      MOVW     R0,#+40000
+   \   0000003C   0x.... 0x....      BL       ProgramDelay
+    281              Command &= ~EEPROM_CMD_ERASE;
+   \   00000040   0xF425 0x6580      BIC      R5,R5,#0x400
+    282              MDR_EEPROM->CMD = Command;
+   \   00000044   0x6025             STR      R5,[R4, #+0]
+    283              ProgramDelay(GET_US_LOOPS(100));              /* Wait for 100 us */
+   \   00000046   0x2064             MOVS     R0,#+100
+   \   00000048   0x.... 0x....      BL       ProgramDelay
+    284              Command &= ~(EEPROM_CMD_XE | EEPROM_CMD_MAS1 | EEPROM_CMD_NVSTR);
+   \   0000004C   0xF425 0x5521      BIC      R5,R5,#0x2840
+    285              MDR_EEPROM->CMD = Command;
+   \   00000050   0x.... 0x....      BL       ?Subroutine2
+    286              ProgramDelay(GET_US_LOOPS(1));                /* Wait for 1 us */
+    287            }
+   \                     ??CrossCallReturnLabel_7:
+   \   00000054   0x1D36             ADDS     R6,R6,#+4
+   \   00000056   0x2E10             CMP      R6,#+16
+   \   00000058   0xD3E4             BCC.N    ??EEPROM_EraseAllPages_0
+    288            Command &= EEPROM_CMD_DELAY_Msk;
+    289            MDR_EEPROM->CMD = Command;
+   \   0000005A   0xF005 0x0038      AND      R0,R5,#0x38
+   \   0000005E   0x6020             STR      R0,[R4, #+0]
+    290            MDR_EEPROM->KEY = 0;
+   \   00000060   0x2000             MOVS     R0,#+0
+   \   00000062   0x6120             STR      R0,[R4, #+16]
+    291          }
+   \   00000064   0xBD70             POP      {R4-R6,PC}       ;; return
+    292          
+    293          /**
+    294            * @brief  Programs the 8-bit EEPROM memory value.
+    295            * @param  Address: The EEPROM memory byte address.
+    296            * @param  BankSelector: Selects EEPROM Bank (Main Bank or Information Bank).
+    297            *         This parameter can be one of the following values:
+    298            *           @arg EEPROM_Main_Bank_Select:      The EEPROM Main Bank selector.
+    299            *           @arg EEPROM_Info_Bank_Select:      The EEPROM Information Bank selector.
+    300            * @param  Data: The data value to be programmed.
+    301            * @retval None
+    302            */
+
+   \                                 In section .textrw, align 2, keep-with-next
+    303          __RAMFUNC void EEPROM_ProgramByte(uint32_t Address, uint32_t BankSelector, uint32_t Data)
+    304          {
+   \                     EEPROM_ProgramByte:
+   \   00000000   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+   \   00000004   0x4604             MOV      R4,R0
+   \   00000006   0x460D             MOV      R5,R1
+   \   00000008   0x4690             MOV      R8,R2
+    305            uint32_t Mask;
+    306            uint32_t Tmp;
+    307            uint32_t Shift;
+    308          
+    309            assert_param(IS_EEPROM_BANK_SELECTOR(BankSelector));
+    310          
+    311            Shift = (Address & 3) * 8;
+   \   0000000A   0xF004 0x0003      AND      R0,R4,#0x3
+   \   0000000E   0x00C7             LSLS     R7,R0,#+3
+    312            Data = Data << Shift;
+    313            Mask = 0xFF << Shift;
+   \   00000010   0x20FF             MOVS     R0,#+255
+   \   00000012   0x....             B.N      ?Subroutine0
+    314            Tmp = EEPROM_ReadWord(Address, BankSelector);
+    315            EEPROM_ProgramWord(Address, BankSelector, (Tmp & ~Mask) | (Data & Mask));
+    316          }
+
+   \                                 In section .textrw, align 2, keep-with-next
+   \                     ?Subroutine0:
+   \   00000000   0xFA00 0xF607      LSL      R6,R0,R7
+   \   00000004   0x4620             MOV      R0,R4
+   \   00000006   0x.... 0x....      BL       EEPROM_ReadWord
+   \   0000000A   0x43B0             BICS     R0,R0,R6
+   \   0000000C   0xFA08 0xF107      LSL      R1,R8,R7
+   \   00000010   0x4031             ANDS     R1,R6,R1
+   \   00000012   0xEA41 0x0200      ORR      R2,R1,R0
+   \   00000016   0x4629             MOV      R1,R5
+   \   00000018   0x4620             MOV      R0,R4
+   \   0000001A   0xE8BD 0x41F0      POP      {R4-R8,LR}
+   \   0000001E                      REQUIRE EEPROM_ProgramWord
+   \   0000001E                      ;; // Fall through to label EEPROM_ProgramWord
+    317          
+    318          /**
+    319            * @brief  Programs the 16-bit EEPROM memory value.
+    320            * @param  Address: The EEPROM memory half word address (two byte aligned).
+    321            * @param  BankSelector: Selects EEPROM Bank (Main Bank or Information Bank).
+    322            *         This parameter can be one of the following values:
+    323            *           @arg EEPROM_Main_Bank_Select:      The EEPROM Main Bank selector.
+    324            *           @arg EEPROM_Info_Bank_Select:      The EEPROM Information Bank selector.
+    325            * @param  Data: The data value to be programmed.
+    326            * @retval None
+    327            */
+
+   \                                 In section .textrw, align 2, keep-with-next
+    328          __RAMFUNC void EEPROM_ProgramHalfWord(uint32_t Address, uint32_t BankSelector, uint32_t Data)
+    329          {
+   \                     EEPROM_ProgramHalfWord:
+   \   00000000   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+   \   00000004   0x4604             MOV      R4,R0
+   \   00000006   0x460D             MOV      R5,R1
+   \   00000008   0x4690             MOV      R8,R2
+    330            uint32_t Mask;
+    331            uint32_t Tmp;
+    332            uint32_t Shift;
+    333          
+    334            assert_param(IS_EEPROM_BANK_SELECTOR(BankSelector));
+    335            assert_param(IS_TWO_BYTE_ALLIGNED(Address));
+    336          
+    337            Shift = (Address & 2) * 8;
+   \   0000000A   0xF004 0x0002      AND      R0,R4,#0x2
+   \   0000000E   0x00C7             LSLS     R7,R0,#+3
+    338            Data = Data << Shift;
+    339            Mask = 0xFFFF << Shift;
+   \   00000010   0xF64F 0x70FF      MOVW     R0,#+65535
+   \   00000014                      REQUIRE ?Subroutine0
+   \   00000014                      ;; // Fall through to label ?Subroutine0
+    340            Tmp = EEPROM_ReadWord(Address, BankSelector);
+    341            EEPROM_ProgramWord(Address, BankSelector, (Tmp & ~Mask) | (Data & Mask));
+    342          }
+    343          
+    344          /**
+    345            * @brief  Programs the 32-bit EEPROM memory value.
+    346            * @param  Address: The EEPROM memory word address (four byte aligned).
+    347            * @param  BankSelector: Selects EEPROM Bank (Main Bank or Information Bank).
+    348            *         This parameter can be one of the following values:
+    349            *           @arg EEPROM_Main_Bank_Select:      The EEPROM Main Bank selector.
+    350            *           @arg EEPROM_Info_Bank_Select:      The EEPROM Information Bank selector.
+    351            * @param  Data: The data value to be programmed.
+    352            * @retval None
+    353            */
+
+   \                                 In section .textrw, align 2, keep-with-next
+    354          __RAMFUNC void EEPROM_ProgramWord(uint32_t Address, uint32_t BankSelector, uint32_t Data)
+    355          {
+   \                     EEPROM_ProgramWord:
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+    356            uint32_t Command;
+    357          
+    358            assert_param(IS_EEPROM_BANK_SELECTOR(BankSelector));
+    359            assert_param(IS_FOUR_BYTE_ALLIGNED(Address));
+    360          
+    361            MDR_EEPROM->KEY = EEPROM_REG_ACCESS_KEY;
+   \   00000002   0x....             LDR.N    R4,??DataTable5  ;; 0x40018000
+   \   00000004   0x....             LDR.N    R3,??DataTable5_1  ;; 0x8aaa5551
+   \   00000006   0x6123             STR      R3,[R4, #+16]
+    362            BankSelector = (BankSelector == EEPROM_Info_Bank_Select) ? EEPROM_CMD_IFREN : 0;
+   \   00000008   0x2901             CMP      R1,#+1
+   \   0000000A   0xBF0C             ITE      EQ 
+   \   0000000C   0xF44F 0x7100      MOVEQ    R1,#+512
+   \   00000010   0x2100             MOVNE    R1,#+0
+    363            Command = MDR_EEPROM->CMD & EEPROM_CMD_DELAY_Msk;
+   \   00000012   0x6823             LDR      R3,[R4, #+0]
+    364            Command |= EEPROM_CMD_CON | BankSelector;
+   \   00000014   0xF003 0x0338      AND      R3,R3,#0x38
+   \   00000018   0x4319             ORRS     R1,R1,R3
+   \   0000001A   0xF041 0x0101      ORR      R1,R1,#0x1
+    365            MDR_EEPROM->CMD = Command;
+   \   0000001E   0x6021             STR      R1,[R4, #+0]
+    366            MDR_EEPROM->ADR = Address;
+   \   00000020   0x6060             STR      R0,[R4, #+4]
+    367            MDR_EEPROM->DI  = Data;
+   \   00000022   0x60A2             STR      R2,[R4, #+8]
+    368            Command |= EEPROM_CMD_XE | EEPROM_CMD_PROG;
+   \   00000024   0xF441 0x5582      ORR      R5,R1,#0x1040
+    369            MDR_EEPROM->CMD = Command;
+   \   00000028   0x.... 0x....      BL       ?Subroutine1
+    370            ProgramDelay(GET_US_LOOPS(5));                /* Wait for 5 us */
+    371            Command |= EEPROM_CMD_NVSTR;
+   \                     ??CrossCallReturnLabel_3:
+   \   0000002C   0xF445 0x5500      ORR      R5,R5,#0x2000
+    372            MDR_EEPROM->CMD = Command;
+   \   00000030   0x6025             STR      R5,[R4, #+0]
+    373            ProgramDelay(GET_US_LOOPS(10));               /* Wait for 10 us */
+   \   00000032   0x200A             MOVS     R0,#+10
+   \   00000034   0x.... 0x....      BL       ProgramDelay
+    374            Command |= EEPROM_CMD_YE;
+   \   00000038   0xF045 0x0580      ORR      R5,R5,#0x80
+    375            MDR_EEPROM->CMD = Command;
+   \   0000003C   0x6025             STR      R5,[R4, #+0]
+    376            ProgramDelay(GET_US_LOOPS(40));               /* Wait for 40 us */
+   \   0000003E   0x2028             MOVS     R0,#+40
+   \   00000040   0x.... 0x....      BL       ProgramDelay
+    377            Command &= ~EEPROM_CMD_YE;
+   \   00000044   0xF025 0x0080      BIC      R0,R5,#0x80
+    378            MDR_EEPROM->CMD = Command;
+   \   00000048   0x6020             STR      R0,[R4, #+0]
+    379            Command &= ~EEPROM_CMD_PROG;
+   \   0000004A   0xF420 0x5580      BIC      R5,R0,#0x1000
+    380            MDR_EEPROM->CMD = Command;
+   \   0000004E   0x.... 0x....      BL       ?Subroutine1
+    381            ProgramDelay(GET_US_LOOPS(5));                /* Wait for 5 us */
+    382            Command &= ~(EEPROM_CMD_XE | EEPROM_CMD_NVSTR);
+   \                     ??CrossCallReturnLabel_2:
+   \   00000052   0xF425 0x5501      BIC      R5,R5,#0x2040
+    383            MDR_EEPROM->CMD = Command;
+   \   00000056   0x.... 0x....      BL       ?Subroutine2
+    384            ProgramDelay(GET_US_LOOPS(1));                /* Wait for 1 us */
+    385          
+    386            MDR_EEPROM->CMD = Command & EEPROM_CMD_DELAY_Msk;
+   \                     ??CrossCallReturnLabel_6:
+   \   0000005A   0xF005 0x0038      AND      R0,R5,#0x38
+   \   0000005E   0x6020             STR      R0,[R4, #+0]
+    387            MDR_EEPROM->KEY = 0;
+   \   00000060   0x2000             MOVS     R0,#+0
+   \   00000062   0x6120             STR      R0,[R4, #+16]
+    388          }
+   \   00000064   0xBD31             POP      {R0,R4,R5,PC}    ;; return
+
+   \                                 In section .textrw, align 4, keep-with-next
+   \                     ??DataTable5:
+   \   00000000   0x40018000         DC32     0x40018000
+
+   \                                 In section .textrw, align 4, keep-with-next
+   \                     ??DataTable5_1:
+   \   00000000   0x8AAA5551         DC32     0x8aaa5551
+    389          
+    390          /** @} */ /* End of group EEPROM_Private_Functions */
+    391          
+    392          /** @} */ /* End of group EEPROM */
+    393          
+    394          /** @} */ /* End of group __MDR32F9Qx_StdPeriph_Driver */
+    395          
+    396          /******************* (C) COPYRIGHT 2010 Phyton *********************************
+    397          *
+    398          * END OF FILE MDR32F9Qx_eeprom.c */
+    399          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       16  EEPROM_EraseAllPages
+             16 -> ProgramDelay
+       24  EEPROM_ErasePage
+             24 -> ProgramDelay
+       24  EEPROM_ProgramByte
+              0 -> EEPROM_ProgramWord
+             24 -> EEPROM_ReadWord
+       24  EEPROM_ProgramHalfWord
+              0 -> EEPROM_ProgramWord
+             24 -> EEPROM_ReadWord
+       16  EEPROM_ProgramWord
+             16 -> ProgramDelay
+        0  EEPROM_ReadByte
+        0  EEPROM_ReadHalfWord
+        0  EEPROM_ReadWord
+        0  EEPROM_SetLatency
+        4  ProgramDelay
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable5
+       4  ??DataTable5_1
+      30  ?Subroutine0
+       6  ?Subroutine1
+       6  ?Subroutine2
+     102  EEPROM_EraseAllPages
+     108  EEPROM_ErasePage
+      20  EEPROM_ProgramByte
+      20  EEPROM_ProgramHalfWord
+     102  EEPROM_ProgramWord
+      70  EEPROM_ReadByte
+      70  EEPROM_ReadHalfWord
+      58  EEPROM_ReadWord
+      12  EEPROM_SetLatency
+      20  ProgramDelay
+
+ 
+  12 bytes in section .text
+ 620 bytes in section .textrw
+ 
+ 632 bytes of CODE memory
+
+Errors: none
+Warnings: none

@@ -1,0 +1,611 @@
+# ARM MACRO ASSEMBLER 1.01.120201
+# Copyright (C) 2009 Phyton, Inc.
+#
+# Target: Cortex-M1
+# 2013/11/27 15:13:50
+
+startup_MDR1986VE3.mca     1                    ;/*****************************************************************************
+startup_MDR1986VE3.mca     2                    ; * @file:    startup_MDR1986VE3.mca
+startup_MDR1986VE3.mca     3                    ; * @purpose: CMSIS Cortex-M1 Core Device Startup File for the
+startup_MDR1986VE3.mca     4                    ; *           Milandr MDR1986VE3 device series
+startup_MDR1986VE3.mca     5                    ; * @version: V1.0
+startup_MDR1986VE3.mca     6                    ; * @date:    09/07/2013
+startup_MDR1986VE3.mca     7                    ; *****************************************************************************
+startup_MDR1986VE3.mca     8                    ; * @copy
+startup_MDR1986VE3.mca     9                    ; *
+startup_MDR1986VE3.mca    10                    ; * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+startup_MDR1986VE3.mca    11                    ; * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+startup_MDR1986VE3.mca    12                    ; * TIME. AS A RESULT, Milandr SHALL NOT BE HELD LIABLE FOR ANY DIRECT, INDIRECT
+startup_MDR1986VE3.mca    13                    ; * OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+startup_MDR1986VE3.mca    14                    ; * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+startup_MDR1986VE3.mca    15                    ; * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+startup_MDR1986VE3.mca    16                    ; *
+startup_MDR1986VE3.mca    17                    ; * <h2><center>&copy; COPYRIGHT 2013 Milandr</center></h2>
+startup_MDR1986VE3.mca    18                    ; ******************************************************************************
+startup_MDR1986VE3.mca    19                    ; * FILE startup_MDR1986VE3.mca
+startup_MDR1986VE3.mca    20                    ; */
+startup_MDR1986VE3.mca    21                    
+startup_MDR1986VE3.mca    22                    .PMODULE  ?startup_device
+startup_MDR1986VE3.mca    23                    
+startup_MDR1986VE3.mca    24                        .IF .NOT .DEFINED __VECTORS_ADDR
+startup_MDR1986VE3.mca    26                        .ENDIF
+startup_MDR1986VE3.mca    27                    
+startup_MDR1986VE3.mca    28                    ;    .PUBLIC  __initial_sp
+startup_MDR1986VE3.mca    29                        .PUBLIC  __Vectors
+startup_MDR1986VE3.mca    30                        .PUBLIC  __Vectors_End
+startup_MDR1986VE3.mca    31                        .PUBLIC  __Vectors_Size
+startup_MDR1986VE3.mca    32                    ;    .TYPE __initial_sp      (.ULONG)
+startup_MDR1986VE3.mca    33                    ;    .TYPE __Vectors         (.ULONG)
+startup_MDR1986VE3.mca    34                        .TYPE __Vectors_End     (.ULONG)
+startup_MDR1986VE3.mca    35                    
+startup_MDR1986VE3.mca    36                        .EXTRN(code) ?start
+startup_MDR1986VE3.mca    37                        .RSEG CSTACK,data
+startup_MDR1986VE3.mca    38                        .ALIGN  3
+startup_MDR1986VE3.mca    39                    
+startup_MDR1986VE3.mca    40                        .ASEG INTVEC,code
+startup_MDR1986VE3.mca    41                        .ALIGN  6
+startup_MDR1986VE3.mca    42 00000000               .ORG    __VECTORS_ADDR             ; if vector table is located in RAM, change this value
+startup_MDR1986VE3.mca    43                    
+startup_MDR1986VE3.mca    44                    
+startup_MDR1986VE3.mca    45                    SET_HANDLER .MACRO Name
+startup_MDR1986VE3.mca    49                    
+startup_MDR1986VE3.mca    50                    
+startup_MDR1986VE3.mca    51 00000000           __Vectors:
+startup_MDR1986VE3.mca    52 00000000 00000000      .DCD     .SFE CSTACK                      ; Top of Stack
+startup_MDR1986VE3.mca    53 00000004               SET_HANDLER     Reset_Handler             ; Reset Handler
+startup_MDR1986VE3.mca    54 00000008               SET_HANDLER     NMI_Handler               ; NMI Handler
+startup_MDR1986VE3.mca    55 0000000C               SET_HANDLER     HardFault_Handler         ; Hard Fault Handler
+startup_MDR1986VE3.mca    56 00000010 00000000      .DCD     0                                ; Reserved
+startup_MDR1986VE3.mca    57 00000014 00000000      .DCD     0                                ; Reserved
+startup_MDR1986VE3.mca    58 00000018 00000000      .DCD     0                                ; Reserved
+startup_MDR1986VE3.mca    59 0000001C 00000000      .DCD     0                                ; Reserved
+startup_MDR1986VE3.mca    60 00000020 00000000      .DCD     0                                ; Reserved
+startup_MDR1986VE3.mca    61 00000024 00000000      .DCD     0                                ; Reserved
+startup_MDR1986VE3.mca    62 00000028 00000000      .DCD     0                                ; Reserved
+startup_MDR1986VE3.mca    63 0000002C               SET_HANDLER     SVC_Handler               ; SVCall Handler
+startup_MDR1986VE3.mca    64 00000030 00000000      .DCD     0                                ; Reserved
+startup_MDR1986VE3.mca    65 00000034 00000000      .DCD     0                                ; Reserved
+startup_MDR1986VE3.mca    66 00000038               SET_HANDLER     PendSV_Handler            ; PendSV Handler
+startup_MDR1986VE3.mca    67 0000003C               SET_HANDLER     SysTick_Handler           ; SysTick Handler
+startup_MDR1986VE3.mca    68                    
+startup_MDR1986VE3.mca    69 00000040               SET_HANDLER     MIL_STD_1553B2_IRQHandler ; IRQ0
+startup_MDR1986VE3.mca    70 00000044               SET_HANDLER     MIL_STD_1553B1_IRQHandler ; IRQ1
+startup_MDR1986VE3.mca    71 00000048               SET_HANDLER     USB_IRQHandler            ; IRQ2
+startup_MDR1986VE3.mca    72 0000004C               SET_HANDLER     CAN1_IRQHandler           ; IRQ3
+startup_MDR1986VE3.mca    73 00000050               SET_HANDLER     CAN2_IRQHandler           ; IRQ4
+startup_MDR1986VE3.mca    74 00000054               SET_HANDLER     DMA_IRQHandler            ; IRQ5
+startup_MDR1986VE3.mca    75 00000058               SET_HANDLER     UART1_IRQHandler          ; IRQ6
+startup_MDR1986VE3.mca    76 0000005C               SET_HANDLER     UART2_IRQHandler          ; IRQ7
+startup_MDR1986VE3.mca    77 00000060               SET_HANDLER     SSP1_IRQHandler           ; IRQ8
+startup_MDR1986VE3.mca    78 00000064               SET_HANDLER     BUSY_IRQHandler           ; IRQ9
+startup_MDR1986VE3.mca    79 00000068               SET_HANDLER     ARINC429R_IRQHandler      ; IRQ10
+startup_MDR1986VE3.mca    80 0000006C               SET_HANDLER     POWER_IRQHandler          ; IRQ11
+startup_MDR1986VE3.mca    81 00000070               SET_HANDLER     WWDG_IRQHandler           ; IRQ12
+startup_MDR1986VE3.mca    82 00000074               SET_HANDLER     Timer4_IRQHandler         ; IRQ13
+startup_MDR1986VE3.mca    83 00000078               SET_HANDLER     Timer1_IRQHandler         ; IRQ14
+startup_MDR1986VE3.mca    84 0000007C               SET_HANDLER     Timer2_IRQHandler         ; IRQ15
+startup_MDR1986VE3.mca    85 00000080               SET_HANDLER     Timer3_IRQHandler         ; IRQ16
+startup_MDR1986VE3.mca    86 00000084               SET_HANDLER     ADC_IRQHandler            ; IRQ17
+startup_MDR1986VE3.mca    87 00000088               SET_HANDLER     ETHERNET_IRQHandler       ; IRQ18
+startup_MDR1986VE3.mca    88 0000008C               SET_HANDLER     SSP3_IRQHandler           ; IRQ19
+startup_MDR1986VE3.mca    89 00000090               SET_HANDLER     SSP2_IRQHandler           ; IRQ20
+startup_MDR1986VE3.mca    90 00000094               SET_HANDLER     ARINC429T_IRQHandler      ; IRQ21
+startup_MDR1986VE3.mca    91 00000098               SET_HANDLER     KEYPAD_IRQHandler         ; IRQ22
+startup_MDR1986VE3.mca    92 0000009C               SET_HANDLER     LED_IRQHandler            ; IRQ23
+startup_MDR1986VE3.mca    93 000000A0               SET_HANDLER     UART3_UART4_IRQHandler    ; IRQ24
+startup_MDR1986VE3.mca    94 000000A4               SET_HANDLER     AudioCodec_IRQHandler     ; IRQ25
+startup_MDR1986VE3.mca    95 000000A8               SET_HANDLER     ETHERNET2_IRQHandler      ; IRQ26
+startup_MDR1986VE3.mca    96 000000AC               SET_HANDLER     BKP_IRQHandler            ; IRQ27
+startup_MDR1986VE3.mca    97 000000B0               SET_HANDLER     EXT_INT1_IRQHandler       ; IRQ28
+startup_MDR1986VE3.mca    98 000000B4               SET_HANDLER     EXT_INT2_IRQHandler       ; IRQ29
+startup_MDR1986VE3.mca    99 000000B8               SET_HANDLER     EXT_INT3_IRQHandler       ; IRQ30
+startup_MDR1986VE3.mca   100 000000BC               SET_HANDLER     EXT_INT4_IRQHandler       ; IRQ31
+startup_MDR1986VE3.mca   101 000000C0           __Vectors_End:
+startup_MDR1986VE3.mca   102                    
+startup_MDR1986VE3.mca   103 000000C0           __Vectors_Size  .EQU  __Vectors_End - __Vectors
+startup_MDR1986VE3.mca   104                    
+startup_MDR1986VE3.mca   105                    .ENDMOD
+Module ?startup_device: 192 byte(s), 83 line(s)
+startup_MDR1986VE3.mca   128          
+startup_MDR1986VE3.mca   106                    
+startup_MDR1986VE3.mca   107                    
+startup_MDR1986VE3.mca   108                    
+startup_MDR1986VE3.mca   109                    ;=====================================================================;
+startup_MDR1986VE3.mca   110                    ;                                                                     ;
+startup_MDR1986VE3.mca   111                    ;                     Default Reset handler                           ;
+startup_MDR1986VE3.mca   112                    ;                                                                     ;
+startup_MDR1986VE3.mca   113                    ;=====================================================================;
+startup_MDR1986VE3.mca   114                    .LMODULE2 ?Reset_Handler
+startup_MDR1986VE3.mca   115                    .EXTRN(code) ?start
+startup_MDR1986VE3.mca   116                    .EXTRNF16 SystemInit .VOID(.VOID)
+startup_MDR1986VE3.mca   117                    
+startup_MDR1986VE3.mca   118                    .PUBLIC Reset_Handler
+startup_MDR1986VE3.mca   119                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   120                        .THUMB
+startup_MDR1986VE3.mca   121 00000000           Reset_Handler?T:
+startup_MDR1986VE3.mca   122 00000001           Reset_Handler   .EQU    Reset_Handler?T+1
+startup_MDR1986VE3.mca   123                    .FUNCTYPE .VOID Reset_Handler(.VOID)
+startup_MDR1986VE3.mca   124 00000000 4801                       LDR     R0, =SystemInit
+startup_MDR1986VE3.mca   125 00000002 4780                       BLX     R0
+startup_MDR1986VE3.mca   126 00000004 4801                       LDR     R0, =?start
+startup_MDR1986VE3.mca   127 00000006 4700                       BX      R0
+startup_MDR1986VE3.mca   128 00000008 00000000
+                   0000000C 00000000
+startup_MDR1986VE3.mca   128                    .ENDMOD
+Module ?Reset_Handler: 16 byte(s), 14 line(s)
+startup_MDR1986VE3.mca   129                    
+startup_MDR1986VE3.mca   130                    
+startup_MDR1986VE3.mca   131                    
+startup_MDR1986VE3.mca   132                    ;=====================================================================;
+startup_MDR1986VE3.mca   133                    ;                                                                     ;
+startup_MDR1986VE3.mca   134                    ;                     Default interrupt handlers                      ;
+startup_MDR1986VE3.mca   135                    ;                                                                     ;
+startup_MDR1986VE3.mca   136                    ;=====================================================================;
+startup_MDR1986VE3.mca   137                    
+startup_MDR1986VE3.mca   138                    .LMODULE2 ?NMI_Handler
+startup_MDR1986VE3.mca   139                    .PUBLIC NMI_Handler
+startup_MDR1986VE3.mca   140                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   141                        .THUMB
+startup_MDR1986VE3.mca   142 00000000           NMI_Handler?T:
+startup_MDR1986VE3.mca   143 00000001           NMI_Handler     .EQU    NMI_Handler?T+1
+startup_MDR1986VE3.mca   144                    .FUNCTYPE .VOID NMI_Handler(.VOID)
+startup_MDR1986VE3.mca   145 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   146                    .ENDMOD
+Module ?NMI_Handler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   147                    
+startup_MDR1986VE3.mca   148                    
+startup_MDR1986VE3.mca   149                    .LMODULE2 ?HardFault_Handler
+startup_MDR1986VE3.mca   150                    .PUBLIC HardFault_Handler
+startup_MDR1986VE3.mca   151                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   152                        .THUMB
+startup_MDR1986VE3.mca   153 00000000           HardFault_Handler?T:
+startup_MDR1986VE3.mca   154 00000001           HardFault_Handler       .EQU    HardFault_Handler?T+1
+startup_MDR1986VE3.mca   155                    .FUNCTYPE .VOID HardFault_Handler(.VOID)
+startup_MDR1986VE3.mca   156 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   157                    .ENDMOD
+Module ?HardFault_Handler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   158                    
+startup_MDR1986VE3.mca   159                    
+startup_MDR1986VE3.mca   160                    .LMODULE2 ?BusFault_Handler
+startup_MDR1986VE3.mca   161                    .PUBLIC BusFault_Handler
+startup_MDR1986VE3.mca   162                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   163                        .THUMB
+startup_MDR1986VE3.mca   164 00000000           BusFault_Handler?T:
+startup_MDR1986VE3.mca   165 00000001           BusFault_Handler        .EQU    BusFault_Handler?T+1
+startup_MDR1986VE3.mca   166                    .FUNCTYPE .VOID BusFault_Handler(.VOID)
+startup_MDR1986VE3.mca   167 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   168                    .ENDMOD
+Module ?BusFault_Handler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   169                    
+startup_MDR1986VE3.mca   170                    
+startup_MDR1986VE3.mca   171                    .LMODULE2 ?SVC_Handler
+startup_MDR1986VE3.mca   172                    .PUBLIC SVC_Handler
+startup_MDR1986VE3.mca   173                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   174                        .THUMB
+startup_MDR1986VE3.mca   175 00000000           SVC_Handler?T:
+startup_MDR1986VE3.mca   176 00000001           SVC_Handler     .EQU    SVC_Handler?T+1
+startup_MDR1986VE3.mca   177                    .FUNCTYPE .VOID SVC_Handler(.VOID)
+startup_MDR1986VE3.mca   178 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   179                    .ENDMOD
+Module ?SVC_Handler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   180                    
+startup_MDR1986VE3.mca   181                    
+startup_MDR1986VE3.mca   182                    .LMODULE2 ?PendSV_Handler
+startup_MDR1986VE3.mca   183                    .PUBLIC PendSV_Handler
+startup_MDR1986VE3.mca   184                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   185                        .THUMB
+startup_MDR1986VE3.mca   186 00000000           PendSV_Handler?T:
+startup_MDR1986VE3.mca   187 00000001           PendSV_Handler  .EQU    PendSV_Handler?T+1
+startup_MDR1986VE3.mca   188                    .FUNCTYPE .VOID PendSV_Handler(.VOID)
+startup_MDR1986VE3.mca   189 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   190                    .ENDMOD
+Module ?PendSV_Handler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   191                    
+startup_MDR1986VE3.mca   192                    
+startup_MDR1986VE3.mca   193                    .LMODULE2 ?SysTick_Handler
+startup_MDR1986VE3.mca   194                    .PUBLIC SysTick_Handler
+startup_MDR1986VE3.mca   195                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   196                        .THUMB
+startup_MDR1986VE3.mca   197 00000000           SysTick_Handler?T:
+startup_MDR1986VE3.mca   198 00000001           SysTick_Handler .EQU    SysTick_Handler?T+1
+startup_MDR1986VE3.mca   199                    .FUNCTYPE .VOID SysTick_Handler(.VOID)
+startup_MDR1986VE3.mca   200 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   201                    .ENDMOD
+Module ?SysTick_Handler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   202                    
+startup_MDR1986VE3.mca   203                    
+startup_MDR1986VE3.mca   204                    .LMODULE2 ?MIL_STD_1553B2_IRQHandler
+startup_MDR1986VE3.mca   205                    .PUBLIC MIL_STD_1553B2_IRQHandler
+startup_MDR1986VE3.mca   206                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   207                        .THUMB
+startup_MDR1986VE3.mca   208 00000000           MIL_STD_1553B2_IRQHandler?T:
+startup_MDR1986VE3.mca   209 00000001           MIL_STD_1553B2_IRQHandler .EQU MIL_STD_1553B2_IRQHandler?T+1
+startup_MDR1986VE3.mca   210                    .FUNCTYPE .VOID MIL_STD_1553B2_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   211 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   212                    .ENDMOD
+Module ?MIL_STD_1553B2_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   213                    
+startup_MDR1986VE3.mca   214                    
+startup_MDR1986VE3.mca   215                    .LMODULE2 ?MIL_STD_1553B1_IRQHandler
+startup_MDR1986VE3.mca   216                    .PUBLIC MIL_STD_1553B1_IRQHandler
+startup_MDR1986VE3.mca   217                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   218                        .THUMB
+startup_MDR1986VE3.mca   219 00000000           MIL_STD_1553B1_IRQHandler?T:
+startup_MDR1986VE3.mca   220 00000001           MIL_STD_1553B1_IRQHandler .EQU MIL_STD_1553B1_IRQHandler?T+1
+startup_MDR1986VE3.mca   221                    .FUNCTYPE .VOID MIL_STD_1553B1_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   222 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   223                    .ENDMOD
+Module ?MIL_STD_1553B1_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   224                    
+startup_MDR1986VE3.mca   225                    
+startup_MDR1986VE3.mca   226                    .LMODULE2 ?USB_IRQHandler
+startup_MDR1986VE3.mca   227                    .PUBLIC USB_IRQHandler
+startup_MDR1986VE3.mca   228                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   229                        .THUMB
+startup_MDR1986VE3.mca   230 00000000           USB_IRQHandler?T:
+startup_MDR1986VE3.mca   231 00000001           USB_IRQHandler .EQU USB_IRQHandler?T+1
+startup_MDR1986VE3.mca   232                    .FUNCTYPE .VOID USB_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   233 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   234                    .ENDMOD
+Module ?USB_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   235                    
+startup_MDR1986VE3.mca   236                    
+startup_MDR1986VE3.mca   237                    .LMODULE2 ?CAN1_IRQHandler
+startup_MDR1986VE3.mca   238                    .PUBLIC CAN1_IRQHandler
+startup_MDR1986VE3.mca   239                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   240                        .THUMB
+startup_MDR1986VE3.mca   241 00000000           CAN1_IRQHandler?T:
+startup_MDR1986VE3.mca   242 00000001           CAN1_IRQHandler .EQU CAN1_IRQHandler?T+1
+startup_MDR1986VE3.mca   243                    .FUNCTYPE .VOID CAN1_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   244 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   245                    .ENDMOD
+Module ?CAN1_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   246                    
+startup_MDR1986VE3.mca   247                    .LMODULE2 ?CAN2_IRQHandler
+startup_MDR1986VE3.mca   248                    .PUBLIC CAN2_IRQHandler
+startup_MDR1986VE3.mca   249                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   250                        .THUMB
+startup_MDR1986VE3.mca   251 00000000           CAN2_IRQHandler?T:
+startup_MDR1986VE3.mca   252 00000001           CAN2_IRQHandler .EQU CAN2_IRQHandler?T+1
+startup_MDR1986VE3.mca   253                    .FUNCTYPE .VOID CAN2_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   254 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   255                    .ENDMOD
+Module ?CAN2_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   256                    
+startup_MDR1986VE3.mca   257                    .LMODULE2 ?DMA_IRQHandler
+startup_MDR1986VE3.mca   258                    .PUBLIC DMA_IRQHandler
+startup_MDR1986VE3.mca   259                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   260                        .THUMB
+startup_MDR1986VE3.mca   261 00000000           DMA_IRQHandler?T:
+startup_MDR1986VE3.mca   262 00000001           DMA_IRQHandler .EQU DMA_IRQHandler?T+1
+startup_MDR1986VE3.mca   263                    .FUNCTYPE .VOID DMA_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   264 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   265                    .ENDMOD
+Module ?DMA_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   266                    
+startup_MDR1986VE3.mca   267                    .LMODULE2 ?UART1_IRQHandler
+startup_MDR1986VE3.mca   268                    .PUBLIC UART1_IRQHandler
+startup_MDR1986VE3.mca   269                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   270                        .THUMB
+startup_MDR1986VE3.mca   271 00000000           UART1_IRQHandler?T:
+startup_MDR1986VE3.mca   272 00000001           UART1_IRQHandler .EQU UART1_IRQHandler?T+1
+startup_MDR1986VE3.mca   273                    .FUNCTYPE .VOID UART1_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   274 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   275                    .ENDMOD
+Module ?UART1_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   276                    
+startup_MDR1986VE3.mca   277                    .LMODULE2 ?UART2_IRQHandler
+startup_MDR1986VE3.mca   278                    .PUBLIC UART2_IRQHandler
+startup_MDR1986VE3.mca   279                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   280                        .THUMB
+startup_MDR1986VE3.mca   281 00000000           UART2_IRQHandler?T:
+startup_MDR1986VE3.mca   282 00000001           UART2_IRQHandler .EQU UART2_IRQHandler?T+1
+startup_MDR1986VE3.mca   283                    .FUNCTYPE .VOID UART2_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   284 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   285                    .ENDMOD
+Module ?UART2_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   286                    
+startup_MDR1986VE3.mca   287                    .LMODULE2 ?SSP1_IRQHandler
+startup_MDR1986VE3.mca   288                    .PUBLIC SSP1_IRQHandler
+startup_MDR1986VE3.mca   289                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   290                        .THUMB
+startup_MDR1986VE3.mca   291 00000000           SSP1_IRQHandler?T:
+startup_MDR1986VE3.mca   292 00000001           SSP1_IRQHandler .EQU SSP1_IRQHandler?T+1
+startup_MDR1986VE3.mca   293                    .FUNCTYPE .VOID SSP1_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   294 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   295                    .ENDMOD
+Module ?SSP1_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   296                    
+startup_MDR1986VE3.mca   297                    .LMODULE2 ?BUSY_IRQHandler
+startup_MDR1986VE3.mca   298                    .PUBLIC BUSY_IRQHandler
+startup_MDR1986VE3.mca   299                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   300                        .THUMB
+startup_MDR1986VE3.mca   301 00000000           BUSY_IRQHandler?T:
+startup_MDR1986VE3.mca   302 00000001           BUSY_IRQHandler .EQU BUSY_IRQHandler?T+1
+startup_MDR1986VE3.mca   303                    .FUNCTYPE .VOID BUSY_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   304 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   305                    .ENDMOD
+Module ?BUSY_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   306                    
+startup_MDR1986VE3.mca   307                    .LMODULE2 ?ARINC429R_IRQHandler
+startup_MDR1986VE3.mca   308                    .PUBLIC ARINC429R_IRQHandler
+startup_MDR1986VE3.mca   309                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   310                        .THUMB
+startup_MDR1986VE3.mca   311 00000000           ARINC429R_IRQHandler?T:
+startup_MDR1986VE3.mca   312 00000001           ARINC429R_IRQHandler .EQU ARINC429R_IRQHandler?T+1
+startup_MDR1986VE3.mca   313                    .FUNCTYPE .VOID ARINC429R_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   314 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   315                    .ENDMOD
+Module ?ARINC429R_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   316                    
+startup_MDR1986VE3.mca   317                    .LMODULE2 ?POWER_IRQHandler
+startup_MDR1986VE3.mca   318                    .PUBLIC POWER_IRQHandler
+startup_MDR1986VE3.mca   319                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   320                        .THUMB
+startup_MDR1986VE3.mca   321 00000000           POWER_IRQHandler?T:
+startup_MDR1986VE3.mca   322 00000001           POWER_IRQHandler .EQU POWER_IRQHandler?T+1
+startup_MDR1986VE3.mca   323                    .FUNCTYPE .VOID POWER_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   324 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   325                    .ENDMOD
+Module ?POWER_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   326                    
+startup_MDR1986VE3.mca   327                    .LMODULE2 ?WWDG_IRQHandler
+startup_MDR1986VE3.mca   328                    .PUBLIC WWDG_IRQHandler
+startup_MDR1986VE3.mca   329                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   330                        .THUMB
+startup_MDR1986VE3.mca   331 00000000           WWDG_IRQHandler?T:
+startup_MDR1986VE3.mca   332 00000001           WWDG_IRQHandler .EQU WWDG_IRQHandler?T+1
+startup_MDR1986VE3.mca   333                    .FUNCTYPE .VOID WWDG_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   334 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   335                    .ENDMOD
+Module ?WWDG_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   336                    
+startup_MDR1986VE3.mca   337                    .LMODULE2 ?Timer4_IRQHandler
+startup_MDR1986VE3.mca   338                    .PUBLIC Timer4_IRQHandler
+startup_MDR1986VE3.mca   339                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   340                        .THUMB
+startup_MDR1986VE3.mca   341 00000000           Timer4_IRQHandler?T:
+startup_MDR1986VE3.mca   342 00000001           Timer4_IRQHandler .EQU Timer4_IRQHandler?T+1
+startup_MDR1986VE3.mca   343                    .FUNCTYPE .VOID Timer4_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   344 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   345                    .ENDMOD
+Module ?Timer4_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   346                    
+startup_MDR1986VE3.mca   347                    .LMODULE2 ?Timer1_IRQHandler
+startup_MDR1986VE3.mca   348                    .PUBLIC Timer1_IRQHandler
+startup_MDR1986VE3.mca   349                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   350                        .THUMB
+startup_MDR1986VE3.mca   351 00000000           Timer1_IRQHandler?T:
+startup_MDR1986VE3.mca   352 00000001           Timer1_IRQHandler .EQU Timer1_IRQHandler?T+1
+startup_MDR1986VE3.mca   353                    .FUNCTYPE .VOID Timer1_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   354 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   355                    .ENDMOD
+Module ?Timer1_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   356                    
+startup_MDR1986VE3.mca   357                    .LMODULE2 ?Timer2_IRQHandler
+startup_MDR1986VE3.mca   358                    .PUBLIC Timer2_IRQHandler
+startup_MDR1986VE3.mca   359                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   360                        .THUMB
+startup_MDR1986VE3.mca   361 00000000           Timer2_IRQHandler?T:
+startup_MDR1986VE3.mca   362 00000001           Timer2_IRQHandler .EQU Timer2_IRQHandler?T+1
+startup_MDR1986VE3.mca   363                    .FUNCTYPE .VOID Timer2_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   364 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   365                    .ENDMOD
+Module ?Timer2_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   366                    
+startup_MDR1986VE3.mca   367                    .LMODULE2 ?Timer3_IRQHandler
+startup_MDR1986VE3.mca   368                    .PUBLIC Timer3_IRQHandler
+startup_MDR1986VE3.mca   369                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   370                        .THUMB
+startup_MDR1986VE3.mca   371 00000000           Timer3_IRQHandler?T:
+startup_MDR1986VE3.mca   372 00000001           Timer3_IRQHandler .EQU Timer3_IRQHandler?T+1
+startup_MDR1986VE3.mca   373                    .FUNCTYPE .VOID Timer3_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   374 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   375                    .ENDMOD
+Module ?Timer3_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   376                    
+startup_MDR1986VE3.mca   377                    .LMODULE2 ?ADC_IRQHandler
+startup_MDR1986VE3.mca   378                    .PUBLIC ADC_IRQHandler
+startup_MDR1986VE3.mca   379                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   380                        .THUMB
+startup_MDR1986VE3.mca   381 00000000           ADC_IRQHandler?T:
+startup_MDR1986VE3.mca   382 00000001           ADC_IRQHandler .EQU ADC_IRQHandler?T+1
+startup_MDR1986VE3.mca   383                    .FUNCTYPE .VOID ADC_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   384 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   385                    .ENDMOD
+Module ?ADC_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   386                    
+startup_MDR1986VE3.mca   387                    .LMODULE2 ?ETHERNET_IRQHandler
+startup_MDR1986VE3.mca   388                    .PUBLIC ETHERNET_IRQHandler
+startup_MDR1986VE3.mca   389                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   390                        .THUMB
+startup_MDR1986VE3.mca   391 00000000           ETHERNET_IRQHandler?T:
+startup_MDR1986VE3.mca   392 00000001           ETHERNET_IRQHandler .EQU ETHERNET_IRQHandler?T+1
+startup_MDR1986VE3.mca   393                    .FUNCTYPE .VOID ETHERNET_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   394 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   395                    .ENDMOD
+Module ?ETHERNET_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   396                    
+startup_MDR1986VE3.mca   397                    .LMODULE2 ?SSP3_IRQHandler
+startup_MDR1986VE3.mca   398                    .PUBLIC SSP3_IRQHandler
+startup_MDR1986VE3.mca   399                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   400                        .THUMB
+startup_MDR1986VE3.mca   401 00000000           SSP3_IRQHandler?T:
+startup_MDR1986VE3.mca   402 00000001           SSP3_IRQHandler .EQU SSP3_IRQHandler?T+1
+startup_MDR1986VE3.mca   403                    .FUNCTYPE .VOID SSP3_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   404 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   405                    .ENDMOD
+Module ?SSP3_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   406                    
+startup_MDR1986VE3.mca   407                    .LMODULE2 ?SSP2_IRQHandler
+startup_MDR1986VE3.mca   408                    .PUBLIC SSP2_IRQHandler
+startup_MDR1986VE3.mca   409                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   410                        .THUMB
+startup_MDR1986VE3.mca   411 00000000           SSP2_IRQHandler?T:
+startup_MDR1986VE3.mca   412 00000001           SSP2_IRQHandler .EQU SSP2_IRQHandler?T+1
+startup_MDR1986VE3.mca   413                    .FUNCTYPE .VOID SSP2_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   414 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   415                    .ENDMOD
+Module ?SSP2_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   416                    
+startup_MDR1986VE3.mca   417                    .LMODULE2 ?ARINC429T_IRQHandler
+startup_MDR1986VE3.mca   418                    .PUBLIC ARINC429T_IRQHandler
+startup_MDR1986VE3.mca   419                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   420                        .THUMB
+startup_MDR1986VE3.mca   421 00000000           ARINC429T_IRQHandler?T:
+startup_MDR1986VE3.mca   422 00000001           ARINC429T_IRQHandler .EQU ARINC429T_IRQHandler?T+1
+startup_MDR1986VE3.mca   423                    .FUNCTYPE .VOID ARINC429T_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   424 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   425                    .ENDMOD
+Module ?ARINC429T_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   426                    
+startup_MDR1986VE3.mca   427                    .LMODULE2 ?KEYPAD_IRQHandler
+startup_MDR1986VE3.mca   428                    .PUBLIC KEYPAD_IRQHandler
+startup_MDR1986VE3.mca   429                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   430                        .THUMB
+startup_MDR1986VE3.mca   431 00000000           KEYPAD_IRQHandler?T:
+startup_MDR1986VE3.mca   432 00000001           KEYPAD_IRQHandler .EQU KEYPAD_IRQHandler?T+1
+startup_MDR1986VE3.mca   433                    .FUNCTYPE .VOID KEYPAD_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   434 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   435                    .ENDMOD
+Module ?KEYPAD_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   436                    
+startup_MDR1986VE3.mca   437                    .LMODULE2 ?LED_IRQHandler
+startup_MDR1986VE3.mca   438                    .PUBLIC LED_IRQHandler
+startup_MDR1986VE3.mca   439                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   440                        .THUMB
+startup_MDR1986VE3.mca   441 00000000           LED_IRQHandler?T:
+startup_MDR1986VE3.mca   442 00000001           LED_IRQHandler .EQU LED_IRQHandler?T+1
+startup_MDR1986VE3.mca   443                    .FUNCTYPE .VOID LED_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   444 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   445                    .ENDMOD
+Module ?LED_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   446                    
+startup_MDR1986VE3.mca   447                    .LMODULE2 ?UART3_UART4_IRQHandler
+startup_MDR1986VE3.mca   448                    .PUBLIC UART3_UART4_IRQHandler
+startup_MDR1986VE3.mca   449                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   450                        .THUMB
+startup_MDR1986VE3.mca   451 00000000           UART3_UART4_IRQHandler?T:
+startup_MDR1986VE3.mca   452 00000001           UART3_UART4_IRQHandler .EQU UART3_UART4_IRQHandler?T+1
+startup_MDR1986VE3.mca   453                    .FUNCTYPE .VOID UART3_UART4_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   454 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   455                    .ENDMOD
+Module ?UART3_UART4_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   456                    
+startup_MDR1986VE3.mca   457                    .LMODULE2 ?AudioCodec_IRQHandler
+startup_MDR1986VE3.mca   458                    .PUBLIC AudioCodec_IRQHandler
+startup_MDR1986VE3.mca   459                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   460                        .THUMB
+startup_MDR1986VE3.mca   461 00000000           AudioCodec_IRQHandler?T:
+startup_MDR1986VE3.mca   462 00000001           AudioCodec_IRQHandler .EQU AudioCodec_IRQHandler?T+1
+startup_MDR1986VE3.mca   463                    .FUNCTYPE .VOID AudioCodec_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   464 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   465                    .ENDMOD
+Module ?AudioCodec_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   466                    
+startup_MDR1986VE3.mca   467                    .LMODULE2 ?ETHERNET2_IRQHandler
+startup_MDR1986VE3.mca   468                    .PUBLIC ETHERNET2_IRQHandler
+startup_MDR1986VE3.mca   469                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   470                        .THUMB
+startup_MDR1986VE3.mca   471 00000000           ETHERNET2_IRQHandler?T:
+startup_MDR1986VE3.mca   472 00000001           ETHERNET2_IRQHandler .EQU ETHERNET2_IRQHandler?T+1
+startup_MDR1986VE3.mca   473                    .FUNCTYPE .VOID ETHERNET2_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   474 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   475                    .ENDMOD
+Module ?ETHERNET2_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   476                    
+startup_MDR1986VE3.mca   477                    .LMODULE2 ?BKP_IRQHandler
+startup_MDR1986VE3.mca   478                    .PUBLIC BKP_IRQHandler
+startup_MDR1986VE3.mca   479                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   480                        .THUMB
+startup_MDR1986VE3.mca   481 00000000           BKP_IRQHandler?T:
+startup_MDR1986VE3.mca   482 00000001           BKP_IRQHandler .EQU BKP_IRQHandler?T+1
+startup_MDR1986VE3.mca   483                    .FUNCTYPE .VOID BKP_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   484 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   485                    .ENDMOD
+Module ?BKP_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   486                    
+startup_MDR1986VE3.mca   487                    .LMODULE2 ?EXT_INT1_IRQHandler
+startup_MDR1986VE3.mca   488                    .PUBLIC EXT_INT1_IRQHandler
+startup_MDR1986VE3.mca   489                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   490                        .THUMB
+startup_MDR1986VE3.mca   491 00000000           EXT_INT1_IRQHandler?T:
+startup_MDR1986VE3.mca   492 00000001           EXT_INT1_IRQHandler .EQU EXT_INT1_IRQHandler?T+1
+startup_MDR1986VE3.mca   493                    .FUNCTYPE .VOID EXT_INT1_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   494 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   495                    .ENDMOD
+Module ?EXT_INT1_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   496                    
+startup_MDR1986VE3.mca   497                    .LMODULE2 ?EXT_INT2_IRQHandler
+startup_MDR1986VE3.mca   498                    .PUBLIC EXT_INT2_IRQHandler
+startup_MDR1986VE3.mca   499                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   500                        .THUMB
+startup_MDR1986VE3.mca   501 00000000           EXT_INT2_IRQHandler?T:
+startup_MDR1986VE3.mca   502 00000001           EXT_INT2_IRQHandler .EQU EXT_INT2_IRQHandler?T+1
+startup_MDR1986VE3.mca   503                    .FUNCTYPE .VOID EXT_INT2_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   504 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   505                    .ENDMOD
+Module ?EXT_INT2_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   506                    
+startup_MDR1986VE3.mca   507                    .LMODULE2 ?EXT_INT3_IRQHandler
+startup_MDR1986VE3.mca   508                    .PUBLIC EXT_INT3_IRQHandler
+startup_MDR1986VE3.mca   509                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   510                        .THUMB
+startup_MDR1986VE3.mca   511 00000000           EXT_INT3_IRQHandler?T:
+startup_MDR1986VE3.mca   512 00000001           EXT_INT3_IRQHandler .EQU EXT_INT3_IRQHandler?T+1
+startup_MDR1986VE3.mca   513                    .FUNCTYPE .VOID EXT_INT3_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   514 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   515                    .ENDMOD
+Module ?EXT_INT3_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   516                    
+startup_MDR1986VE3.mca   517                    .LMODULE2 ?EXT_INT4_IRQHandler
+startup_MDR1986VE3.mca   518                    .PUBLIC EXT_INT4_IRQHandler
+startup_MDR1986VE3.mca   519                    .RSEG ??DEFAULT_HANDLERS,code
+startup_MDR1986VE3.mca   520                        .THUMB
+startup_MDR1986VE3.mca   521 00000000           EXT_INT4_IRQHandler?T:
+startup_MDR1986VE3.mca   522 00000001           EXT_INT4_IRQHandler .EQU EXT_INT4_IRQHandler?T+1
+startup_MDR1986VE3.mca   523                    .FUNCTYPE .VOID EXT_INT4_IRQHandler(.VOID)
+startup_MDR1986VE3.mca   524 00000000 E7FE          B   $
+startup_MDR1986VE3.mca   525                    .ENDMOD
+Module ?EXT_INT4_IRQHandler: 2 byte(s), 8 line(s)
+startup_MDR1986VE3.mca   526                    
+startup_MDR1986VE3.mca   527                    
+startup_MDR1986VE3.mca   528                    ;=====================================================================;
+startup_MDR1986VE3.mca   529                    ;                                                                     ;
+startup_MDR1986VE3.mca   530                    ;       User-defined low-level initialization that is made            ;
+startup_MDR1986VE3.mca   531                    ;                     before cstartup                                 ;
+startup_MDR1986VE3.mca   532                    ;                                                                     ;
+startup_MDR1986VE3.mca   533                    ;=====================================================================;
+startup_MDR1986VE3.mca   534                    
+startup_MDR1986VE3.mca   535                    
+startup_MDR1986VE3.mca   536                    .LMODULE2 ??LOW_LEVEL_INIT
+startup_MDR1986VE3.mca   537                    .PUBLIC __low_level_init
+startup_MDR1986VE3.mca   538                    
+startup_MDR1986VE3.mca   539                    .RSEG   ??CODE_CLIB,code
+startup_MDR1986VE3.mca   540                    .THUMB
+startup_MDR1986VE3.mca   541                    .FUNC __low_level_init  .VOID(.VOID)
+startup_MDR1986VE3.mca   542 00000000 4770          BX      LR
+startup_MDR1986VE3.mca   543                    .ENDF
+startup_MDR1986VE3.mca   544                    
+startup_MDR1986VE3.mca   545                    .ENDMOD
+Module ??LOW_LEVEL_INIT: 2 byte(s), 9 line(s)
+startup_MDR1986VE3.mca   546                    
+startup_MDR1986VE3.mca   547                    
+startup_MDR1986VE3.mca   548                    .LMODULE2 ??SystemInit
+startup_MDR1986VE3.mca   549                    .PUBLIC SystemInit
+startup_MDR1986VE3.mca   550                    .RSEG   ??CODE_CLIB,code
+startup_MDR1986VE3.mca   551                    .THUMB
+startup_MDR1986VE3.mca   552 00000000           SystemInit?T:
+startup_MDR1986VE3.mca   553 00000001           SystemInit .EQU SystemInit?T+1
+startup_MDR1986VE3.mca   554                    .FUNCTYPE .VOID SystemInit(.VOID)
+startup_MDR1986VE3.mca   555 00000000 4770          BX      LR
+startup_MDR1986VE3.mca   556                    
+startup_MDR1986VE3.mca   557                    .END
+Module ??SystemInit: 2 byte(s), 9 line(s)
+startup_MDR1986VE3.mca   558                    
+startup_MDR1986VE3.mca   559                    
+startup_MDR1986VE3.mca   560                    ;/******************* (C) COPYRIGHT 2013 Milandr ****************************
+startup_MDR1986VE3.mca   561                    ;*
+startup_MDR1986VE3.mca   562                    ;* END OF FILE startup_MDR1986VE3.mca */
+startup_MDR1986VE3.mca   563                    
+..\..\..\..\Libraries\CMSIS\CM1\DeviceSupport\MDR1986VE3\startup\cmc\startup_MDR1986VE3.mca: 563 line(s), 0.3 second(s), 0 error(s), 0 warning(s)

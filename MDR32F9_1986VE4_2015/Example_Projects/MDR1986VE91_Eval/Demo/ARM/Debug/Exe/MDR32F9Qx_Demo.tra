@@ -1,0 +1,69 @@
+*** Creating Trace Output File '.\Debug\Exe\MDR32F9Qx_Demo.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '".\debug\exe\mdr32f9qx_adc.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_bkp.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_can.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_comp.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_dac.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_dma.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_ebc.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_eeprom.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_i2c.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_iwdg.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_port.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_power.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_rst_clk.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_ssp.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_timer.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_uart.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_usb.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_wwdg.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_usb_cdc.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_usb_device.o"'
+### List of Objects: adding '".\debug\exe\rtc.o"'
+### List of Objects: adding '".\debug\exe\ff.o"'
+### List of Objects: adding '".\debug\exe\mmc.o"'
+### List of Objects: adding '".\debug\exe\font_12x16.o"'
+### List of Objects: adding '".\debug\exe\font_6x8.o"'
+### List of Objects: adding '".\debug\exe\font_7x10_bold.o"'
+### List of Objects: adding '".\debug\exe\font_7x10_thin.o"'
+### List of Objects: adding '".\debug\exe\startup_mdr32f9qx.o"'
+### List of Objects: adding '".\debug\exe\system_mdr32f9qx.o"'
+### List of Objects: adding '".\debug\exe\text.o"'
+### List of Objects: adding '".\debug\exe\mdr32f9qx_it.o"'
+### List of Objects: adding '".\debug\exe\adc.o"'
+### List of Objects: adding '".\debug\exe\demo_init_mdr32f9qx.o"'
+### List of Objects: adding '".\debug\exe\demo_init_mdr32f9q1.o"'
+### List of Objects: adding '".\debug\exe\gl.o"'
+### List of Objects: adding '".\debug\exe\joystick.o"'
+### List of Objects: adding '".\debug\exe\lcd_mdr32f9qx.o"'
+### List of Objects: adding '".\debug\exe\lcd_mdr32f9q1.o"'
+### List of Objects: adding '".\debug\exe\leds.o"'
+### List of Objects: adding '".\debug\exe\main.o"'
+### List of Objects: adding '".\debug\exe\menu.o"'
+### List of Objects: adding '".\debug\exe\menu_gl.o"'
+### List of Objects: adding '".\debug\exe\menu_leds.o"'
+### List of Objects: adding '".\debug\exe\menu_text.o"'
+### List of Objects: adding '".\debug\exe\menu_time.o"'
+### List of Objects: adding '".\debug\exe\menu_tsensor.o"'
+### List of Objects: adding '".\debug\exe\menu_uart.o"'
+### List of Objects: adding '".\debug\exe\menu_vcom.o"'
+### List of Objects: adding '".\debug\exe\menu_lowpower.o"'
+### List of Objects: adding '".\debug\exe\systick.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 ".\debug\exe\mdr32f9qx_adc.o" ".\debug\exe\mdr32f9qx_bkp.o" ".\debug\exe\mdr32f9qx_can.o" ".\debug\exe\mdr32f9qx_comp.o" ".\debug\exe\mdr32f9qx_dac.o" ".\debug\exe\mdr32f9qx_dma.o" ".\debug\exe\mdr32f9qx_ebc.o" ".\debug\exe\mdr32f9qx_eeprom.o" ".\debug\exe\mdr32f9qx_i2c.o" ".\debug\exe\mdr32f9qx_iwdg.o" ".\debug\exe\mdr32f9qx_port.o" ".\debug\exe\mdr32f9qx_power.o" ".\debug\exe\mdr32f9qx_rst_clk.o" ".\debug\exe\mdr32f9qx_ssp.o" ".\debug\exe\mdr32f9qx_timer.o" ".\debug\exe\mdr32f9qx_uart.o" ".\debug\exe\mdr32f9qx_usb.o" ".\debug\exe\mdr32f9qx_wwdg.o" ".\debug\exe\mdr32f9qx_usb_cdc.o" ".\debug\exe\mdr32f9qx_usb_device.o" ".\debug\exe\rtc.o" ".\debug\exe\ff.o" ".\debug\exe\mmc.o" ".\debug\exe\font_12x16.o" ".\debug\exe\font_6x8.o" ".\debug\exe\font_7x10_bold.o" ".\debug\exe\font_7x10_thin.o" ".\debug\exe\startup_mdr32f9qx.o" ".\debug\exe\system_mdr32f9qx.o" ".\debug\exe\text.o" ".\debug\exe\mdr32f9qx_it.o" ".\debug\exe\adc.o" ".\debug\exe\demo_init_mdr32f9qx.o" ".\debug\exe\demo_init_mdr32f9q1.o" ".\debug\exe\gl.o" ".\debug\exe\joystick.o" ".\debug\exe\lcd_mdr32f9qx.o" ".\debug\exe\lcd_mdr32f9q1.o" ".\debug\exe\leds.o" ".\debug\exe\main.o" ".\debug\exe\menu.o" ".\debug\exe\menu_gl.o" ".\debug\exe\menu_leds.o" ".\debug\exe\menu_text.o" ".\debug\exe\menu_time.o" ".\debug\exe\menu_tsensor.o" ".\debug\exe\menu_uart.o" ".\debug\exe\menu_vcom.o" ".\debug\exe\menu_lowpower.o" ".\debug\exe\systick.o" 
+--strict --scatter ".\Debug\Exe\MDR32F9Qx_Demo.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\Debug\Lst\MDR32F9Qx_Demo.map" -o .\Debug\Exe\MDR32F9Qx_Demo.axf### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '.\Debug\Exe\MDR32F9Qx_Demo.axf'
+### ADS-LD Command File: '.\Debug\Exe\MDR32F9Qx_Demo.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '.\Debug\Exe\MDR32F9Qx_Demo.lnp', Handle=0x00000224
+### Writing '.lnp' file
+### ADS-LD Command file '.\Debug\Exe\MDR32F9Qx_Demo.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

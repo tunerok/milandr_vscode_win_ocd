@@ -1,0 +1,14 @@
+.\debug\exe\adc.o: ..\..\src\adc.c
+.\debug\exe\adc.o: ..\..\..\..\Libraries\MDR32F9Qx_StdPeriph_Driver\inc\MDR32F9Qx_port.h
+.\debug\exe\adc.o: ..\..\Config\MDR32F9Qx_config.h
+.\debug\exe\adc.o: ..\..\Config\MDR32F9Qx_board.h
+.\debug\exe\adc.o: ..\..\..\..\Libraries\MDR32F9Qx_StdPeriph_Driver\inc\MDR32F9Qx_lib.h
+.\debug\exe\adc.o: C:\Keil5\ARM\ARMCC\bin\..\include\stdint.h
+.\debug\exe\adc.o: ..\..\..\..\Libraries\CMSIS\CM3\DeviceSupport\MDR32F9Qx\inc\MDR32Fx.h
+.\debug\exe\adc.o: ..\..\..\..\Libraries\CMSIS\CM3\CoreSupport\core_cm3.h
+.\debug\exe\adc.o: ..\..\..\..\Libraries\CMSIS\CM3\CoreSupport\core_cmInstr.h
+.\debug\exe\adc.o: ..\..\..\..\Libraries\CMSIS\CM3\CoreSupport\core_cmFunc.h
+.\debug\exe\adc.o: ..\..\..\..\Libraries\CMSIS\CM3\DeviceSupport\MDR32F9Qx\startup\arm\system_MDR32F9Qx.h
+.\debug\exe\adc.o: ..\..\..\..\Libraries\MDR32F9Qx_StdPeriph_Driver\inc\MDR32F9Qx_rst_clk.h
+.\debug\exe\adc.o: ..\..\..\..\Libraries\MDR32F9Qx_StdPeriph_Driver\inc\MDR32F9Qx_adc.h
+.\debug\exe\adc.o: ..\..\inc\demo_init.h

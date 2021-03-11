@@ -1,0 +1,404 @@
+###############################################################################
+#                                                                             #
+# IAR ANSI C/C++ Compiler V6.40.2.53884/W32 for ARM     22/Sep/2015  17:25:59 #
+# Copyright 1999-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Libraries\MDR32F9Qx_St #
+#                    dPeriph_Driver\src\MDR32F9Qx_wwdg.c                      #
+#    Command line =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Libraries\MDR32F9Qx_St #
+#                    dPeriph_Driver\src\MDR32F9Qx_wwdg.c --preprocess         #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lCN            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lB             #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -o              #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\ --debug          #
+#                    --endian=little --cpu=Cortex-M3 -e --fpu=None            #
+#                    --dlib_config "C:\Program Files (x86)\IAR                #
+#                    Systems\Embedded Workbench 6.4\arm\INC\c\DLib_Config_Nor #
+#                    mal.h" -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Proj #
+#                    ects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\config\ -I  #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\ -I                            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\USB_Library\ -I                #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CMSIS #
+#                    \CM3\CoreSupport\ -I C:\WORK\Milandr.MDR1986BExx.1.4.0\E #
+#                    xample_Projects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\ #
+#                    ..\..\Libraries\CMSIS\CM3\DeviceSupport\MDR32F9Qx\inc\   #
+#                    -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MD #
+#                    R1986VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CM #
+#                    SIS\CM3\DeviceSupport\MDR32F9Qx\startup\iar\ -I          #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Example_Project #
+#                    s\MDR1986VE91_Eval\inc\ -Ohz                             #
+#    List file    =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\MDR32F9Qx_wwdg.l #
+#                    st                                                       #
+#    Object file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\MDR32F9Qx_wwdg.o  #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\WORK\Milandr.MDR1986BExx.1.4.0\Libraries\MDR32F9Qx_StdPeriph_Driver\src\MDR32F9Qx_wwdg.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    MDR32F9Qx_wwdg.c
+      4            * @author  Phyton Application Team
+      5            * @version V1.4.0
+      6            * @date    27/01/2011
+      7            * @brief   This file contains all the WWDG firmware functions.
+      8            ******************************************************************************
+      9            * <br><br>
+     10            *
+     11            * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+     12            * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+     13            * TIME. AS A RESULT, PHYTON SHALL NOT BE HELD LIABLE FOR ANY DIRECT, INDIRECT
+     14            * OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+     15            * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+     16            * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+     17            *
+     18            * <h2><center>&copy; COPYRIGHT 2010 Phyton</center></h2>
+     19            ******************************************************************************
+     20            * FILE MDR32F9Qx_wwdg.c
+     21            */
+     22          /* Includes ------------------------------------------------------------------*/
+     23          #include "MDR32F9Qx_config.h"
+     24          #include "MDR32F9Qx_wwdg.h"
+     25          #include "MDR32F9Qx_rst_clk.h"
+     26          
+     27          
+     28          #define ASSERT_INFO_FILE_ID FILEID__MDR32F9X_WWDG_C
+     29          
+     30          /** @addtogroup __MDR32F9Qx_StdPeriph_Driver MDR32F9Qx Standard Peripherial Driver
+     31            * @{
+     32            */
+     33          
+     34          /** @defgroup WWDG WWDG
+     35            * @{
+     36            */
+     37          
+     38          /** @defgroup WWDG_Private_TypesDefinitions WWDG Private Types Definitions
+     39            * @{
+     40            */
+     41          
+     42          /** @} */ /* End of group WWDG_Private_TypesDefinitions */
+     43          
+     44          /** @defgroup WWDG_Private_Defines WWDG Private Defines
+     45            * @{
+     46            */
+     47          
+     48          #if defined (USE_MDR1986VE9x)
+     49          /* WWDG registers bit address in the alias region */
+     50          #define PERIPH_BASE                 0x40000000
+     51          #define PERIPH_BB_BASE              0x42000000
+     52          #define WWDG_OFFSET                 (MDR_WWDG_BASE - PERIPH_BASE)
+     53          
+     54          #define SFR_OFFSET(TP, MOD, SFR)    ((uint32_t)&((TP*)MOD)->SFR)
+     55          #define BB_ADDR(TP, MOD, SFR, BIT)  (PERIPH_BB_BASE + SFR_OFFSET(TP, MOD, SFR)*32 + BIT*4)
+     56          #define WWDG_BB(SFR, BIT)           BB_ADDR(MDR_WWDG_TypeDef, WWDG_OFFSET, SFR, BIT)
+     57          
+     58          #define EWI_BB                      WWDG_BB(CFR, WWDG_CFR_EWI_Pos)
+     59          #endif
+     60          
+     61          /* --------------------- WWDG registers bit mask ------------------------ */
+     62          
+     63          /* CR register bit mask */
+     64          #define WDGA_Mask         ((uint32_t)0x00000080)
+     65          
+     66          /* CFR register bit mask */
+     67          #define WDGTB_Mask        ((uint32_t)0xFFFFFE7F)
+     68          #define WIN_Mask          ((uint32_t)0x7F)
+     69          #define CTR_Mask          ((uint32_t)0x7F)
+     70          
+     71          /** @} */ /* End of group WWDG_Private_Defines */
+     72          
+     73          /** @defgroup WWDG_Private_Macros WWDG Private Macros
+     74            * @{
+     75            */
+     76          
+     77          /** @} */ /* End of group WWDG_Private_Macros */
+     78          
+     79          /** @defgroup WWDG_Private_Variables WWDG Private Variables
+     80            * @{
+     81            */
+     82          
+     83          /** @} */ /* End of group WWDG_Private_Variables */
+     84          
+     85          /** @defgroup WWDG_Private_Functions WWDG Private Functions
+     86            * @{
+     87            */
+     88          
+     89          /**
+     90            * @brief  WWDG_DeInit - Deinitializes the WWDG peripheral registers to their default reset values.
+     91            * @param  None
+     92            * @retval None
+     93            */
+
+   \                                 In section .text, align 2, keep-with-next
+     94          void WWDG_DeInit(void)
+     95          {
+   \                     WWDG_DeInit:
+   \   00000000   0xB580             PUSH     {R7,LR}
+     96            RST_CLK_PCLKcmd(RST_CLK_PCLK_WWDG, ENABLE);
+   \   00000002   0x2101             MOVS     R1,#+1
+   \   00000004   0xF44F 0x5080      MOV      R0,#+4096
+   \   00000008   0x.... 0x....      BL       RST_CLK_PCLKcmd
+     97            RST_CLK_PCLKcmd(RST_CLK_PCLK_WWDG, DISABLE);
+   \   0000000C   0x2100             MOVS     R1,#+0
+   \   0000000E   0xF44F 0x5080      MOV      R0,#+4096
+   \   00000012   0xE8BD 0x4004      POP      {R2,LR}
+   \   00000016   0x.... 0x....      B.W      RST_CLK_PCLKcmd
+     98          }
+     99          
+    100          /**
+    101            * @brief  WWDG_SetPrescaler - Sets the WWDG Prescaler.
+    102            * @param  WWDG_Prescaler: specifies the WWDG Prescaler.
+    103            *   This parameter can be one of the following values:
+    104            *     @arg WWDG_Prescaler_1: WWDG counter clock = (PCLK1/4096)/1
+    105            *     @arg WWDG_Prescaler_2: WWDG counter clock = (PCLK1/4096)/2
+    106            *     @arg WWDG_Prescaler_4: WWDG counter clock = (PCLK1/4096)/4
+    107            *     @arg WWDG_Prescaler_8: WWDG counter clock = (PCLK1/4096)/8
+    108            * @retval None
+    109            */
+
+   \                                 In section .text, align 2, keep-with-next
+    110          void WWDG_SetPrescaler(uint32_t WWDG_Prescaler)
+    111          {
+    112            uint32_t tmpreg;
+    113            /* Check the parameters */
+    114            assert_param(IS_WWDG_PRESCALER(WWDG_Prescaler));
+    115            /* Clear WDGTB[1:0] bits */
+    116            tmpreg = MDR_WWDG->CFR & WDGTB_Mask;
+   \                     WWDG_SetPrescaler:
+   \   00000000   0x....             LDR.N    R1,??DataTable5  ;; 0x40060004
+   \   00000002   0x680A             LDR      R2,[R1, #+0]
+    117            /* Set WDGTB[1:0] bits according to WWDG_Prescaler value */
+    118            tmpreg |= WWDG_Prescaler;
+    119            /* Store the new value */
+    120            MDR_WWDG->CFR = tmpreg;
+   \   00000004   0xF422 0x72C0      BIC      R2,R2,#0x180
+   \   00000008   0x4310             ORRS     R0,R0,R2
+   \   0000000A   0x6008             STR      R0,[R1, #+0]
+    121          }
+   \   0000000C   0x4770             BX       LR               ;; return
+    122          
+    123          /**
+    124            * @brief  WWDG_SetWindowValue - Sets the WWDG window value.
+    125            * @param  WindowValue: specifies the window value to be compared to the downcounter.
+    126            *   This parameter value must be lower than 0x80.
+    127            * @retval None
+    128            */
+
+   \                                 In section .text, align 2, keep-with-next
+    129          void WWDG_SetWindowValue(uint32_t WindowValue)
+    130          {
+   \                     WWDG_SetWindowValue:
+   \   00000000   0xB081             SUB      SP,SP,#+4
+    131            __IO uint32_t tmpreg = 0;
+   \   00000002   0x2100             MOVS     R1,#+0
+   \   00000004   0x9100             STR      R1,[SP, #+0]
+    132          
+    133            /* Check the parameters */
+    134            assert_param(IS_WWDG_WINDOW_VALUE(WindowValue));
+    135            /* Clear W[6:0] bits */
+    136          
+    137            tmpreg = MDR_WWDG->CFR & (uint32_t) (~WIN_Mask);
+   \   00000006   0x....             LDR.N    R1,??DataTable5  ;; 0x40060004
+   \   00000008   0x680A             LDR      R2,[R1, #+0]
+   \   0000000A   0x09D2             LSRS     R2,R2,#+7
+   \   0000000C   0x01D2             LSLS     R2,R2,#+7
+   \   0000000E   0x9200             STR      R2,[SP, #+0]
+    138          
+    139            /* Set W[6:0] bits according to WindowValue value */
+    140            tmpreg |= WindowValue & (uint32_t) WIN_Mask;
+   \   00000010   0x9A00             LDR      R2,[SP, #+0]
+   \   00000012   0xF000 0x007F      AND      R0,R0,#0x7F
+   \   00000016   0x4310             ORRS     R0,R0,R2
+   \   00000018   0x9000             STR      R0,[SP, #+0]
+    141          
+    142            /* Store the new value */
+    143            MDR_WWDG->CFR = tmpreg;
+   \   0000001A   0x9800             LDR      R0,[SP, #+0]
+   \   0000001C   0x6008             STR      R0,[R1, #+0]
+    144          }
+   \   0000001E   0xB001             ADD      SP,SP,#+4
+   \   00000020   0x4770             BX       LR               ;; return
+    145          
+    146          /**
+    147            * @brief  WWDG_EnableIT - Enables the WWDG Early Wakeup interrupt(EWI).
+    148            * @param  None
+    149            * @retval None
+    150            */
+
+   \                                 In section .text, align 2, keep-with-next
+    151          void WWDG_EnableIT ( void )
+    152          {
+    153          #if defined (USE_MDR1986VE9x)
+    154          	*(__IO uint32_t *) EWI_BB = (uint32_t) ENABLE;
+   \                     WWDG_EnableIT:
+   \   00000000   0x....             LDR.N    R0,??DataTable5_1  ;; 0x42c000a4
+   \   00000002   0x2101             MOVS     R1,#+1
+   \   00000004   0x6001             STR      R1,[R0, #+0]
+    155          #elif defined (USE_MDR1986VE3) || defined (USE_MDR1986VE1T)
+    156          	MDR_WWDG->CFR |= WWDG_CFR_EWI;
+    157          #endif
+    158          }
+   \   00000006   0x4770             BX       LR               ;; return
+    159          
+    160          /**
+    161            * @brief  WWDG_SetCounter - Sets the WWDG counter value.
+    162            * @param  Counter: specifies the watchdog counter value.
+    163            *   This parameter must be a number between 0x00 and 0x7F.
+    164            * @retval None
+    165            */
+
+   \                                 In section .text, align 2, keep-with-next
+    166          void WWDG_SetCounter(uint32_t Counter)
+    167          {
+    168            /* Check the parameters */
+    169            assert_param(IS_WWDG_COUNTER(Counter));
+    170            /* Write to T[6:0] bits to configure the counter value, no need to do
+    171               a read-modify-write; writing a 0 to WDGA bit does nothing */
+    172          
+    173            MDR_WWDG->CR = Counter & CTR_Mask;
+   \                     WWDG_SetCounter:
+   \   00000000   0xF000 0x007F      AND      R0,R0,#0x7F
+   \   00000004   0x....             B.N      ?Subroutine0
+    174          }
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine0:
+   \   00000000   0x....             LDR.N    R1,??DataTable5_2  ;; 0x40060000
+   \   00000002   0x6008             STR      R0,[R1, #+0]
+   \   00000004   0x4770             BX       LR               ;; return
+    175          
+    176          /**
+    177            * @brief  WWDG_Enable - Enables WWDG and load the counter value.
+    178            * @param  Counter: specifies the watchdog counter value.
+    179            *   This parameter must be a number between 0x00 and 0x7F.
+    180            * @retval None
+    181            */
+
+   \                                 In section .text, align 2, keep-with-next
+    182          void WWDG_Enable(uint32_t Counter)
+    183          {
+    184            /* Check the parameters */
+    185            assert_param(IS_WWDG_COUNTER(Counter));
+    186            MDR_WWDG->CR = WDGA_Mask | Counter;
+   \                     WWDG_Enable:
+   \   00000000   0xF040 0x0080      ORR      R0,R0,#0x80
+   \   00000004                      REQUIRE ?Subroutine0
+   \   00000004                      ;; // Fall through to label ?Subroutine0
+    187          }
+    188          
+    189          /**
+    190            * @brief  WWDG_GetFlagStatus - Checks whether the Early Wakeup interrupt flag is set or not.
+    191            * @param  None
+    192            * @retval The new state of the Early Wakeup interrupt flag (SET or RESET)
+    193            */
+
+   \                                 In section .text, align 2, keep-with-next
+    194          FlagStatus WWDG_GetFlagStatus(void)
+    195          {
+    196            return (FlagStatus)(MDR_WWDG->SR);
+   \                     WWDG_GetFlagStatus:
+   \   00000000   0x....             LDR.N    R0,??DataTable5_3  ;; 0x40060008
+   \   00000002   0x6800             LDR      R0,[R0, #+0]
+   \   00000004   0xB2C0             UXTB     R0,R0
+   \   00000006   0x4770             BX       LR               ;; return
+    197          }
+    198          
+    199          /**
+    200            * @brief  WWDG_ClearFlag - Clears Early Wakeup interrupt flag.
+    201            * @param  None
+    202            * @retval None
+    203            */
+
+   \                                 In section .text, align 2, keep-with-next
+    204          void WWDG_ClearFlag(void)
+    205          {
+    206            MDR_WWDG->SR = (uint32_t)RESET;
+   \                     WWDG_ClearFlag:
+   \   00000000   0x....             LDR.N    R0,??DataTable5_3  ;; 0x40060008
+   \   00000002   0x2100             MOVS     R1,#+0
+   \   00000004   0x6001             STR      R1,[R0, #+0]
+    207          }
+   \   00000006   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5:
+   \   00000000   0x40060004         DC32     0x40060004
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_1:
+   \   00000000   0x42C000A4         DC32     0x42c000a4
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_2:
+   \   00000000   0x40060000         DC32     0x40060000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_3:
+   \   00000000   0x40060008         DC32     0x40060008
+    208          
+    209          /** @} */ /* End of group WWDG_Private_Functions */
+    210          
+    211          /** @} */ /* End of group WWDG */
+    212          
+    213          /** @} */ /* End of group __MDR32F9Qx_StdPeriph_Driver */
+    214          
+    215          /******************* (C) COPYRIGHT 2010 Phyton *********************************
+    216          *
+    217          * END OF FILE MDR32F9Qx_wwdg.c */
+    218          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+        0  WWDG_ClearFlag
+        8  WWDG_DeInit
+             0 -> RST_CLK_PCLKcmd
+             8 -> RST_CLK_PCLKcmd
+        0  WWDG_Enable
+        0  WWDG_EnableIT
+        0  WWDG_GetFlagStatus
+        0  WWDG_SetCounter
+        0  WWDG_SetPrescaler
+        4  WWDG_SetWindowValue
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable5
+       4  ??DataTable5_1
+       4  ??DataTable5_2
+       4  ??DataTable5_3
+       6  ?Subroutine0
+       8  WWDG_ClearFlag
+      26  WWDG_DeInit
+       4  WWDG_Enable
+       8  WWDG_EnableIT
+       8  WWDG_GetFlagStatus
+       6  WWDG_SetCounter
+      14  WWDG_SetPrescaler
+      34  WWDG_SetWindowValue
+
+ 
+ 130 bytes in section .text
+ 
+ 130 bytes of CODE memory
+
+Errors: none
+Warnings: none

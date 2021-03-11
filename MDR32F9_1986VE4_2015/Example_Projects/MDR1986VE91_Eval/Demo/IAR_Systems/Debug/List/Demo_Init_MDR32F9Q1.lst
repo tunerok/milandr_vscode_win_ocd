@@ -1,0 +1,434 @@
+###############################################################################
+#                                                                             #
+# IAR ANSI C/C++ Compiler V6.40.2.53884/W32 for ARM     22/Sep/2015  17:25:55 #
+# Copyright 1999-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\src\Demo_Init_MDR32F9Q1.c                    #
+#    Command line =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\src\Demo_Init_MDR32F9Q1.c --preprocess       #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lCN            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lB             #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -o              #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\ --debug          #
+#                    --endian=little --cpu=Cortex-M3 -e --fpu=None            #
+#                    --dlib_config "C:\Program Files (x86)\IAR                #
+#                    Systems\Embedded Workbench 6.4\arm\INC\c\DLib_Config_Nor #
+#                    mal.h" -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Proj #
+#                    ects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\config\ -I  #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\ -I                            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\USB_Library\ -I                #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CMSIS #
+#                    \CM3\CoreSupport\ -I C:\WORK\Milandr.MDR1986BExx.1.4.0\E #
+#                    xample_Projects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\ #
+#                    ..\..\Libraries\CMSIS\CM3\DeviceSupport\MDR32F9Qx\inc\   #
+#                    -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MD #
+#                    R1986VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CM #
+#                    SIS\CM3\DeviceSupport\MDR32F9Qx\startup\iar\ -I          #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Example_Project #
+#                    s\MDR1986VE91_Eval\inc\ -Ohz                             #
+#    List file    =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\Demo_Init_MDR32F #
+#                    9Q1.lst                                                  #
+#    Object file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\Demo_Init_MDR32F9 #
+#                    Q1.o                                                     #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1986VE91_Eval\src\Demo_Init_MDR32F9Q1.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    Demo_Init_MDR32F9Q1.c
+      4            * @author  Phyton Application Team
+      5            * @version V3.0.0
+      6            * @date    09.09.2011
+      7            * @brief   Initializes the demonstration application for MDR32F9Q1_Rev0 and
+      8            *          MDR32F9Q1_Rev1 evaluation boards
+      9            ******************************************************************************
+     10            * <br><br>
+     11            * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+     12            * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+     13            * TIME. AS A RESULT, PHYTON SHALL NOT BE HELD LIABLE FOR ANY
+     14            * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+     15            * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+     16            * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+     17            *
+     18            * <h2><center>&copy; COPYRIGHT 2011 Phyton</center></h2>
+     19            */
+     20          
+     21          /* Includes ------------------------------------------------------------------*/
+     22          #include "MDR32F9Qx_config.h"
+     23          #include <MDR32Fx.h>
+     24          #include <MDR32F9Qx_port.h>
+     25          #include <MDR32F9Qx_rst_clk.h>
+     26          #include <MDR32F9Qx_uart.h>
+     27          #include <MDR32F9Qx_ebc.h>
+     28          #include "MDR32F9Qx_board.h"
+     29          #include "lcd.h"
+     30          #include "leds.h"
+     31          #include "demo_init.h"
+
+   \                                 In section .bss, align 4
+   \   static __absolute PORT_InitTypeDef PortInitStructure
+   \                     PortInitStructure:
+   \   00000000                      DS8 12
+     32          
+     33          #if defined (USE_MDR32F9Q1_Rev0) || defined (USE_MDR32F9Q1_Rev1)
+     34          
+     35          /** @addtogroup __MDR32F9Qx_Eval_Demo MDR32F9Qx Demonstration Example
+     36            * @{
+     37            */
+     38          
+     39          /** @addtogroup Demo_Setup Demo Setup
+     40            * @{
+     41            */
+     42          
+     43          /** @defgroup __MDR32F9Q1_Demo_Setup MDR32F9Q1 evaluation boards specific
+     44            * @{
+     45            */
+     46          
+     47          /** @defgroup __MDR32F9Q1_Demo_Setup_Private_Constants MDR32F9Q1 Demo Setup Private Constants
+     48            * @{
+     49            */
+     50          
+     51          #define ALL_PORTS_CLK   (RST_CLK_PCLK_PORTA | RST_CLK_PCLK_PORTB | \
+     52                                   RST_CLK_PCLK_PORTC | RST_CLK_PCLK_PORTD | \
+     53                                   RST_CLK_PCLK_PORTE | RST_CLK_PCLK_PORTF)
+     54          
+     55          /** @} */ /* End of group __MDR32F9Q1_Demo_Setup_Private_Constants */
+     56          
+     57          /** @defgroup __MDR32F9Q1_Demo_Setup_Private_Variables MDR32F9Q1 Demo Setup Private Variables
+     58            * @{
+     59            */
+     60          
+     61          /** @} */ /* End of group __MDR32F9Q1_Demo_Setup_Private_Variables */
+     62          
+     63          /** @defgroup __MDR32F9Q1_Demo_Setup_Private_Functions MDR32F9Q1 Demo Setup Private Functions
+     64            * @{
+     65            */
+     66          
+     67          /*******************************************************************************
+     68          * Function Name  : ExtBus_Setup
+     69          * Description    : Configures the External Bus.
+     70          * Input          : None
+     71          * Output         : None
+     72          * Return         : None
+     73          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     74          void ExtBus_Setup(void)
+     75          {
+   \                     ExtBus_Setup:
+   \   00000000   0xB500             PUSH     {LR}
+   \   00000002   0xB085             SUB      SP,SP,#+20
+     76          	EBC_InitTypeDef EBC_InitStruct;
+     77          
+     78          	/* Enables the RTCHSE clock on the EBC */
+     79            RST_CLK_PCLKcmd(RST_CLK_PCLK_EBC, ENABLE);
+   \   00000004   0x2101             MOVS     R1,#+1
+   \   00000006   0xF04F 0x4080      MOV      R0,#+1073741824
+   \   0000000A   0x.... 0x....      BL       RST_CLK_PCLKcmd
+     80          
+     81            EBC_StructInit(&EBC_InitStruct);
+   \   0000000E   0xA800             ADD      R0,SP,#+0
+   \   00000010   0x.... 0x....      BL       EBC_StructInit
+     82          
+     83            /* Configure External Bus */
+     84            EBC_InitStruct.EBC_WaitState = EBC_WAIT_STATE_12HCLK;
+   \   00000014   0x2009             MOVS     R0,#+9
+   \   00000016   0xF88D 0x0008      STRB     R0,[SP, #+8]
+     85            EBC_InitStruct.EBC_Mode          = EBC_MODE_ROM;
+   \   0000001A   0x2001             MOVS     R0,#+1
+   \   0000001C   0x9000             STR      R0,[SP, #+0]
+     86          
+     87            EBC_Init(&EBC_InitStruct);
+   \   0000001E   0xA800             ADD      R0,SP,#+0
+   \   00000020   0x.... 0x....      BL       EBC_Init
+     88          }
+   \   00000024   0xB005             ADD      SP,SP,#+20
+   \   00000026   0xBD00             POP      {PC}             ;; return
+     89          
+     90          /*******************************************************************************
+     91          * Function Name  : ClockConfigure
+     92          * Description    : Configures the CPU_PLL and RTCHSE clock.
+     93          * Input          : None
+     94          * Output         : None
+     95          * Return         : None
+     96          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     97          void ClockConfigure(void)
+     98          {
+   \                     ClockConfigure:
+   \   00000000   0xB580             PUSH     {R7,LR}
+     99            /* Configure CPU_PLL clock */
+    100            RST_CLK_CPU_PLLconfig (RST_CLK_CPU_PLLsrcHSIdiv1,0);
+   \   00000002   0x2100             MOVS     R1,#+0
+   \   00000004   0x2000             MOVS     R0,#+0
+   \   00000006   0x.... 0x....      BL       RST_CLK_CPU_PLLconfig
+    101          
+    102            /* Enables the RTCHSE clock on all ports */
+    103            RST_CLK_PCLKcmd(ALL_PORTS_CLK, ENABLE);
+   \   0000000A   0x2101             MOVS     R1,#+1
+   \   0000000C   0x....             LDR.N    R0,??DataTable1  ;; 0x23e00000
+   \   0000000E   0xE8BD 0x4004      POP      {R2,LR}
+   \   00000012   0x.... 0x....      B.W      RST_CLK_PCLKcmd
+    104          }
+    105          
+    106          /*******************************************************************************
+    107          * Function Name  : Demo_Init
+    108          * Description    : Initializes the demonstration application
+    109          * Input          : None
+    110          * Output         : None
+    111          * Return         : None
+    112          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    113          void Demo_Init(void)
+    114          {
+   \                     Demo_Init:
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+    115            ClockConfigure();
+   \   00000002   0x.... 0x....      BL       ClockConfigure
+    116          
+    117          /************************ LCD Initialization *************************/
+    118          
+    119            /* Configure PORTA pins for data transfer to/from LCD */
+    120            PortInitStructure.PORT_Pin = LCD_DATA_BUS_8;
+   \   00000006   0x....             LDR.N    R4,??DataTable1_1
+   \   00000008   0x20FF             MOVS     R0,#+255
+   \   0000000A   0x8020             STRH     R0,[R4, #+0]
+    121            PortInitStructure.PORT_FUNC = PORT_FUNC_MAIN;
+   \   0000000C   0x2001             MOVS     R0,#+1
+   \   0000000E   0x7220             STRB     R0,[R4, #+8]
+    122            PortInitStructure.PORT_SPEED = PORT_SPEED_SLOW;
+   \   00000010   0x7260             STRB     R0,[R4, #+9]
+    123            PortInitStructure.PORT_MODE = PORT_MODE_DIGITAL;
+   \   00000012   0x72A0             STRB     R0,[R4, #+10]
+    124            PortInitStructure.PORT_OE = PORT_OE_IN;
+   \   00000014   0x2000             MOVS     R0,#+0
+   \   00000016   0x70A0             STRB     R0,[R4, #+2]
+    125          
+    126            PORT_Init(MDR_PORTA, &PortInitStructure);
+   \   00000018   0x4621             MOV      R1,R4
+   \   0000001A   0x....             LDR.N    R0,??DataTable1_2  ;; 0x400a8000
+   \   0000001C   0x.... 0x....      BL       PORT_Init
+    127          
+    128            /* Configure PORTE pin4 and pin5 for LCD crystals control */
+    129            PortInitStructure.PORT_Pin = PORT_Pin_4 | PORT_Pin_5;
+   \   00000020   0x2030             MOVS     R0,#+48
+   \   00000022   0x8020             STRH     R0,[R4, #+0]
+    130          
+    131            PORT_Init(MDR_PORTE, &PortInitStructure);
+   \   00000024   0x....             LDR.N    R5,??DataTable1_3  ;; 0x400c8000
+   \   00000026   0x.... 0x....      BL       ??Subroutine0_0
+    132          
+    133            /* Configure PORTE pin11 for data/command mode switching */
+    134            PortInitStructure.PORT_Pin = PORT_Pin_11;
+   \                     ??CrossCallReturnLabel_4:
+   \   0000002A   0xF44F 0x6000      MOV      R0,#+2048
+   \   0000002E   0x8020             STRH     R0,[R4, #+0]
+    135          
+    136            PORT_Init(MDR_PORTE, &PortInitStructure);
+   \   00000030   0x.... 0x....      BL       ??Subroutine0_0
+    137          
+    138            /* Configure PORTC pin2 for read/write control */
+    139            PortInitStructure.PORT_Pin = PORT_Pin_2;
+   \                     ??CrossCallReturnLabel_3:
+   \   00000034   0x2004             MOVS     R0,#+4
+   \   00000036   0x8020             STRH     R0,[R4, #+0]
+    140          
+    141            PORT_Init(MDR_PORTC, &PortInitStructure);
+   \   00000038   0x....             LDR.N    R5,??DataTable1_4  ;; 0x400b8000
+   \   0000003A   0x.... 0x....      BL       ??Subroutine0_0
+    142          
+    143            /* Configure PORTC pin7 for CLOCK signal control */
+    144            PortInitStructure.PORT_Pin = PORT_Pin_7;
+   \                     ??CrossCallReturnLabel_2:
+   \   0000003E   0x2080             MOVS     R0,#+128
+   \   00000040   0x8020             STRH     R0,[R4, #+0]
+    145            PortInitStructure.PORT_SPEED = PORT_SPEED_FAST;
+   \   00000042   0x2002             MOVS     R0,#+2
+   \   00000044   0x.... 0x....      BL       ?Subroutine0
+    146          
+    147            PORT_Init(MDR_PORTC, &PortInitStructure);
+    148          
+    149            /* Configure PORTC pin9 for RESET signal control */
+    150            PortInitStructure.PORT_Pin = PORT_Pin_9;
+   \                     ??CrossCallReturnLabel_6:
+   \   00000048   0xF44F 0x7000      MOV      R0,#+512
+   \   0000004C   0x8020             STRH     R0,[R4, #+0]
+    151            PortInitStructure.PORT_OE = PORT_OE_OUT;
+   \   0000004E   0x.... 0x....      BL       ?Subroutine1
+    152            PortInitStructure.PORT_FUNC = PORT_FUNC_PORT;
+    153            PortInitStructure.PORT_SPEED = PORT_SPEED_SLOW;
+   \                     ??CrossCallReturnLabel_7:
+   \   00000052   0x.... 0x....      BL       ?Subroutine0
+    154          
+    155            PORT_Init(MDR_PORTC, &PortInitStructure);
+    156          
+    157            ExtBus_Setup();
+   \                     ??CrossCallReturnLabel_5:
+   \   00000056   0x.... 0x....      BL       ExtBus_Setup
+    158          
+    159            LCD_INIT();
+   \   0000005A   0x.... 0x....      BL       LCD_INIT
+    160          
+    161          /************************ Joystick Initialization *************************/
+    162          
+    163            /* Configure PORTC pins 10..14 for input to handle joystick events */
+    164            PortInitStructure.PORT_Pin   = (PORT_Pin_10 | PORT_Pin_11 | PORT_Pin_12 |
+    165                                            PORT_Pin_13 | PORT_Pin_14);
+   \   0000005E   0xF44F 0x46F8      MOV      R6,#+31744
+   \   00000062   0x8026             STRH     R6,[R4, #+0]
+    166            PortInitStructure.PORT_OE    = PORT_OE_IN;
+   \   00000064   0x2000             MOVS     R0,#+0
+   \   00000066   0x70A0             STRB     R0,[R4, #+2]
+    167            PortInitStructure.PORT_FUNC  = PORT_FUNC_PORT;
+   \   00000068   0x8120             STRH     R0,[R4, #+8]
+    168            PortInitStructure.PORT_SPEED = PORT_OUTPUT_OFF;
+    169          
+    170            PORT_Init(MDR_PORTC, &PortInitStructure);
+   \   0000006A   0x.... 0x....      BL       ??Subroutine0_0
+    171          
+    172          /************************ LEDs Initialization *************************/
+    173          
+    174            /* Configure PORTD pins 10..14 for output to switch LEDs on/off */
+    175            PortInitStructure.PORT_Pin   = LEDs_PINs;
+   \                     ??CrossCallReturnLabel_1:
+   \   0000006E   0x8026             STRH     R6,[R4, #+0]
+    176            PortInitStructure.PORT_OE    = PORT_OE_OUT;
+   \   00000070   0x.... 0x....      BL       ?Subroutine1
+    177            PortInitStructure.PORT_FUNC  = PORT_FUNC_PORT;
+    178            PortInitStructure.PORT_SPEED = PORT_SPEED_SLOW;
+   \                     ??CrossCallReturnLabel_8:
+   \   00000074   0x7260             STRB     R0,[R4, #+9]
+    179          
+    180            PORT_Init(MDR_PORTD, &PortInitStructure);
+   \   00000076   0x....             LDR.N    R5,??DataTable1_5  ;; 0x400c0000
+   \   00000078   0x.... 0x....      BL       ??Subroutine0_0
+    181          
+    182            /* All LEDs switch off */
+    183            PORT_ResetBits(MDR_PORTD, LEDs_PINs);
+   \                     ??CrossCallReturnLabel_0:
+   \   0000007C   0x4631             MOV      R1,R6
+   \   0000007E   0x4628             MOV      R0,R5
+   \   00000080   0xE8BD 0x4070      POP      {R4-R6,LR}
+   \   00000084   0x.... 0x....      B.W      PORT_ResetBits
+    184          }
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine1:
+   \   00000000   0x2001             MOVS     R0,#+1
+   \   00000002   0x70A0             STRB     R0,[R4, #+2]
+   \   00000004   0x2000             MOVS     R0,#+0
+   \   00000006   0x7220             STRB     R0,[R4, #+8]
+   \   00000008   0x2001             MOVS     R0,#+1
+   \   0000000A   0x4770             BX       LR
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine0:
+   \   00000000   0x7260             STRB     R0,[R4, #+9]
+   \                     ??Subroutine0_0:
+   \   00000002   0x4621             MOV      R1,R4
+   \   00000004   0x4628             MOV      R0,R5
+   \   00000006   0x.... 0x....      B.W      PORT_Init
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1:
+   \   00000000   0x23E00000         DC32     0x23e00000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_1:
+   \   00000000   0x........         DC32     PortInitStructure
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_2:
+   \   00000000   0x400A8000         DC32     0x400a8000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_3:
+   \   00000000   0x400C8000         DC32     0x400c8000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_4:
+   \   00000000   0x400B8000         DC32     0x400b8000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_5:
+   \   00000000   0x400C0000         DC32     0x400c0000
+    185          
+    186          /** @} */ /* End of group __MDR32F9Q1_Demo_Setup_Private_Functions */
+    187          
+    188          /** @} */ /* End of group __MDR32F9Q1_Demo_Setup */
+    189          
+    190          /** @} */ /* End of group Demo_Setup */
+    191          
+    192          /** @} */ /* End of group __MDR32F9Qx_Eval_Demo */
+    193          
+    194          #endif /* USE_MDR32F9Q1_Rev0 || USE_MDR32F9Q1_Rev1 */
+    195          
+    196          /******************* (C) COPYRIGHT 2011 Phyton *******************
+    197          *
+    198          * END OF FILE Demo_Init_MDR32F9Q1.c */
+    199          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+        8  ClockConfigure
+              8 -> RST_CLK_CPU_PLLconfig
+              0 -> RST_CLK_PCLKcmd
+       16  Demo_Init
+             16 -> ClockConfigure
+             16 -> ExtBus_Setup
+             16 -> LCD_INIT
+             16 -> PORT_Init
+              0 -> PORT_ResetBits
+       24  ExtBus_Setup
+             24 -> EBC_Init
+             24 -> EBC_StructInit
+             24 -> RST_CLK_PCLKcmd
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable1
+       4  ??DataTable1_1
+       4  ??DataTable1_2
+       4  ??DataTable1_3
+       4  ??DataTable1_4
+       4  ??DataTable1_5
+      10  ?Subroutine0
+      12  ?Subroutine1
+      22  ClockConfigure
+     136  Demo_Init
+      40  ExtBus_Setup
+      12  PortInitStructure
+
+ 
+  12 bytes in section .bss
+ 244 bytes in section .text
+ 
+ 244 bytes of CODE memory
+  12 bytes of DATA memory
+
+Errors: none
+Warnings: none

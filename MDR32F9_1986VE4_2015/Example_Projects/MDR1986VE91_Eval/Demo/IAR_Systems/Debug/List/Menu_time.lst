@@ -1,0 +1,2772 @@
+###############################################################################
+#                                                                             #
+# IAR ANSI C/C++ Compiler V6.40.2.53884/W32 for ARM     22/Sep/2015  17:26:00 #
+# Copyright 1999-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\src\Menu_time.c                              #
+#    Command line =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\src\Menu_time.c --preprocess                 #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lCN            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lB             #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -o              #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\ --debug          #
+#                    --endian=little --cpu=Cortex-M3 -e --fpu=None            #
+#                    --dlib_config "C:\Program Files (x86)\IAR                #
+#                    Systems\Embedded Workbench 6.4\arm\INC\c\DLib_Config_Nor #
+#                    mal.h" -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Proj #
+#                    ects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\config\ -I  #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\ -I                            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\USB_Library\ -I                #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CMSIS #
+#                    \CM3\CoreSupport\ -I C:\WORK\Milandr.MDR1986BExx.1.4.0\E #
+#                    xample_Projects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\ #
+#                    ..\..\Libraries\CMSIS\CM3\DeviceSupport\MDR32F9Qx\inc\   #
+#                    -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MD #
+#                    R1986VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CM #
+#                    SIS\CM3\DeviceSupport\MDR32F9Qx\startup\iar\ -I          #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Example_Project #
+#                    s\MDR1986VE91_Eval\inc\ -Ohz                             #
+#    List file    =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\Menu_time.lst    #
+#    Object file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\Menu_time.o       #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1986VE91_Eval\src\Menu_time.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    Menu_time.c
+      4            * @author  Phyton Application Team
+      5            * @version V1.2.0
+      6            * @date    01.12.2011
+      7            * @brief   This file contains all the "TIME" menu handlers.
+      8            ******************************************************************************
+      9            * <br><br>
+     10            * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+     11            * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+     12            * TIME. AS A RESULT, PHYTON SHALL NOT BE HELD LIABLE FOR ANY
+     13            * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+     14            * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+     15            * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+     16            *
+     17            * <h2><center>&copy; COPYRIGHT 2010 Phyton</center></h2>
+     18            */
+     19          /* Includes ------------------------------------------------------------------*/
+     20          #include "MDR32F9Qx_config.h"
+     21          #include <MDR32Fx.h>
+     22          #include <MDR32F9Qx_port.h>
+     23          #include <MDR32F9Qx_bkp.h>
+     24          #include <MDR32F9Qx_rst_clk.h>
+     25          #include "systick.h"
+     26          #include "Menu.h"
+     27          #include "Menu_items.h"
+     28          #include "leds.h"
+     29          #include "lcd.h"
+     30          #include "text.h"
+     31          #include "joystick.h"
+     32          #include "time.h"
+     33          #include "MDR32F9Qx_it.h"
+     34          
+     35          /** @addtogroup __MDR32F9Qx_Eval_Demo MDR32F9Qx Demonstration Example
+     36            * @{
+     37            */
+     38          
+     39          /** @addtogroup Menu Menu
+     40            * @{
+     41            */
+     42          
+     43          /** @addtogroup Menu_TIME Menu TIME
+     44            * @{
+     45            */
+     46          
+     47          /** @defgroup Menu_TIME_Private_Constants Menu TIME Private Constants
+     48            * @{
+     49            */
+     50          
+     51          #define Time_Display_Column              33
+     52          #define Date_Display_Column              37
+     53          
+     54          /* LCD lines */
+     55          #define LineTitle                        LineMessage3 + DefaultFontHeight + Interline
+     56          #define LineDigits                       LineTitle + DefaultFontHeight + Interline
+     57          
+     58          /* LCD columns for Time digits */
+     59          #define TimeH_h                          Time_Display_Column
+     60          #define TimeH_l                          TimeH_h + DefaultFontWidth
+     61          #define TimeH_sep                        TimeH_l + DefaultFontWidth
+     62          #define TimeM_h                          TimeH_sep + DefaultFontWidth
+     63          #define TimeM_l                          TimeM_h + DefaultFontWidth
+     64          #define TimeM_sep                        TimeM_l + DefaultFontWidth
+     65          #define TimeS_h                          TimeM_sep + DefaultFontWidth
+     66          #define TimeS_l                          TimeS_h + DefaultFontWidth
+     67          
+     68          /* LCD columns for Date digits */
+     69          #define DateD_h                          Date_Display_Column
+     70          #define DateD_l                          DateD_h + DefaultFontWidth
+     71          #define DateD_sep                        DateD_l + DefaultFontWidth
+     72          #define DateM_h                          DateD_sep + DefaultFontWidth
+     73          #define DateM_l                          DateM_h + DefaultFontWidth
+     74          #define DateM_sep                        DateM_l + DefaultFontWidth
+     75          #define DateY_1000                       DateM_sep + DefaultFontWidth
+     76          #define DateY_100                        DateY_1000 + DefaultFontWidth
+     77          #define DateY_10                         DateY_100 + DefaultFontWidth
+     78          #define DateY_1                          DateY_10 + DefaultFontWidth
+     79          
+     80          /** @} */ /* End of group Menu_TIME_Private_Constants */
+     81          
+     82          /** @defgroup Menu_TIME_Private_Types Menu TIME Private Types
+     83            * @{
+     84            */
+     85          
+     86          /* Time Structure definition */
+     87          typedef struct
+     88          {
+     89            uint8_t sec_l;
+     90            uint8_t sec_h;
+     91            uint8_t min_l;
+     92            uint8_t min_h;
+     93            uint8_t hour_l;
+     94            uint8_t hour_h;
+     95          }tTime;
+     96          
+     97          /* Alarm Structure definition */
+     98          typedef struct
+     99          {
+    100            uint8_t sec_l;
+    101            uint8_t sec_h;
+    102            uint8_t min_l;
+    103            uint8_t min_h;
+    104            uint8_t hour_l;
+    105            uint8_t hour_h;
+    106          }tAlarm;
+    107          
+    108          /* Date Structure definition */
+    109          typedef struct
+    110          {
+    111            uint8_t day;
+    112            uint8_t month;
+    113            uint16_t year;
+    114          }tDate;
+    115          
+    116          /** @} */ /* End of group Menu_TIME_Private_Types */
+    117          
+    118          /** @defgroup Menu_TIME_Private_Macros Menu TIME Private Macros
+    119            * @{
+    120            */
+    121          
+    122          /** @} */ /* End of group Menu_TIME_Private_Macros */
+    123          
+    124          /** @defgroup Menu_TIME_Private_Variables Menu TIME Private Variables
+    125            * @{
+    126            */
+    127          
+
+   \                                 In section .bss, align 4
+    128          static tTime  sTime;
+   \                     sTime:
+   \   00000000                      DS8 8
+
+   \                                 In section .bss, align 4
+    129          static tAlarm sAlarm;
+   \                     sAlarm:
+   \   00000000                      DS8 8
+
+   \                                 In section .bss, align 4
+    130          static tDate  sDate;
+   \                     sDate:
+   \   00000000                      DS8 4
+    131          
+    132          /** @} */ /* End of group Menu_TIME_Private_Variables */
+    133          
+    134          /** @defgroup Menu_TIME_Private_Functions Menu TIME Private Functions
+    135            * @{
+    136            */
+    137          
+    138          /*******************************************************************************
+    139          * Function Name  : RTC_Configuration
+    140          * Description    : Configures the RTC.
+    141          * Input          : None.
+    142          * Output         : None
+    143          * Return         : None
+    144          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    145          void RTC_Configuration(void)
+    146          {
+   \                     RTC_Configuration:
+   \   00000000   0xB580             PUSH     {R7,LR}
+    147            /* Configure LSE as RTC clock source */
+    148            RST_CLK_LSEconfig(RST_CLK_LSE_ON);
+   \   00000002   0x2001             MOVS     R0,#+1
+   \   00000004   0x.... 0x....      BL       RST_CLK_LSEconfig
+    149            /* Wait till LSE is ready */
+    150            while (RST_CLK_LSEstatus() != SUCCESS)
+   \                     ??RTC_Configuration_0:
+   \   00000008   0x.... 0x....      BL       RST_CLK_LSEstatus
+   \   0000000C   0x2801             CMP      R0,#+1
+   \   0000000E   0xD1FB             BNE.N    ??RTC_Configuration_0
+    151            {
+    152            }
+    153          
+    154            /* Select the RTC Clock Source */
+    155            BKP_RTCclkSource(BKP_RTC_LSEclk);
+   \   00000010   0x2004             MOVS     R0,#+4
+   \   00000012   0x.... 0x....      BL       BKP_RTCclkSource
+    156            /* Wait until last write operation on RTC registers has finished */
+    157            BKP_RTC_WaitForUpdate();
+   \   00000016   0x.... 0x....      BL       BKP_RTC_WaitForUpdate
+    158          
+    159            /* Sets the RTC prescaler */
+    160            BKP_RTC_SetPrescaler(RTC_PRESCALER_VALUE);
+   \   0000001A   0xF44F 0x4000      MOV      R0,#+32768
+   \   0000001E   0x.... 0x....      BL       BKP_RTC_SetPrescaler
+    161            /* Wait until last write operation on RTC registers has finished */
+    162            BKP_RTC_WaitForUpdate();
+   \   00000022   0x.... 0x....      BL       BKP_RTC_WaitForUpdate
+    163          
+    164            /* Sets the RTC calibrator */
+    165            BKP_RTC_Calibration(RTC_CalibratorValue);
+   \   00000026   0x2000             MOVS     R0,#+0
+   \   00000028   0x.... 0x....      BL       BKP_RTC_Calibration
+    166            /* Wait until last write operation on RTC registers has finished */
+    167            BKP_RTC_WaitForUpdate();
+   \   0000002C   0x.... 0x....      BL       BKP_RTC_WaitForUpdate
+    168          
+    169            /* Enable the RTC Clock */
+    170            BKP_RTC_Enable(ENABLE);
+   \   00000030   0x2001             MOVS     R0,#+1
+   \   00000032   0x.... 0x....      BL       BKP_RTC_Enable
+    171          
+    172            /* Enable the Second interrupt */
+    173            BKP_RTC_ITConfig(BKP_RTC_IT_SECF, ENABLE);
+   \   00000036   0x2101             MOVS     R1,#+1
+   \   00000038   0x2010             MOVS     R0,#+16
+   \   0000003A   0x.... 0x....      BL       BKP_RTC_ITConfig
+    174            NVIC_EnableIRQ(BACKUP_IRQn);
+   \   0000003E   0x.... 0x....      LDR.W    R0,??DataTable35  ;; 0xe000e100
+   \   00000042   0xF04F 0x6100      MOV      R1,#+134217728
+   \   00000046   0x6001             STR      R1,[R0, #+0]
+    175          }
+   \   00000048   0xBD01             POP      {R0,PC}          ;; return
+    176          
+    177          /*******************************************************************************
+    178          * Function Name  : ShowSelDigit
+    179          * Description    : Prints on LCD the value of currently selected digit
+    180          * Input          : Col  - x-coordinate
+    181          *                : Line - y-coordinate
+    182          *                : ch   - symbol to print
+    183          * Output         : None
+    184          * Return         : Digit value
+    185          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    186          void ShowSelDigit(uint8_t Col, uint8_t Line, uint8_t ch)
+    187          {
+   \                     ShowSelDigit:
+   \   00000000   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+   \   00000004   0x4604             MOV      R4,R0
+   \   00000006   0x460D             MOV      R5,R1
+   \   00000008   0x4690             MOV      R8,R2
+    188            LCD_Method OldMethod = CurrentMethod;
+   \   0000000A   0x.... 0x....      LDR.W    R7,??DataTable35_1
+   \   0000000E   0x783E             LDRB     R6,[R7, #+0]
+    189          
+    190            CurrentMethod = MET_AND;
+   \   00000010   0x2004             MOVS     R0,#+4
+   \   00000012   0x7038             STRB     R0,[R7, #+0]
+    191            LCD_PUTC(Col, Line, ' ');
+   \   00000014   0x2220             MOVS     R2,#+32
+   \   00000016   0x4620             MOV      R0,R4
+   \   00000018   0x.... 0x....      BL       LCD_PUTC
+    192            CurrentMethod = MET_NOT_XOR;
+   \   0000001C   0x2003             MOVS     R0,#+3
+   \   0000001E   0x7038             STRB     R0,[R7, #+0]
+    193            LCD_PUTC(Col, Line, ch);
+   \   00000020   0x4642             MOV      R2,R8
+   \   00000022   0x4629             MOV      R1,R5
+   \   00000024   0x4620             MOV      R0,R4
+   \   00000026   0x.... 0x....      BL       LCD_PUTC
+    194          
+    195            CurrentMethod = OldMethod;
+   \   0000002A   0x703E             STRB     R6,[R7, #+0]
+    196          }
+   \   0000002C   0xE8BD 0x81F0      POP      {R4-R8,PC}       ;; return
+    197          
+    198          
+    199          /*******************************************************************************
+    200          * Function Name  : ReadDigit
+    201          * Description    : Reads digit entered by user with joystick navigation keys.
+    202          * Input          : ColBegin    - digit column
+    203          *                : CountBegin  - digit value
+    204          *                : ValueMax    - max limit
+    205          *                : ValueMin    - min limit
+    206          * Output         : None
+    207          * Return         : Digit value
+    208          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    209          uint8_t ReadDigit(uint8_t ColBegin, uint8_t CountBegin, uint8_t ValueMax, uint8_t ValueMin)
+    210          {
+   \                     ReadDigit:
+   \   00000000   0xE92D 0x43F8      PUSH     {R3-R9,LR}
+   \   00000004   0x4680             MOV      R8,R0
+   \   00000006   0x460D             MOV      R5,R1
+   \   00000008   0x4616             MOV      R6,R2
+   \   0000000A   0x4699             MOV      R9,R3
+    211            uint32_t tmp = CountBegin;
+    212            KeyCode key;
+    213          
+    214            /* Display selected digit */
+    215            ShowSelDigit(ColBegin, LineDigits, (tmp + 0x30));
+   \   0000000C   0xF105 0x0230      ADD      R2,R5,#+48
+   \   00000010   0xB2D2             UXTB     R2,R2
+   \   00000012   0x2134             MOVS     R1,#+52
+   \   00000014   0x.... 0x....      BL       ShowSelDigit
+    216          
+    217            for (key = GetKey(); key != SEL; key = GetKey())
+   \   00000018   0x.... 0x....      BL       GetKey
+   \   0000001C   0x4604             MOV      R4,R0
+   \   0000001E   0x.... 0x....      LDR.W    R7,??DataTable35_1
+   \   00000022   0xE01E             B.N      ??ReadDigit_0
+    218            {
+    219              /* If "UP" pushbutton is pressed */
+    220              if(key == UP)
+   \                     ??ReadDigit_1:
+   \   00000024   0x2C01             CMP      R4,#+1
+   \   00000026   0xD10B             BNE.N    ??ReadDigit_2
+    221              {
+    222                /* Increase the value of the digit */
+    223                if(tmp >= ValueMax)
+   \   00000028   0x42B5             CMP      R5,R6
+   \   0000002A   0xBF28             IT       CS 
+   \   0000002C   0xF1A9 0x0501      SUBCS    R5,R9,#+1
+    224                {
+    225                  tmp = (ValueMin - 1);
+    226                }
+    227                /* Display new value */
+    228                tmp++;
+   \   00000030   0x1C6D             ADDS     R5,R5,#+1
+    229                ShowSelDigit(ColBegin, LineDigits, (tmp + 0x30));
+   \   00000032   0xF105 0x0230      ADD      R2,R5,#+48
+   \   00000036   0xB2D2             UXTB     R2,R2
+   \   00000038   0x2134             MOVS     R1,#+52
+   \   0000003A   0x4640             MOV      R0,R8
+   \   0000003C   0x.... 0x....      BL       ShowSelDigit
+    230              }
+    231              /* If "DOWN" pushbutton is pressed */
+    232              if(key == DOWN)
+   \                     ??ReadDigit_2:
+   \   00000040   0x2C02             CMP      R4,#+2
+   \   00000042   0xD107             BNE.N    ??ReadDigit_3
+    233              {
+    234                /* Decrease the value of the digit */
+    235                if(tmp == ValueMin)
+   \   00000044   0x454D             CMP      R5,R9
+   \   00000046   0xBF08             IT       EQ 
+   \   00000048   0x1C75             ADDEQ    R5,R6,#+1
+    236                {
+    237                  tmp = (ValueMax + 1);
+    238                }
+    239                /* Display new value */
+    240                tmp--;
+   \   0000004A   0x1E6D             SUBS     R5,R5,#+1
+    241                CurrentMethod = MET_AND;
+   \   0000004C   0x.... 0x....      BL       ?Subroutine5
+    242                ShowSelDigit(ColBegin, LineDigits, (tmp + 0x30));
+    243              }
+   \                     ??CrossCallReturnLabel_21:
+   \   00000050   0x.... 0x....      BL       ShowSelDigit
+    244              WAIT_UNTIL_KEY_RELEASED(key);
+   \                     ??ReadDigit_3:
+   \   00000054   0x.... 0x....      BL       GetKey
+   \   00000058   0x42A0             CMP      R0,R4
+   \   0000005A   0xD0FB             BEQ.N    ??ReadDigit_3
+    245            }
+   \   0000005C   0x.... 0x....      BL       GetKey
+   \   00000060   0x4604             MOV      R4,R0
+   \                     ??ReadDigit_0:
+   \   00000062   0x2C00             CMP      R4,#+0
+   \   00000064   0xD1DE             BNE.N    ??ReadDigit_1
+    246            /* "SEL" pushbutton is pressed */
+    247            WAIT_UNTIL_KEY_RELEASED(SEL);
+   \                     ??ReadDigit_4:
+   \   00000066   0x.... 0x....      BL       GetKey
+   \   0000006A   0x2800             CMP      R0,#+0
+   \   0000006C   0xD0FB             BEQ.N    ??ReadDigit_4
+    248            CurrentMethod = MET_AND;
+   \   0000006E   0x.... 0x....      BL       ?Subroutine5
+    249            LCD_PUTC(ColBegin, LineDigits, (tmp + 0x30));
+   \                     ??CrossCallReturnLabel_22:
+   \   00000072   0x.... 0x....      BL       LCD_PUTC
+    250            /* Return the digit value and exit */
+    251            return tmp;
+   \   00000076   0xB2E8             UXTB     R0,R5
+   \   00000078   0xE8BD 0x83F2      POP      {R1,R4-R9,PC}    ;; return
+    252          }
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine5:
+   \   00000000   0x2004             MOVS     R0,#+4
+   \   00000002   0x7038             STRB     R0,[R7, #+0]
+   \   00000004   0xF105 0x0230      ADD      R2,R5,#+48
+   \   00000008   0xB2D2             UXTB     R2,R2
+   \   0000000A   0x2134             MOVS     R1,#+52
+   \   0000000C   0x4640             MOV      R0,R8
+   \   0000000E   0x4770             BX       LR
+    253          
+    254          /*******************************************************************************
+    255          * Function Name  : Time_Display
+    256          * Description    : Displays current time.
+    257          * Input          : None
+    258          * Output         : None
+    259          * Return         : None
+    260          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    261          void Time_Display()
+    262          {
+   \                     Time_Display:
+   \   00000000   0xE92D 0x43F8      PUSH     {R3-R9,LR}
+    263            uint32_t TimeVar = BKP_RTC_GetCounter();
+   \   00000004   0x.... 0x....      BL       BKP_RTC_GetCounter
+   \   00000008   0x4680             MOV      R8,R0
+    264          
+    265            /* Display hours */
+    266            sTime.hour_h = (uint8_t)(TimeVar / 3600) / 10;
+   \   0000000A   0xF44F 0x6761      MOV      R7,#+3600
+   \   0000000E   0xFBB8 0xF6F7      UDIV     R6,R8,R7
+   \   00000012   0x.... 0x....      LDR.W    R4,??DataTable35_2
+   \   00000016   0x.... 0x....      BL       ?Subroutine6
+    267            LCD_PUTC(TimeH_h, LineDigits, (sTime.hour_h + 0x30));
+    268            sTime.hour_l = (uint8_t)(((TimeVar) / 3600) % 10);
+   \                     ??CrossCallReturnLabel_24:
+   \   0000001A   0x.... 0x....      BL       ?Subroutine7
+    269            LCD_PUTC(TimeH_l, LineDigits, (sTime.hour_l + 0x30));
+    270          
+    271            /* Display separator */
+    272            LCD_PUTC(TimeH_sep, LineDigits, ':');
+   \                     ??CrossCallReturnLabel_26:
+   \   0000001E   0x223A             MOVS     R2,#+58
+   \   00000020   0x2134             MOVS     R1,#+52
+   \   00000022   0x202D             MOVS     R0,#+45
+   \   00000024   0x.... 0x....      BL       LCD_PUTC
+    273          
+    274            /* Display minutes */
+    275            sTime.min_h = (uint8_t)(((TimeVar) % 3600) / 60) / 10;
+   \   00000028   0x.... 0x....      BL       ?Subroutine8
+    276            LCD_PUTC(TimeM_h, LineDigits, (sTime.min_h + 0x30));
+    277            sTime.min_l = (uint8_t)(((TimeVar) % 3600) / 60) % 10;
+   \                     ??CrossCallReturnLabel_28:
+   \   0000002C   0x.... 0x....      BL       ?Subroutine9
+    278            LCD_PUTC(TimeM_l, LineDigits, (sTime.min_l + 0x30));
+   \                     ??CrossCallReturnLabel_29:
+   \   00000030   0x.... 0x....      BL       LCD_PUTC
+    279          
+    280            /* Display separator */
+    281            LCD_PUTC(TimeM_sep, LineDigits, ':');
+   \   00000034   0x223A             MOVS     R2,#+58
+   \   00000036   0x2134             MOVS     R1,#+52
+   \   00000038   0x203F             MOVS     R0,#+63
+   \   0000003A   0x....             B.N      ?Subroutine0
+    282          
+    283            /* Display seconds */
+    284            sTime.sec_h = (uint8_t)(((TimeVar) % 3600) % 60) / 10;
+    285            LCD_PUTC(TimeS_h, LineDigits, (sTime.sec_h + 0x30));
+    286            sTime.sec_l = (uint8_t)(((TimeVar) % 3600) % 60) % 10;
+    287            LCD_PUTC(TimeS_l, LineDigits, (sTime.sec_l + 0x30));
+    288          }
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine0:
+   \   00000000   0x.... 0x....      BL       LCD_PUTC
+   \   00000004   0xFB07 0x8716      MLS      R7,R7,R6,R8
+   \   00000008   0xB2FF             UXTB     R7,R7
+   \   0000000A   0xFB97 0xF6F5      SDIV     R6,R7,R5
+   \   0000000E   0x7066             STRB     R6,[R4, #+1]
+   \   00000010   0x7860             LDRB     R0,[R4, #+1]
+   \   00000012   0x.... 0x....      BL       ??Subroutine18_0
+   \                     ??CrossCallReturnLabel_55:
+   \   00000016   0x2045             MOVS     R0,#+69
+   \   00000018   0x.... 0x....      BL       LCD_PUTC
+   \   0000001C   0xFB05 0x7016      MLS      R0,R5,R6,R7
+   \   00000020   0x7020             STRB     R0,[R4, #+0]
+   \   00000022   0x7820             LDRB     R0,[R4, #+0]
+   \   00000024   0x.... 0x....      BL       ??Subroutine18_0
+   \                     ??CrossCallReturnLabel_56:
+   \   00000028   0x204B             MOVS     R0,#+75
+   \   0000002A   0xE8BD 0x43F8      POP      {R3-R9,LR}
+   \   0000002E   0x.... 0x....      B.W      LCD_PUTC
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ??Subroutine18_0:
+   \   00000000   0xF100 0x0230      ADD      R2,R0,#+48
+   \   00000004   0xB2D2             UXTB     R2,R2
+   \   00000006   0x2134             MOVS     R1,#+52
+   \   00000008   0x4770             BX       LR
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine9:
+   \   00000000   0xFB05 0x6019      MLS      R0,R5,R9,R6
+   \   00000004   0x70A0             STRB     R0,[R4, #+2]
+   \   00000006   0x78A0             LDRB     R0,[R4, #+2]
+   \   00000008   0xF100 0x0230      ADD      R2,R0,#+48
+   \   0000000C   0xB2D2             UXTB     R2,R2
+   \   0000000E   0x2134             MOVS     R1,#+52
+   \   00000010   0x2039             MOVS     R0,#+57
+   \   00000012   0x4770             BX       LR
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine8:
+   \   00000000   0xFB07 0x8816      MLS      R8,R7,R6,R8
+   \   00000004   0x273C             MOVS     R7,#+60
+   \   00000006   0xFBB8 0xF6F7      UDIV     R6,R8,R7
+   \   0000000A   0xB2F6             UXTB     R6,R6
+   \   0000000C   0xFB96 0xF9F5      SDIV     R9,R6,R5
+   \   00000010   0xF884 0x9003      STRB     R9,[R4, #+3]
+   \   00000014   0x78E0             LDRB     R0,[R4, #+3]
+   \   00000016   0xF100 0x0230      ADD      R2,R0,#+48
+   \   0000001A   0xB2D2             UXTB     R2,R2
+   \   0000001C   0x2134             MOVS     R1,#+52
+   \   0000001E   0x2033             MOVS     R0,#+51
+   \   00000020   0x.... 0x....      B.W      LCD_PUTC
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine7:
+   \   00000000   0xFBB6 0xF0F5      UDIV     R0,R6,R5
+   \   00000004   0xFB05 0x6010      MLS      R0,R5,R0,R6
+   \   00000008   0x7120             STRB     R0,[R4, #+4]
+   \   0000000A   0x7920             LDRB     R0,[R4, #+4]
+   \   0000000C   0xF100 0x0230      ADD      R2,R0,#+48
+   \   00000010   0xB2D2             UXTB     R2,R2
+   \   00000012   0x2134             MOVS     R1,#+52
+   \   00000014   0x2027             MOVS     R0,#+39
+   \   00000016   0x.... 0x....      B.W      LCD_PUTC
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine6:
+   \   00000000   0x250A             MOVS     R5,#+10
+   \   00000002   0xB2F0             UXTB     R0,R6
+   \   00000004   0xFB90 0xF0F5      SDIV     R0,R0,R5
+   \   00000008   0x7160             STRB     R0,[R4, #+5]
+   \   0000000A   0x7960             LDRB     R0,[R4, #+5]
+   \   0000000C   0xF100 0x0230      ADD      R2,R0,#+48
+   \   00000010   0xB2D2             UXTB     R2,R2
+   \   00000012   0x2134             MOVS     R1,#+52
+   \   00000014   0x2021             MOVS     R0,#+33
+   \   00000016   0x.... 0x....      B.W      LCD_PUTC
+    289          
+    290          /*******************************************************************************
+    291          * Function Name  : Time_Regulate
+    292          * Description    : Returns the time entered by user with joystick navigation keys.
+    293          * Input          : None
+    294          * Output         : None
+    295          * Return         : Current time RTC counter value
+    296          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    297          uint32_t Time_Regulate(void)
+    298          {
+   \                     Time_Regulate:
+   \   00000000   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+    299            uint32_t Tmp_HH, Tmp_MM, Tmp_SS;
+    300          
+    301            /* Read hours */
+    302            Tmp_HH = ReadDigit(TimeH_h, sTime.hour_h, 0x2, 0x0);
+   \   00000004   0x.... 0x....      LDR.W    R4,??DataTable35_2
+   \   00000008   0x2300             MOVS     R3,#+0
+   \   0000000A   0x2202             MOVS     R2,#+2
+   \   0000000C   0x7961             LDRB     R1,[R4, #+5]
+   \   0000000E   0x2021             MOVS     R0,#+33
+   \   00000010   0x.... 0x....      BL       ReadDigit
+   \   00000014   0x4606             MOV      R6,R0
+    303            if(Tmp_HH == 2)
+   \   00000016   0x7921             LDRB     R1,[R4, #+4]
+   \   00000018   0x250A             MOVS     R5,#+10
+   \   0000001A   0x2E02             CMP      R6,#+2
+   \   0000001C   0xD10B             BNE.N    ??Time_Regulate_0
+    304            {
+    305              if(sTime.hour_l > 3)
+   \   0000001E   0x2904             CMP      R1,#+4
+   \   00000020   0xBF24             ITT      CS 
+   \   00000022   0x2000             MOVCS    R0,#+0
+   \   00000024   0x7120             STRBCS   R0,[R4, #+4]
+    306              {
+    307                sTime.hour_l = 0;
+    308              }
+    309              Tmp_HH = Tmp_HH*10 + ReadDigit(TimeH_l, sTime.hour_l, 0x3, 0x0);
+   \   00000026   0x2300             MOVS     R3,#+0
+   \   00000028   0x2203             MOVS     R2,#+3
+   \   0000002A   0x7921             LDRB     R1,[R4, #+4]
+   \   0000002C   0x.... 0x....      BL       ??Subroutine13_0
+    310            }
+   \                     ??CrossCallReturnLabel_36:
+   \   00000030   0xF100 0x0614      ADD      R6,R0,#+20
+   \   00000034   0xE003             B.N      ??Time_Regulate_1
+    311            else
+    312            {
+    313              Tmp_HH = Tmp_HH*10 + ReadDigit(TimeH_l, sTime.hour_l, 0x9, 0x0);
+   \                     ??Time_Regulate_0:
+   \   00000036   0x.... 0x....      BL       ?Subroutine13
+    314            }
+   \                     ??CrossCallReturnLabel_38:
+   \   0000003A   0xFB05 0x0606      MLA      R6,R5,R6,R0
+    315            /* Read minutes */
+    316            Tmp_MM = ReadDigit(TimeM_h, sTime.min_h, 0x5, 0x0);
+   \                     ??Time_Regulate_1:
+   \   0000003E   0x2300             MOVS     R3,#+0
+   \   00000040   0x2205             MOVS     R2,#+5
+   \   00000042   0x78E1             LDRB     R1,[R4, #+3]
+   \   00000044   0x2033             MOVS     R0,#+51
+   \   00000046   0x.... 0x....      BL       ReadDigit
+   \   0000004A   0x4607             MOV      R7,R0
+    317            Tmp_MM = Tmp_MM*10 + ReadDigit(TimeM_l, sTime.min_l, 0x9, 0x0);
+   \   0000004C   0x2300             MOVS     R3,#+0
+   \   0000004E   0x2209             MOVS     R2,#+9
+   \   00000050   0x78A1             LDRB     R1,[R4, #+2]
+   \   00000052   0x2039             MOVS     R0,#+57
+   \   00000054   0x.... 0x....      BL       ReadDigit
+   \   00000058   0x4680             MOV      R8,R0
+    318            /* Read seconds */
+    319            Tmp_SS = ReadDigit(TimeS_h, sTime.sec_h, 0x5, 0x0);
+   \   0000005A   0x2300             MOVS     R3,#+0
+   \   0000005C   0x2205             MOVS     R2,#+5
+   \   0000005E   0x7861             LDRB     R1,[R4, #+1]
+   \   00000060   0x2045             MOVS     R0,#+69
+   \   00000062   0x.... 0x....      BL       ReadDigit
+    320            Tmp_SS = Tmp_SS*10 + ReadDigit(TimeS_l, sTime.sec_l, 0x9, 0x0);
+    321          
+    322            /* Return the value that to be stored in RTC counter register */
+    323            return((Tmp_HH*3600 + Tmp_MM*60 + Tmp_SS));
+   \   00000066   0xF44F 0x6161      MOV      R1,#+3600
+   \   0000006A   0xFB05 0x8207      MLA      R2,R5,R7,R8
+   \   0000006E   0x233C             MOVS     R3,#+60
+   \   00000070   0x435A             MULS     R2,R3,R2
+   \   00000072   0xFB01 0x2106      MLA      R1,R1,R6,R2
+   \   00000076   0xFB05 0x1500      MLA      R5,R5,R0,R1
+   \   0000007A   0x2300             MOVS     R3,#+0
+   \   0000007C   0x2209             MOVS     R2,#+9
+   \   0000007E   0x7821             LDRB     R1,[R4, #+0]
+   \   00000080   0x204B             MOVS     R0,#+75
+   \   00000082   0x.... 0x....      BL       ReadDigit
+   \   00000086   0x1940             ADDS     R0,R0,R5
+   \   00000088   0xE8BD 0x81F0      POP      {R4-R8,PC}       ;; return
+    324          }
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine13:
+   \   00000000   0x2300             MOVS     R3,#+0
+   \   00000002   0x2209             MOVS     R2,#+9
+   \                     ??Subroutine13_0:
+   \   00000004   0x2027             MOVS     R0,#+39
+   \   00000006   0x....             B.N      ReadDigit
+    325          
+    326          /*******************************************************************************
+    327          * Function Name  : RTCHelp
+    328          * Description    : Prints hint to the screen.
+    329          * Input          : None
+    330          * Output         : None
+    331          * Return         : None
+    332          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    333          void RTCHelp(void)
+    334          {
+   \                     RTCHelp:
+   \   00000000   0xB580             PUSH     {R7,LR}
+    335            LCD_PUTS(0, LineMessage1, "RTC is not configured");
+   \   00000002   0x.... 0x....      ADR.W    R2,`?<Constant "RTC is not configured">`
+   \   00000006   0x210C             MOVS     R1,#+12
+   \   00000008   0x.... 0x....      BL       ??Subroutine4_1
+    336            LCD_PUTS(0, LineMessage2, "Please, use the ");
+   \                     ??CrossCallReturnLabel_14:
+   \   0000000C   0x.... 0x....      ADR.W    R2,`?<Constant "Please, use the ">`
+   \   00000010   0x2116             MOVS     R1,#+22
+   \   00000012   0x.... 0x....      BL       ??Subroutine4_1
+    337            LCD_PUTS(0, LineMessage3, "Time Adjust menu.    ");
+   \                     ??CrossCallReturnLabel_13:
+   \   00000016   0x.... 0x....      ADR.W    R2,`?<Constant "Time Adjust menu.    ">`
+   \   0000001A   0x2120             MOVS     R1,#+32
+   \   0000001C   0x.... 0x....      BL       ??Subroutine4_1
+    338            WAIT_UNTIL_KEY_PRESSED(SEL);
+   \                     ??CrossCallReturnLabel_12:
+   \   00000020   0x.... 0x....      BL       GetKey
+   \   00000024   0x2800             CMP      R0,#+0
+   \   00000026   0xD1FB             BNE.N    ??CrossCallReturnLabel_12
+    339            WAIT_UNTIL_KEY_RELEASED(SEL);
+   \                     ??RTCHelp_0:
+   \   00000028   0x.... 0x....      BL       GetKey
+   \   0000002C   0x2800             CMP      R0,#+0
+   \   0000002E   0xD0FB             BEQ.N    ??RTCHelp_0
+    340          }
+   \   00000030   0xBD01             POP      {R0,PC}          ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine4:
+   \   00000000   0x.... 0x....      ADR.W    R2,`?<Constant "DATE  DD.MM.YYYY">`
+   \                     ??Subroutine4_0:
+   \   00000004   0x212A             MOVS     R1,#+42
+   \                     ??Subroutine4_1:
+   \   00000006   0x2000             MOVS     R0,#+0
+   \   00000008   0x.... 0x....      B.W      LCD_PUTS
+    341          
+    342          /*******************************************************************************
+    343          * Function Name  : TimePreAdjustFunc
+    344          * Description    : Enables the user to adjust current time with joystick keys.
+    345          * Input          : None
+    346          * Output         : None
+    347          * Return         : None
+    348          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    349          void TimePreAdjustFunc(void)
+    350          {
+   \                     TimePreAdjustFunc:
+   \   00000000   0xE92D 0x47F0      PUSH     {R4-R10,LR}
+    351            sFONT *OldFont = CurrentFont;
+   \   00000004   0x.... 0x....      BL       ?Subroutine14
+    352            LCD_Method OldMethod = CurrentMethod;
+    353          
+    354            /* Print the header */
+    355            LCD_CLS();
+    356            CurrentMethod = MET_AND;
+   \                     ??CrossCallReturnLabel_43:
+   \   00000008   0x.... 0x....      BL       ?Subroutine3
+    357            CurrentFont = &Font_6x8;
+    358            DisplayMenuTitle("Time adjust");
+   \                     ??CrossCallReturnLabel_0:
+   \   0000000C   0x.... 0x....      ADR.W    R0,`?<Constant "Time adjust">`
+   \   00000010   0x.... 0x....      BL       DisplayMenuTitle
+    359            WAIT_UNTIL_KEY_RELEASED(SEL);
+   \                     ??TimePreAdjustFunc_0:
+   \   00000014   0x.... 0x....      BL       GetKey
+   \   00000018   0x2800             CMP      R0,#+0
+   \   0000001A   0xD0FB             BEQ.N    ??TimePreAdjustFunc_0
+    360          
+    361            if((MDR_BKP->REG_00 != 0x1234) || (MDR_BKP->RTC_PRL != RTC_PRESCALER_VALUE))
+   \   0000001C   0x.... 0x....      ADR.W    R8,`?<Constant "        TIME        ">`
+   \   00000020   0xF241 0x2934      MOVW     R9,#+4660
+   \   00000024   0x.... 0x....      LDR.W    R10,??DataTable35_3  ;; 0x400d8000
+   \   00000028   0xF8DA 0x0000      LDR      R0,[R10, #+0]
+   \   0000002C   0x4548             CMP      R0,R9
+   \   0000002E   0xBF04             ITT      EQ 
+   \   00000030   0xF8DA 0x0048      LDREQ    R0,[R10, #+72]
+   \   00000034   0xF5B0 0x4F00      CMPEQ    R0,#+32768
+   \   00000038   0xD01E             BEQ.N    ??TimePreAdjustFunc_1
+    362            {
+    363              LCD_PUTS(0, LineTitle, "RTC is configured...");
+   \   0000003A   0x.... 0x....      ADR.W    R2,`?<Constant "RTC is configured...">`
+   \   0000003E   0x.... 0x....      BL       ??Subroutine4_0
+    364              /* Reset Backup Domain */
+    365              /* RTC reset */
+    366              BKP_RTC_Reset(ENABLE);
+   \                     ??CrossCallReturnLabel_18:
+   \   00000042   0x2001             MOVS     R0,#+1
+   \   00000044   0x.... 0x....      BL       BKP_RTC_Reset
+    367              BKP_RTC_Reset(DISABLE);
+   \   00000048   0x2000             MOVS     R0,#+0
+   \   0000004A   0x.... 0x....      BL       BKP_RTC_Reset
+    368              /* RTC Configuration */
+    369              RTC_Configuration();
+   \   0000004E   0x.... 0x....      BL       RTC_Configuration
+    370              /* Set the RTC counter value */
+    371              BKP_RTC_SetCounter(0);
+   \   00000052   0x2000             MOVS     R0,#+0
+   \   00000054   0x.... 0x....      BL       BKP_RTC_SetCounter
+    372              /* Wait until last write operation on RTC registers has finished */
+    373              BKP_RTC_WaitForUpdate();
+   \   00000058   0x.... 0x....      BL       BKP_RTC_WaitForUpdate
+    374          
+    375              LCD_PUTS(0, LineTitle, "        TIME        ");
+   \   0000005C   0x4642             MOV      R2,R8
+   \   0000005E   0x.... 0x....      BL       ??Subroutine4_0
+    376          
+    377              /* Display the current time */
+    378              Time_Display();
+   \                     ??CrossCallReturnLabel_17:
+   \   00000062   0x.... 0x....      BL       Time_Display
+    379          
+    380              /* Change the current time */
+    381              BKP_RTC_SetCounter(Time_Regulate());
+   \   00000066   0x.... 0x....      BL       Time_Regulate
+   \   0000006A   0x.... 0x....      BL       BKP_RTC_SetCounter
+    382              /* Wait until last write operation on RTC registers has finished */
+    383              BKP_RTC_WaitForUpdate();
+   \   0000006E   0x.... 0x....      BL       BKP_RTC_WaitForUpdate
+    384          
+    385              MDR_BKP->REG_00 = 0x1234;
+   \   00000072   0xF8CA 0x9000      STR      R9,[R10, #+0]
+    386              /* Wait until last write operation on RTC registers has finished */
+    387              BKP_RTC_WaitForUpdate();
+   \   00000076   0xE008             B.N      ??TimePreAdjustFunc_2
+    388            }
+    389            else
+    390            {
+    391              LCD_PUTS(0, LineTitle, "        TIME        ");
+   \                     ??TimePreAdjustFunc_1:
+   \   00000078   0x4642             MOV      R2,R8
+   \   0000007A   0x.... 0x....      BL       ??Subroutine4_0
+    392          
+    393              /* Display the current time */
+    394              Time_Display();
+   \                     ??CrossCallReturnLabel_16:
+   \   0000007E   0x.... 0x....      BL       Time_Display
+    395          
+    396              /* Change the current time */
+    397              BKP_RTC_SetCounter(Time_Regulate());
+   \   00000082   0x.... 0x....      BL       Time_Regulate
+   \   00000086   0x.... 0x....      BL       BKP_RTC_SetCounter
+    398              /* Wait until last write operation on RTC registers has finished */
+    399              BKP_RTC_WaitForUpdate();
+   \                     ??TimePreAdjustFunc_2:
+   \   0000008A   0x.... 0x....      BL       BKP_RTC_WaitForUpdate
+    400            }
+    401            CurrentMethod = OldMethod;
+   \   0000008E   0x7037             STRB     R7,[R6, #+0]
+    402            CurrentFont = OldFont;
+   \   00000090   0x6025             STR      R5,[R4, #+0]
+    403          }
+   \   00000092   0xE8BD 0x87F0      POP      {R4-R10,PC}      ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine14:
+   \   00000000   0x.... 0x....      LDR.W    R4,??DataTable35_6
+   \   00000004   0x6825             LDR      R5,[R4, #+0]
+   \   00000006   0x....             LDR.N    R6,??DataTable35_1
+   \   00000008   0x7837             LDRB     R7,[R6, #+0]
+   \   0000000A   0x.... 0x....      B.W      LCD_CLS
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine3:
+   \   00000000   0x2004             MOVS     R0,#+4
+   \   00000002   0x7030             STRB     R0,[R6, #+0]
+   \   00000004   0x....             LDR.N    R0,??DataTable35_7
+   \   00000006   0x6020             STR      R0,[R4, #+0]
+   \   00000008   0x4770             BX       LR
+    404          
+    405          /*******************************************************************************
+    406          * Function Name  : TimeAdjustFunc
+    407          * Description    : Adjust time menu item handler
+    408          * Input          : None
+    409          * Output         : None
+    410          * Return         : None
+    411          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    412          void TimeAdjustFunc(void)
+    413          {
+   \                     TimeAdjustFunc:
+   \   00000000   0xB580             PUSH     {R7,LR}
+    414            TimePreAdjustFunc();
+   \   00000002   0x.... 0x....      BL       TimePreAdjustFunc
+    415            /* Display the menu */
+    416            DisplayMenu();
+   \   00000006   0x....             B.N      ?Subroutine2
+    417          }
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine2:
+   \   00000000   0xE8BD 0x4001      POP      {R0,LR}
+   \   00000004   0x.... 0x....      B.W      DisplayMenu
+    418          
+    419          /*******************************************************************************
+    420          * Function Name  : TimeShowFunc
+    421          * Description    : Displays the current time (HH:MM:SS) on LCD.
+    422          * Input          : None
+    423          * Output         : None
+    424          * Return         : None
+    425          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    426          void TimeShowFunc(void)
+    427          {
+   \                     TimeShowFunc:
+   \   00000000   0xB5F8             PUSH     {R3-R7,LR}
+    428            sFONT *OldFont = CurrentFont;
+   \   00000002   0x.... 0x....      BL       ?Subroutine14
+    429            LCD_Method OldMethod = CurrentMethod;
+    430          
+    431            /* Print the header */
+    432            LCD_CLS();
+    433            CurrentMethod = MET_AND;
+   \                     ??CrossCallReturnLabel_42:
+   \   00000006   0x.... 0x....      BL       ?Subroutine3
+    434            CurrentFont = &Font_6x8;
+    435            DisplayMenuTitle("Time show");
+   \                     ??CrossCallReturnLabel_1:
+   \   0000000A   0x.... 0x....      ADR.W    R0,`?<Constant "Time show">`
+   \   0000000E   0x.... 0x....      BL       DisplayMenuTitle
+    436            WAIT_UNTIL_KEY_RELEASED(SEL);
+   \                     ??TimeShowFunc_0:
+   \   00000012   0x.... 0x....      BL       GetKey
+   \   00000016   0x2800             CMP      R0,#+0
+   \   00000018   0xD0FB             BEQ.N    ??TimeShowFunc_0
+    437          
+    438            if((MDR_BKP->REG_00 != 0x1234) || (MDR_BKP->RTC_PRL != RTC_PRESCALER_VALUE))
+   \   0000001A   0x.... 0x....      BL       ?Subroutine16
+   \                     ??CrossCallReturnLabel_46:
+   \   0000001E   0xBF04             ITT      EQ 
+   \   00000020   0x6C80             LDREQ    R0,[R0, #+72]
+   \   00000022   0xF5B0 0x4F00      CMPEQ    R0,#+32768
+   \   00000026   0xD002             BEQ.N    ??TimeShowFunc_1
+    439            {
+    440              RTCHelp();
+   \   00000028   0x.... 0x....      BL       RTCHelp
+   \   0000002C   0xE00E             B.N      ??TimeShowFunc_2
+    441            }
+    442            else
+    443            {
+    444              LCD_PUTS(0, LineTitle, "        TIME        ");
+   \                     ??TimeShowFunc_1:
+   \   0000002E   0x.... 0x....      ADR.W    R2,`?<Constant "        TIME        ">`
+   \   00000032   0x.... 0x....      BL       ??Subroutine4_0
+   \                     ??CrossCallReturnLabel_15:
+   \   00000036   0xE001             B.N      ??TimeShowFunc_3
+    445              while (GetKey() != SEL)
+    446              {
+    447                /* Display the current time */
+    448                Time_Display();
+   \                     ??TimeShowFunc_4:
+   \   00000038   0x.... 0x....      BL       Time_Display
+    449              }
+   \                     ??TimeShowFunc_3:
+   \   0000003C   0x.... 0x....      BL       GetKey
+   \   00000040   0x2800             CMP      R0,#+0
+   \   00000042   0xD1F9             BNE.N    ??TimeShowFunc_4
+    450              WAIT_UNTIL_KEY_RELEASED(SEL);
+   \                     ??TimeShowFunc_5:
+   \   00000044   0x.... 0x....      BL       GetKey
+   \   00000048   0x2800             CMP      R0,#+0
+   \   0000004A   0xD0FB             BEQ.N    ??TimeShowFunc_5
+    451            }
+    452          
+    453            CurrentMethod = OldMethod;
+   \                     ??TimeShowFunc_2:
+   \   0000004C   0x....             B.N      ?Subroutine1
+    454            CurrentFont = OldFont;
+    455          
+    456            /* Display the menu */
+    457            DisplayMenu();
+    458          
+    459          }
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine1:
+   \   00000000   0x7037             STRB     R7,[R6, #+0]
+   \   00000002   0x6025             STR      R5,[R4, #+0]
+   \   00000004   0xE8BD 0x40F1      POP      {R0,R4-R7,LR}
+   \   00000008   0x.... 0x....      B.W      DisplayMenu
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine16:
+   \   00000000   0x....             LDR.N    R0,??DataTable35_3  ;; 0x400d8000
+   \   00000002   0x6801             LDR      R1,[R0, #+0]
+   \   00000004   0xF241 0x2234      MOVW     R2,#+4660
+   \   00000008   0x4291             CMP      R1,R2
+   \   0000000A   0x4770             BX       LR
+    460          
+    461          /*******************************************************************************
+    462          * Function Name  : IsLeapYear
+    463          * Description    : Check whether the passed year is Leap or not.
+    464          * Input          : nYear - Year value
+    465          * Output         : None
+    466          * Return         : 1: leap year
+    467          *                : 0: not leap year
+    468          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    469          static uint32_t IsLeapYear(uint32_t nYear)
+    470          {
+    471            if(nYear % 4 != 0) return 0;
+   \                     IsLeapYear:
+   \   00000000   0xF010 0x0F03      TST      R0,#0x3
+   \   00000004   0xD001             BEQ.N    ??IsLeapYear_0
+   \   00000006   0x2000             MOVS     R0,#+0
+   \   00000008   0x4770             BX       LR
+    472            if(nYear % 100 != 0) return 1;
+   \                     ??IsLeapYear_0:
+   \   0000000A   0x2164             MOVS     R1,#+100
+   \   0000000C   0xFBB0 0xF2F1      UDIV     R2,R0,R1
+   \   00000010   0xFB01 0x0112      MLS      R1,R1,R2,R0
+   \   00000014   0xB109             CBZ.N    R1,??IsLeapYear_1
+   \   00000016   0x2001             MOVS     R0,#+1
+   \   00000018   0x4770             BX       LR
+    473            return (uint8_t)(nYear % 400 == 0);
+   \                     ??IsLeapYear_1:
+   \   0000001A   0xF44F 0x71C8      MOV      R1,#+400
+   \   0000001E   0xFBB0 0xF2F1      UDIV     R2,R0,R1
+   \   00000022   0xFB01 0x0012      MLS      R0,R1,R2,R0
+   \   00000026   0x1E40             SUBS     R0,R0,#+1
+   \   00000028   0x4180             SBCS     R0,R0,R0
+   \   0000002A   0x0FC0             LSRS     R0,R0,#+31
+   \   0000002C   0x4770             BX       LR               ;; return
+    474          }
+    475          
+    476          /*******************************************************************************
+    477          * Function Name  : Date_Update
+    478          * Description    : Updates date when time is 23:59:59.
+    479          * Input          : None
+    480          * Output         : None
+    481          * Return         : None
+    482          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    483          void Date_Update(void)
+    484          {
+   \                     Date_Update:
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+    485            if(sDate.month == 1 || sDate.month == 3 || sDate.month == 5 || sDate.month == 7 ||
+    486               sDate.month == 8 || sDate.month == 10 || sDate.month == 12)
+   \   00000002   0x.... 0x....      LDR.W    R4,??DataTable35_4
+   \   00000006   0x7825             LDRB     R5,[R4, #+0]
+   \   00000008   0x7860             LDRB     R0,[R4, #+1]
+   \   0000000A   0x4606             MOV      R6,R0
+   \   0000000C   0x2801             CMP      R0,#+1
+   \   0000000E   0xBF18             IT       NE 
+   \   00000010   0x2E03             CMPNE    R6,#+3
+   \   00000012   0xD008             BEQ.N    ??Date_Update_0
+   \   00000014   0x2E05             CMP      R6,#+5
+   \   00000016   0xBF18             IT       NE 
+   \   00000018   0x2E07             CMPNE    R6,#+7
+   \   0000001A   0xD004             BEQ.N    ??Date_Update_0
+   \   0000001C   0x2E08             CMP      R6,#+8
+   \   0000001E   0xBF1C             ITT      NE 
+   \   00000020   0x2E0A             CMPNE    R6,#+10
+   \   00000022   0x2E0C             CMPNE    R6,#+12
+   \   00000024   0xD109             BNE.N    ??Date_Update_1
+    487            {
+    488              if(sDate.day < 31)
+   \                     ??Date_Update_0:
+   \   00000026   0x2D1F             CMP      R5,#+31
+   \   00000028   0xD31B             BCC.N    ??Date_Update_2
+    489              {
+    490                sDate.day++;
+    491              }
+    492              /* Date structure member: sDate.day = 31 */
+    493              else
+    494              {
+    495                if(sDate.month != 12)
+   \   0000002A   0x2E0C             CMP      R6,#+12
+   \   0000002C   0xD11D             BNE.N    ??Date_Update_3
+    496                {
+    497                  sDate.month++;
+    498                  sDate.day = 1;
+    499                }
+    500                /* Date structure member: sDate.day = 31 & sDate.month =12 */
+    501                else
+    502                {
+    503                  sDate.month = 1;
+   \   0000002E   0x2601             MOVS     R6,#+1
+    504                  sDate.day = 1;
+   \   00000030   0x2501             MOVS     R5,#+1
+    505                  sDate.year++;
+   \   00000032   0x8860             LDRH     R0,[R4, #+2]
+   \   00000034   0x1C40             ADDS     R0,R0,#+1
+   \   00000036   0x8060             STRH     R0,[R4, #+2]
+   \   00000038   0xE019             B.N      ??Date_Update_4
+    506                }
+    507              }
+    508            }
+    509            else if(sDate.month == 4 || sDate.month == 6 || sDate.month == 9 ||
+    510                    sDate.month == 11)
+   \                     ??Date_Update_1:
+   \   0000003A   0x2E04             CMP      R6,#+4
+   \   0000003C   0xBF18             IT       NE 
+   \   0000003E   0x2E06             CMPNE    R6,#+6
+   \   00000040   0xD003             BEQ.N    ??Date_Update_5
+   \   00000042   0x2E09             CMP      R6,#+9
+   \   00000044   0xBF18             IT       NE 
+   \   00000046   0x2E0B             CMPNE    R6,#+11
+   \   00000048   0xD102             BNE.N    ??Date_Update_6
+    511            {
+    512              if(sDate.day < 30)
+   \                     ??Date_Update_5:
+   \   0000004A   0x2D1E             CMP      R5,#+30
+   \   0000004C   0xD20D             BCS.N    ??Date_Update_3
+   \   0000004E   0xE008             B.N      ??Date_Update_2
+    513              {
+    514                sDate.day++;
+    515              }
+    516              /* Date structure member: sDate.day = 30 */
+    517              else
+    518              {
+    519                sDate.month++;
+    520                sDate.day = 1;
+    521              }
+    522            }
+    523            else if(sDate.month == 2)
+   \                     ??Date_Update_6:
+   \   00000050   0x2E02             CMP      R6,#+2
+   \   00000052   0xD10C             BNE.N    ??Date_Update_4
+    524            {
+    525              if(sDate.day < 28)
+   \   00000054   0x2D1C             CMP      R5,#+28
+   \   00000056   0xD304             BCC.N    ??Date_Update_2
+    526              {
+    527                sDate.day++;
+    528              }
+    529              else if(sDate.day == 28)
+   \   00000058   0xD105             BNE.N    ??Date_Update_7
+    530              {
+    531                /* Leap year */
+    532                if(IsLeapYear(sDate.year))
+   \   0000005A   0x8860             LDRH     R0,[R4, #+2]
+   \   0000005C   0x.... 0x....      BL       IsLeapYear
+   \   00000060   0xB118             CBZ.N    R0,??Date_Update_3
+    533                {
+    534                  sDate.day++;
+   \                     ??Date_Update_2:
+   \   00000062   0x1C6D             ADDS     R5,R5,#+1
+   \   00000064   0xE003             B.N      ??Date_Update_4
+    535                }
+    536                else
+    537                {
+    538                  sDate.month++;
+    539                  sDate.day = 1;
+    540                }
+    541              }
+    542              else if(sDate.day == 29)
+   \                     ??Date_Update_7:
+   \   00000066   0x2D1D             CMP      R5,#+29
+   \   00000068   0xD101             BNE.N    ??Date_Update_4
+    543              {
+    544                sDate.month++;
+   \                     ??Date_Update_3:
+   \   0000006A   0x1C76             ADDS     R6,R6,#+1
+    545                sDate.day = 1;
+   \   0000006C   0x2501             MOVS     R5,#+1
+   \                     ??Date_Update_4:
+   \   0000006E   0x7066             STRB     R6,[R4, #+1]
+   \   00000070   0x7025             STRB     R5,[R4, #+0]
+    546              }
+    547            }
+    548          
+    549            MDR_BKP->REG_01 = sDate.year + (sDate.month << 16) + (sDate.day << 24);
+   \   00000072   0x8860             LDRH     R0,[R4, #+2]
+   \   00000074   0x7861             LDRB     R1,[R4, #+1]
+   \   00000076   0xEB00 0x4001      ADD      R0,R0,R1, LSL #+16
+   \   0000007A   0x7821             LDRB     R1,[R4, #+0]
+   \   0000007C   0xEB00 0x6001      ADD      R0,R0,R1, LSL #+24
+   \   00000080   0x.... 0x....      LDR.W    R1,??DataTable35_5  ;; 0x400d8004
+   \   00000084   0x6008             STR      R0,[R1, #+0]
+    550            /* Wait until last write operation on RTC registers has finished */
+    551            BKP_RTC_WaitForUpdate();
+   \   00000086   0xE8BD 0x4070      POP      {R4-R6,LR}
+   \   0000008A   0x.... 0x....      B.W      BKP_RTC_WaitForUpdate
+    552          }
+    553          
+    554          /*******************************************************************************
+    555          * Function Name  : IsValidDate
+    556          * Description    : Checks if the given date valid.
+    557          * Input          : Day   - Day value
+    558          *                : Month - Month value
+    559          *                : Year  - Year value
+    560          * Input          : None
+    561          * Output         : None
+    562          * Return         : SUCCESS if the date is valid, ERROR otherwise.
+    563          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    564          ErrorStatus IsValidDate(uint32_t Day, uint32_t Month, uint32_t Year)
+    565          {
+   \                     IsValidDate:
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0x4610             MOV      R0,R2
+    566            if(Day == 0 || Month == 0 || Month > 12 || Year == 0)
+   \   00000006   0xBF18             IT       NE 
+   \   00000008   0x2900             CMPNE    R1,#+0
+   \   0000000A   0xD026             BEQ.N    ??IsValidDate_0
+   \   0000000C   0x290D             CMP      R1,#+13
+   \   0000000E   0xD224             BCS.N    ??IsValidDate_0
+   \   00000010   0xB318             CBZ.N    R0,??IsValidDate_0
+    567            {
+    568              return ERROR;
+    569            }
+    570            if((Month == 1 || Month == 3 || Month == 5 || Month == 7 ||
+    571               Month == 8 || Month == 10 || Month == 12) && (Day > 31))
+   \   00000012   0x2901             CMP      R1,#+1
+   \   00000014   0xBF18             IT       NE 
+   \   00000016   0x2903             CMPNE    R1,#+3
+   \   00000018   0xD008             BEQ.N    ??IsValidDate_1
+   \   0000001A   0x2905             CMP      R1,#+5
+   \   0000001C   0xBF18             IT       NE 
+   \   0000001E   0x2907             CMPNE    R1,#+7
+   \   00000020   0xD004             BEQ.N    ??IsValidDate_1
+   \   00000022   0x2908             CMP      R1,#+8
+   \   00000024   0xBF1C             ITT      NE 
+   \   00000026   0x290A             CMPNE    R1,#+10
+   \   00000028   0x290C             CMPNE    R1,#+12
+   \   0000002A   0xD101             BNE.N    ??IsValidDate_2
+   \                     ??IsValidDate_1:
+   \   0000002C   0x2C20             CMP      R4,#+32
+   \   0000002E   0xD214             BCS.N    ??IsValidDate_0
+    572            {
+    573              return ERROR;
+    574            }
+    575            if((Month == 4 || Month == 6 || Month == 9 || Month == 11) && (Day > 30))
+   \                     ??IsValidDate_2:
+   \   00000030   0x2904             CMP      R1,#+4
+   \   00000032   0xBF18             IT       NE 
+   \   00000034   0x2906             CMPNE    R1,#+6
+   \   00000036   0xD003             BEQ.N    ??IsValidDate_3
+   \   00000038   0x2909             CMP      R1,#+9
+   \   0000003A   0xBF18             IT       NE 
+   \   0000003C   0x290B             CMPNE    R1,#+11
+   \   0000003E   0xD101             BNE.N    ??IsValidDate_4
+   \                     ??IsValidDate_3:
+   \   00000040   0x2C1F             CMP      R4,#+31
+   \   00000042   0xD20A             BCS.N    ??IsValidDate_0
+    576            {
+    577              return ERROR;
+    578            }
+    579            if(Month == 2)
+   \                     ??IsValidDate_4:
+   \   00000044   0x2902             CMP      R1,#+2
+   \   00000046   0xD104             BNE.N    ??IsValidDate_5
+    580            {
+    581              if (IsLeapYear(Year))
+   \   00000048   0x.... 0x....      BL       IsLeapYear
+   \   0000004C   0xB118             CBZ.N    R0,??IsValidDate_6
+    582              {
+    583                if (Day > 29)
+   \   0000004E   0x2C1E             CMP      R4,#+30
+   \   00000050   0xD203             BCS.N    ??IsValidDate_0
+    584                return ERROR;
+    585              }
+    586              else
+    587              {
+    588                if (Day > 28)
+    589                return ERROR;
+    590              }
+    591            }
+    592            return SUCCESS;
+   \                     ??IsValidDate_5:
+   \   00000052   0x2001             MOVS     R0,#+1
+   \   00000054   0xBD10             POP      {R4,PC}          ;; return
+   \                     ??IsValidDate_6:
+   \   00000056   0x2C1D             CMP      R4,#+29
+   \   00000058   0xD3FB             BCC.N    ??IsValidDate_5
+   \                     ??IsValidDate_0:
+   \   0000005A   0x2000             MOVS     R0,#+0
+   \   0000005C   0xBD10             POP      {R4,PC}
+    593          }
+    594          
+    595          /*******************************************************************************
+    596          * Function Name  : Date_Display
+    597          * Description    : Displays the current date.
+    598          * Input          : None
+    599          * Output         : None
+    600          * Return         : None
+    601          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    602          void Date_Display(void)
+    603          {
+   \                     Date_Display:
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+    604            uint8_t tmp;
+    605            uint32_t temp_date;
+    606          
+    607            /* Initialize Date structure */
+    608            temp_date   = MDR_BKP->REG_01;
+   \   00000002   0x.... 0x....      LDR.W    R0,??DataTable35_5  ;; 0x400d8004
+   \   00000006   0x6800             LDR      R0,[R0, #+0]
+    609            sDate.day   = temp_date >> 24;
+   \   00000008   0x.... 0x....      LDR.W    R4,??DataTable35_4
+   \   0000000C   0x.... 0x....      BL       ?Subroutine17
+    610            sDate.month = (temp_date >> 16) & 0xFF;
+    611            sDate.year  = temp_date & 0xFFFF;
+    612          
+    613            /* Display day */
+    614            tmp = (uint8_t)(sDate.day / 10);
+    615            LCD_PUTC(DateD_h, LineDigits, (tmp + 0x30));
+   \                     ??CrossCallReturnLabel_50:
+   \   00000010   0x250A             MOVS     R5,#+10
+   \   00000012   0x7820             LDRB     R0,[R4, #+0]
+   \   00000014   0xFB90 0xF0F5      SDIV     R0,R0,R5
+   \   00000018   0x.... 0x....      BL       ??Subroutine18_0
+   \                     ??CrossCallReturnLabel_52:
+   \   0000001C   0x2025             MOVS     R0,#+37
+   \   0000001E   0x.... 0x....      BL       LCD_PUTC
+    616            tmp = (uint8_t)(sDate.day % 10);
+   \   00000022   0x7820             LDRB     R0,[R4, #+0]
+    617            LCD_PUTC(DateD_l, LineDigits, (tmp + 0x30));
+   \   00000024   0x.... 0x....      BL       ?Subroutine10
+   \                     ??CrossCallReturnLabel_57:
+   \   00000028   0x202B             MOVS     R0,#+43
+   \   0000002A   0x.... 0x....      BL       LCD_PUTC
+    618          
+    619            /* Display separator */
+    620            LCD_PUTC(DateD_sep, LineDigits, '.');
+   \   0000002E   0x222E             MOVS     R2,#+46
+   \   00000030   0x2134             MOVS     R1,#+52
+   \   00000032   0x2031             MOVS     R0,#+49
+   \   00000034   0x.... 0x....      BL       LCD_PUTC
+    621          
+    622            /* Display month */
+    623            tmp = (uint8_t)(sDate.month / 10);
+    624            LCD_PUTC(DateM_h, LineDigits, (tmp + 0x30));
+   \   00000038   0x7860             LDRB     R0,[R4, #+1]
+   \   0000003A   0xFB90 0xF0F5      SDIV     R0,R0,R5
+   \   0000003E   0x.... 0x....      BL       ??Subroutine18_0
+   \                     ??CrossCallReturnLabel_53:
+   \   00000042   0x2037             MOVS     R0,#+55
+   \   00000044   0x.... 0x....      BL       LCD_PUTC
+    625            tmp = (uint8_t)(sDate.month % 10);
+   \   00000048   0x7860             LDRB     R0,[R4, #+1]
+    626            LCD_PUTC(DateM_l, LineDigits, (tmp + 0x30));
+   \   0000004A   0x.... 0x....      BL       ?Subroutine10
+   \                     ??CrossCallReturnLabel_58:
+   \   0000004E   0x203D             MOVS     R0,#+61
+   \   00000050   0x.... 0x....      BL       LCD_PUTC
+    627          
+    628            /* Display separator */
+    629            LCD_PUTC(DateM_sep, LineDigits, '.');
+   \   00000054   0x222E             MOVS     R2,#+46
+   \   00000056   0x2134             MOVS     R1,#+52
+   \   00000058   0x2043             MOVS     R0,#+67
+   \   0000005A   0x.... 0x....      BL       LCD_PUTC
+    630          
+    631            /* Display year */
+    632            tmp = (uint8_t)(sDate.year / 1000);
+    633            LCD_PUTC(DateY_1000, LineDigits, (tmp + 0x30));
+   \   0000005E   0x8860             LDRH     R0,[R4, #+2]
+   \   00000060   0xF44F 0x717A      MOV      R1,#+1000
+   \   00000064   0xFB90 0xF0F1      SDIV     R0,R0,R1
+   \   00000068   0x.... 0x....      BL       ??Subroutine18_0
+   \                     ??CrossCallReturnLabel_54:
+   \   0000006C   0x2049             MOVS     R0,#+73
+   \   0000006E   0x.... 0x....      BL       LCD_PUTC
+    634            tmp = (uint8_t)((sDate.year / 100) % 10);
+   \   00000072   0x8860             LDRH     R0,[R4, #+2]
+   \   00000074   0x2164             MOVS     R1,#+100
+   \   00000076   0xFB90 0xF0F1      SDIV     R0,R0,R1
+    635            LCD_PUTC(DateY_100, LineDigits, (tmp + 0x30));
+   \   0000007A   0x.... 0x....      BL       ?Subroutine10
+   \                     ??CrossCallReturnLabel_59:
+   \   0000007E   0x204F             MOVS     R0,#+79
+   \   00000080   0x.... 0x....      BL       LCD_PUTC
+    636            tmp = (uint8_t)((sDate.year / 10) % 10);
+   \   00000084   0x8860             LDRH     R0,[R4, #+2]
+   \   00000086   0xFB90 0xF0F5      SDIV     R0,R0,R5
+    637            LCD_PUTC(DateY_10, LineDigits, (tmp + 0x30));
+   \   0000008A   0x.... 0x....      BL       ?Subroutine10
+   \                     ??CrossCallReturnLabel_60:
+   \   0000008E   0x2055             MOVS     R0,#+85
+   \   00000090   0x.... 0x....      BL       LCD_PUTC
+    638            tmp = (uint8_t)(sDate.year % 10);
+   \   00000094   0x8860             LDRH     R0,[R4, #+2]
+    639            LCD_PUTC(DateY_1, LineDigits, (tmp + 0x30));
+   \   00000096   0x.... 0x....      BL       ?Subroutine10
+   \                     ??CrossCallReturnLabel_61:
+   \   0000009A   0x205B             MOVS     R0,#+91
+   \   0000009C   0xE8BD 0x4038      POP      {R3-R5,LR}
+   \   000000A0   0x.... 0x....      B.W      LCD_PUTC
+    640          }
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine10:
+   \   00000000   0xFB90 0xF1F5      SDIV     R1,R0,R5
+   \   00000004   0xFB05 0x0011      MLS      R0,R5,R1,R0
+   \   00000008                      REQUIRE ??Subroutine18_0
+   \   00000008                      ;; // Fall through to label ??Subroutine18_0
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine17:
+   \   00000000   0x0E01             LSRS     R1,R0,#+24
+   \   00000002   0x7021             STRB     R1,[R4, #+0]
+   \   00000004   0x0C01             LSRS     R1,R0,#+16
+   \   00000006   0x7061             STRB     R1,[R4, #+1]
+   \   00000008   0x8060             STRH     R0,[R4, #+2]
+   \   0000000A   0x4770             BX       LR
+    641          
+    642          /*******************************************************************************
+    643          * Function Name  : Date_Regulate
+    644          * Description    : Allows user to enter the date with joystick keys, stores it
+    645          *                : in Backup register REG_01.
+    646          * Input          : None
+    647          * Output         : None
+    648          * Return         : None
+    649          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    650          void Date_Regulate(void)
+    651          {
+   \                     Date_Regulate:
+   \   00000000   0xE92D 0x4FF8      PUSH     {R3-R11,LR}
+   \   00000004   0x2464             MOVS     R4,#+100
+   \   00000006   0xF44F 0x787A      MOV      R8,#+1000
+   \   0000000A   0x260A             MOVS     R6,#+10
+   \   0000000C   0x.... 0x....      LDR.W    R7,??DataTable35_4
+   \   00000010   0xE01C             B.N      ??Date_Regulate_0
+    652            uint32_t Tmp_day, Tmp_month, Tmp_year;
+    653            FlagStatus ValidDateFlag;
+    654          
+    655            do
+    656            {
+    657              ValidDateFlag = SET;
+    658              /* Read day */
+    659              Tmp_day  = ReadDigit(DateD_h, (sDate.day / 10), 0x3, 0x0);
+    660              Tmp_day  = Tmp_day * 10 + ReadDigit(DateD_l, (sDate.day % 10), (Tmp_day < 3) ? 0x9 : 0x1, 0x0);
+    661              /* Read month */
+    662              Tmp_month = ReadDigit(DateM_h, (sDate.month / 10), 0x1, 0x0);
+    663              Tmp_month = Tmp_month * 10 + ReadDigit(DateM_l, (sDate.month % 10), (Tmp_month < 1) ? 0x9 : 0x2, 0x0);
+    664              /* Read year */
+    665              Tmp_year = ReadDigit(DateY_1000, (sDate.year / 1000), 0x2, 0x1) * 1000;
+    666              Tmp_year = Tmp_year + (ReadDigit(DateY_100, ((sDate.year / 100) % 10), 0x9, 0x0) * 100);
+    667              Tmp_year = Tmp_year + (ReadDigit(DateY_10, ((sDate.year / 10) % 10), 0x9, 0x0) * 10);
+    668              Tmp_year = Tmp_year + ReadDigit(DateY_1, (sDate.year % 10), 0x9, 0x0);
+    669              if (!IsValidDate(Tmp_day, Tmp_month, Tmp_year))
+    670              {
+    671                ValidDateFlag = RESET;
+    672                LCD_PUTS(0, LineMessage1, "   Invalid date." );
+   \                     ??Date_Regulate_1:
+   \   00000012   0x.... 0x....      ADR.W    R2,`?<Constant "   Invalid date.">`
+   \   00000016   0x210C             MOVS     R1,#+12
+   \   00000018   0x.... 0x....      BL       LCD_PUTS
+    673                LCD_PUTS(0, LineMessage2, "   Repeat, please.");
+   \   0000001C   0x.... 0x....      ADR.W    R2,`?<Constant "   Repeat, please.">`
+   \   00000020   0x2116             MOVS     R1,#+22
+   \   00000022   0x.... 0x....      BL       ??Subroutine4_1
+    674                SysTickDelay(2500);
+   \                     ??CrossCallReturnLabel_11:
+   \   00000026   0xF640 0x10C4      MOVW     R0,#+2500
+   \   0000002A   0x.... 0x....      BL       SysTickDelay
+    675                LCD_PUTS(0, LineMessage1, "                " );
+   \   0000002E   0x.... 0x....      ADR.W    R2,`?<Constant "                ">`
+   \   00000032   0x210C             MOVS     R1,#+12
+   \   00000034   0x.... 0x....      BL       ??Subroutine4_1
+    676                LCD_PUTS(0, LineMessage2, "                  ");
+   \                     ??CrossCallReturnLabel_10:
+   \   00000038   0x.... 0x....      ADR.W    R2,`?<Constant "                  ">`
+   \   0000003C   0x2116             MOVS     R1,#+22
+   \   0000003E   0x.... 0x....      BL       ??Subroutine4_1
+    677                sDate.day   = Tmp_day;
+   \                     ??CrossCallReturnLabel_9:
+   \   00000042   0x703D             STRB     R5,[R7, #+0]
+    678                sDate.month = Tmp_month;
+   \   00000044   0xF887 0x9001      STRB     R9,[R7, #+1]
+    679                sDate.year  = Tmp_year;
+   \   00000048   0xF8A7 0xA002      STRH     R10,[R7, #+2]
+    680              }
+   \                     ??Date_Regulate_0:
+   \   0000004C   0x2300             MOVS     R3,#+0
+   \   0000004E   0x2203             MOVS     R2,#+3
+   \   00000050   0x7838             LDRB     R0,[R7, #+0]
+   \   00000052   0xFB90 0xF1F6      SDIV     R1,R0,R6
+   \   00000056   0xB2C9             UXTB     R1,R1
+   \   00000058   0x2025             MOVS     R0,#+37
+   \   0000005A   0x.... 0x....      BL       ReadDigit
+   \   0000005E   0x4605             MOV      R5,R0
+   \   00000060   0x2D03             CMP      R5,#+3
+   \   00000062   0xBF34             ITE      CC 
+   \   00000064   0x2209             MOVCC    R2,#+9
+   \   00000066   0x2201             MOVCS    R2,#+1
+   \   00000068   0x7838             LDRB     R0,[R7, #+0]
+   \   0000006A   0x.... 0x....      BL       ?Subroutine12
+   \                     ??CrossCallReturnLabel_33:
+   \   0000006E   0x202B             MOVS     R0,#+43
+   \   00000070   0x.... 0x....      BL       ReadDigit
+   \   00000074   0xFB06 0x0505      MLA      R5,R6,R5,R0
+   \   00000078   0x2300             MOVS     R3,#+0
+   \   0000007A   0x2201             MOVS     R2,#+1
+   \   0000007C   0x7878             LDRB     R0,[R7, #+1]
+   \   0000007E   0xFB90 0xF1F6      SDIV     R1,R0,R6
+   \   00000082   0xB2C9             UXTB     R1,R1
+   \   00000084   0x2037             MOVS     R0,#+55
+   \   00000086   0x.... 0x....      BL       ReadDigit
+   \   0000008A   0xEA5F 0x0900      MOVS     R9,R0
+   \   0000008E   0xBF0C             ITE      EQ 
+   \   00000090   0x2209             MOVEQ    R2,#+9
+   \   00000092   0x2202             MOVNE    R2,#+2
+   \   00000094   0x7878             LDRB     R0,[R7, #+1]
+   \   00000096   0x.... 0x....      BL       ?Subroutine12
+   \                     ??CrossCallReturnLabel_34:
+   \   0000009A   0x203D             MOVS     R0,#+61
+   \   0000009C   0x.... 0x....      BL       ReadDigit
+   \   000000A0   0xFB06 0x0909      MLA      R9,R6,R9,R0
+   \   000000A4   0x2301             MOVS     R3,#+1
+   \   000000A6   0x2202             MOVS     R2,#+2
+   \   000000A8   0x8878             LDRH     R0,[R7, #+2]
+   \   000000AA   0xFB90 0xF1F8      SDIV     R1,R0,R8
+   \   000000AE   0xB2C9             UXTB     R1,R1
+   \   000000B0   0x2049             MOVS     R0,#+73
+   \   000000B2   0x.... 0x....      BL       ReadDigit
+   \   000000B6   0x4682             MOV      R10,R0
+   \   000000B8   0x8878             LDRH     R0,[R7, #+2]
+   \   000000BA   0xFB90 0xF0F4      SDIV     R0,R0,R4
+   \   000000BE   0x.... 0x....      BL       ?Subroutine11
+   \                     ??CrossCallReturnLabel_31:
+   \   000000C2   0x204F             MOVS     R0,#+79
+   \   000000C4   0x.... 0x....      BL       ReadDigit
+   \   000000C8   0x4683             MOV      R11,R0
+   \   000000CA   0x8878             LDRH     R0,[R7, #+2]
+   \   000000CC   0xFB90 0xF0F6      SDIV     R0,R0,R6
+   \   000000D0   0x.... 0x....      BL       ?Subroutine11
+   \                     ??CrossCallReturnLabel_32:
+   \   000000D4   0x2055             MOVS     R0,#+85
+   \   000000D6   0x.... 0x....      BL       ReadDigit
+   \   000000DA   0x8879             LDRH     R1,[R7, #+2]
+   \   000000DC   0xFB04 0xF20B      MUL      R2,R4,R11
+   \   000000E0   0xFB08 0x220A      MLA      R2,R8,R10,R2
+   \   000000E4   0xFB06 0x2A00      MLA      R10,R6,R0,R2
+   \   000000E8   0x2300             MOVS     R3,#+0
+   \   000000EA   0x2209             MOVS     R2,#+9
+   \   000000EC   0xFB91 0xF0F6      SDIV     R0,R1,R6
+   \   000000F0   0xFB06 0x1110      MLS      R1,R6,R0,R1
+   \   000000F4   0xB2C9             UXTB     R1,R1
+   \   000000F6   0x205B             MOVS     R0,#+91
+   \   000000F8   0x.... 0x....      BL       ReadDigit
+   \   000000FC   0x4482             ADD      R10,R0,R10
+   \   000000FE   0x4652             MOV      R2,R10
+   \   00000100   0x4649             MOV      R1,R9
+   \   00000102   0x4628             MOV      R0,R5
+   \   00000104   0x.... 0x....      BL       IsValidDate
+   \   00000108   0x2800             CMP      R0,#+0
+   \   0000010A   0xD082             BEQ.N    ??Date_Regulate_1
+    681            } while (ValidDateFlag == RESET);
+    682            MDR_BKP->REG_01 = Tmp_year + (Tmp_month << 16) + (Tmp_day << 24);
+   \   0000010C   0xEB0A 0x4009      ADD      R0,R10,R9, LSL #+16
+   \   00000110   0xEB00 0x6005      ADD      R0,R0,R5, LSL #+24
+   \   00000114   0x.... 0x....      LDR.W    R1,??DataTable35_5  ;; 0x400d8004
+   \   00000118   0x6008             STR      R0,[R1, #+0]
+    683            /* Wait until last write operation on RTC registers has finished */
+    684            BKP_RTC_WaitForUpdate();
+   \   0000011A   0xE8BD 0x4FF1      POP      {R0,R4-R11,LR}
+   \   0000011E   0x.... 0x....      B.W      BKP_RTC_WaitForUpdate
+    685          }
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine12:
+   \   00000000   0x2300             MOVS     R3,#+0
+   \   00000002   0xFB90 0xF1F6      SDIV     R1,R0,R6
+   \   00000006   0xFB06 0x0111      MLS      R1,R6,R1,R0
+   \   0000000A   0xB2C9             UXTB     R1,R1
+   \   0000000C   0x4770             BX       LR
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine11:
+   \   00000000   0x2300             MOVS     R3,#+0
+   \   00000002   0x2209             MOVS     R2,#+9
+   \   00000004   0xFB90 0xF1F6      SDIV     R1,R0,R6
+   \   00000008   0xFB06 0x0111      MLS      R1,R6,R1,R0
+   \   0000000C   0xB2C9             UXTB     R1,R1
+   \   0000000E   0x4770             BX       LR
+    686          
+    687          /*******************************************************************************
+    688          * Function Name  : DatePreAdjustFunc
+    689          * Description    : Adjust date menu item handler work function.
+    690          * Input          : None
+    691          * Output         : None
+    692          * Return         : None
+    693          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    694          void DatePreAdjustFunc(void)
+    695          {
+   \                     DatePreAdjustFunc:
+   \   00000000   0xB5F8             PUSH     {R3-R7,LR}
+    696            sFONT *OldFont = CurrentFont;
+   \   00000002   0x.... 0x....      BL       ?Subroutine14
+    697            LCD_Method OldMethod = CurrentMethod;
+    698          
+    699            /* Print the header */
+    700            LCD_CLS();
+    701            CurrentMethod = MET_AND;
+   \                     ??CrossCallReturnLabel_41:
+   \   00000006   0x.... 0x....      BL       ?Subroutine3
+    702            CurrentFont = &Font_6x8;
+    703            DisplayMenuTitle("Date adjust");
+   \                     ??CrossCallReturnLabel_2:
+   \   0000000A   0x.... 0x....      ADR.W    R0,`?<Constant "Date adjust">`
+   \   0000000E   0x.... 0x....      BL       DisplayMenuTitle
+    704            WAIT_UNTIL_KEY_RELEASED(SEL);
+   \                     ??DatePreAdjustFunc_0:
+   \   00000012   0x.... 0x....      BL       GetKey
+   \   00000016   0x2800             CMP      R0,#+0
+   \   00000018   0xD0FB             BEQ.N    ??DatePreAdjustFunc_0
+    705          
+    706            if((MDR_BKP->REG_00 != 0x1234) || (MDR_BKP->RTC_PRL != RTC_PRESCALER_VALUE))
+   \   0000001A   0x.... 0x....      BL       ?Subroutine16
+   \                     ??CrossCallReturnLabel_47:
+   \   0000001E   0xBF04             ITT      EQ 
+   \   00000020   0x6C80             LDREQ    R0,[R0, #+72]
+   \   00000022   0xF5B0 0x4F00      CMPEQ    R0,#+32768
+   \   00000026   0xD002             BEQ.N    ??DatePreAdjustFunc_1
+    707            {
+    708              RTCHelp();
+   \   00000028   0x.... 0x....      BL       RTCHelp
+   \   0000002C   0xE005             B.N      ??DatePreAdjustFunc_2
+    709            }
+    710            else
+    711            {
+    712              LCD_PUTS(0, LineTitle, "DATE  DD.MM.YYYY");
+   \                     ??DatePreAdjustFunc_1:
+   \   0000002E   0x.... 0x....      BL       ?Subroutine4
+    713          
+    714              /* Display the current Date */
+    715              Date_Display();
+   \                     ??CrossCallReturnLabel_20:
+   \   00000032   0x.... 0x....      BL       Date_Display
+    716              /* Change the current Date */
+    717              Date_Regulate();
+   \   00000036   0x.... 0x....      BL       Date_Regulate
+    718            }
+    719          
+    720            CurrentMethod = OldMethod;
+   \                     ??DatePreAdjustFunc_2:
+   \   0000003A   0x7037             STRB     R7,[R6, #+0]
+    721            CurrentFont = OldFont;
+   \   0000003C   0x6025             STR      R5,[R4, #+0]
+    722          }
+   \   0000003E   0xBDF1             POP      {R0,R4-R7,PC}    ;; return
+    723          
+    724          /*******************************************************************************
+    725          * Function Name  : DateAdjustFunc
+    726          * Description    : Adjust date menu item handler.
+    727          * Input          : None
+    728          * Output         : None
+    729          * Return         : None
+    730          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    731          void DateAdjustFunc(void)
+    732          {
+   \                     DateAdjustFunc:
+   \   00000000   0xB580             PUSH     {R7,LR}
+    733            DatePreAdjustFunc();
+   \   00000002   0x.... 0x....      BL       DatePreAdjustFunc
+    734            /* Display the menu */
+    735            DisplayMenu();
+   \   00000006                      REQUIRE ?Subroutine2
+   \   00000006                      ;; // Fall through to label ?Subroutine2
+    736          }
+    737          
+    738          /*******************************************************************************
+    739          * Function Name  : DateShowFunc
+    740          * Description    : Displays current date on LCD.
+    741          * Input          : None
+    742          * Output         : None
+    743          * Return         : None
+    744          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    745          void DateShowFunc(void)
+    746          {
+   \                     DateShowFunc:
+   \   00000000   0xB5F8             PUSH     {R3-R7,LR}
+    747            sFONT *OldFont = CurrentFont;
+   \   00000002   0x.... 0x....      BL       ?Subroutine14
+    748            LCD_Method OldMethod = CurrentMethod;
+    749          
+    750            /* Print header */
+    751            LCD_CLS();
+    752            CurrentMethod = MET_AND;
+   \                     ??CrossCallReturnLabel_40:
+   \   00000006   0x.... 0x....      BL       ?Subroutine3
+    753            CurrentFont = &Font_6x8;
+    754            DisplayMenuTitle("Date show");
+   \                     ??CrossCallReturnLabel_3:
+   \   0000000A   0x.... 0x....      ADR.W    R0,`?<Constant "Date show">`
+   \   0000000E   0x.... 0x....      BL       DisplayMenuTitle
+    755            WAIT_UNTIL_KEY_RELEASED(SEL);
+   \                     ??DateShowFunc_0:
+   \   00000012   0x.... 0x....      BL       GetKey
+   \   00000016   0x2800             CMP      R0,#+0
+   \   00000018   0xD0FB             BEQ.N    ??DateShowFunc_0
+    756          
+    757            if((MDR_BKP->REG_00 != 0x1234) || (MDR_BKP->RTC_PRL != RTC_PRESCALER_VALUE))
+   \   0000001A   0x.... 0x....      BL       ?Subroutine16
+   \                     ??CrossCallReturnLabel_48:
+   \   0000001E   0xBF04             ITT      EQ 
+   \   00000020   0x6C80             LDREQ    R0,[R0, #+72]
+   \   00000022   0xF5B0 0x4F00      CMPEQ    R0,#+32768
+   \   00000026   0xD002             BEQ.N    ??DateShowFunc_1
+    758            {
+    759              RTCHelp();
+   \   00000028   0x.... 0x....      BL       RTCHelp
+   \   0000002C   0xE00C             B.N      ??DateShowFunc_2
+    760            }
+    761            else
+    762            {
+    763              LCD_PUTS(0, LineTitle, "DATE  DD.MM.YYYY");
+   \                     ??DateShowFunc_1:
+   \   0000002E   0x.... 0x....      BL       ?Subroutine4
+   \                     ??CrossCallReturnLabel_19:
+   \   00000032   0xE001             B.N      ??DateShowFunc_3
+    764          
+    765              while (GetKey() != SEL)
+    766              {
+    767                /* Display the current Date */
+    768                Date_Display();
+   \                     ??DateShowFunc_4:
+   \   00000034   0x.... 0x....      BL       Date_Display
+    769              }
+   \                     ??DateShowFunc_3:
+   \   00000038   0x.... 0x....      BL       GetKey
+   \   0000003C   0x2800             CMP      R0,#+0
+   \   0000003E   0xD1F9             BNE.N    ??DateShowFunc_4
+    770              WAIT_UNTIL_KEY_RELEASED(SEL);
+   \                     ??DateShowFunc_5:
+   \   00000040   0x.... 0x....      BL       GetKey
+   \   00000044   0x2800             CMP      R0,#+0
+   \   00000046   0xD0FB             BEQ.N    ??DateShowFunc_5
+    771            }
+    772          
+    773            CurrentMethod = OldMethod;
+   \                     ??DateShowFunc_2:
+   \   00000048                      REQUIRE ?Subroutine1
+   \   00000048                      ;; // Fall through to label ?Subroutine1
+    774            CurrentFont = OldFont;
+    775          
+    776            /* Display menu */
+    777            DisplayMenu();
+    778          }
+    779          
+    780          /*******************************************************************************
+    781          * Function Name  : Alarm_Display
+    782          * Description    : Displays alarm time.
+    783          * Input          : None
+    784          * Output         : None
+    785          * Return         : None
+    786          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    787          void Alarm_Display()
+    788          {
+   \                     Alarm_Display:
+   \   00000000   0xE92D 0x43F8      PUSH     {R3-R9,LR}
+    789            uint32_t AlarmVar = MDR_BKP->RTC_ALRM;
+   \   00000004   0x....             LDR.N    R0,??DataTable35_8  ;; 0x400d804c
+   \   00000006   0xF8D0 0x8000      LDR      R8,[R0, #+0]
+    790          
+    791            /* Display time separators ":" */
+    792            LCD_PUTS(Time_Display_Column, LineDigits, "  :  :");
+   \   0000000A   0x.... 0x....      ADR.W    R2,`?<Constant "  :  :">`
+   \   0000000E   0x2134             MOVS     R1,#+52
+   \   00000010   0x2021             MOVS     R0,#+33
+   \   00000012   0x.... 0x....      BL       LCD_PUTS
+    793          
+    794            /* Display alarm hours */
+    795            sAlarm.hour_h = (uint8_t)(AlarmVar / 3600) / 10;
+   \   00000016   0xF44F 0x6761      MOV      R7,#+3600
+   \   0000001A   0xFBB8 0xF6F7      UDIV     R6,R8,R7
+   \   0000001E   0x....             LDR.N    R4,??DataTable35_9
+   \   00000020   0x.... 0x....      BL       ?Subroutine6
+    796            LCD_PUTC(TimeH_h, LineDigits, (sAlarm.hour_h + 0x30));
+    797            sAlarm.hour_l = (uint8_t)(((AlarmVar) / 3600) % 10);
+   \                     ??CrossCallReturnLabel_23:
+   \   00000024   0x.... 0x....      BL       ?Subroutine7
+    798            LCD_PUTC(TimeH_l, LineDigits, (sAlarm.hour_l + 0x30));
+    799          
+    800            /* Display alarm minutes */
+    801            sAlarm.min_h = (uint8_t)(((AlarmVar) % 3600) / 60) / 10;
+   \                     ??CrossCallReturnLabel_25:
+   \   00000028   0x.... 0x....      BL       ?Subroutine8
+    802            LCD_PUTC(TimeM_h, LineDigits, (sAlarm.min_h + 0x30));
+    803            sAlarm.min_l = (uint8_t)(((AlarmVar) % 3600) / 60) % 10;
+   \                     ??CrossCallReturnLabel_27:
+   \   0000002C   0x.... 0x....      BL       ?Subroutine9
+    804            LCD_PUTC(TimeM_l, LineDigits, (sAlarm.min_l + 0x30));
+   \                     ??CrossCallReturnLabel_30:
+   \   00000030                      REQUIRE ?Subroutine0
+   \   00000030                      ;; // Fall through to label ?Subroutine0
+    805          
+    806            /* Display alarm seconds */
+    807            sAlarm.sec_h = (uint8_t)(((AlarmVar) % 3600) % 60) / 10;
+    808            LCD_PUTC(TimeS_h, LineDigits, (sAlarm.sec_h + 0x30));
+    809            sAlarm.sec_l = (uint8_t)(((AlarmVar) % 3600) % 60) % 10;
+    810            LCD_PUTC(TimeS_l, LineDigits, (sAlarm.sec_l + 0x30));
+    811          }
+    812          
+    813          /*******************************************************************************
+    814          * Function Name  : Alarm_Regulate
+    815          * Description    : Returns the alarm time entered by user, using joystick keys.
+    816          * Input          : None
+    817          * Output         : None
+    818          * Return         : Alarm time value to be loaded in RTC alarm register.
+    819          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    820          uint32_t Alarm_Regulate(void)
+    821          {
+   \                     Alarm_Regulate:
+   \   00000000   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+    822            uint32_t Alarm_HH, Alarm_MM, Alarm_SS;
+    823          
+    824            /* Read alarm hours */
+    825            Alarm_HH = ReadDigit(TimeH_h, sAlarm.hour_h, 0x2, 0x0);
+   \   00000004   0x....             LDR.N    R5,??DataTable35_9
+   \   00000006   0x2300             MOVS     R3,#+0
+   \   00000008   0x2202             MOVS     R2,#+2
+   \   0000000A   0x7969             LDRB     R1,[R5, #+5]
+   \   0000000C   0x2021             MOVS     R0,#+33
+   \   0000000E   0x.... 0x....      BL       ReadDigit
+   \   00000012   0x4604             MOV      R4,R0
+    826            if(Alarm_HH == 2)
+   \   00000014   0x7929             LDRB     R1,[R5, #+4]
+   \   00000016   0x260A             MOVS     R6,#+10
+   \   00000018   0x2C02             CMP      R4,#+2
+   \   0000001A   0xD10B             BNE.N    ??Alarm_Regulate_0
+    827            {
+    828              if(sAlarm.hour_l > 3)
+   \   0000001C   0x2904             CMP      R1,#+4
+   \   0000001E   0xBF24             ITT      CS 
+   \   00000020   0x2000             MOVCS    R0,#+0
+   \   00000022   0x7128             STRBCS   R0,[R5, #+4]
+    829              {
+    830                sAlarm.hour_l = 0;
+    831              }
+    832              Alarm_HH = Alarm_HH*10 + ReadDigit(TimeH_l, sAlarm.hour_l, 0x3, 0x0);
+   \   00000024   0x2300             MOVS     R3,#+0
+   \   00000026   0x2203             MOVS     R2,#+3
+   \   00000028   0x7929             LDRB     R1,[R5, #+4]
+   \   0000002A   0x.... 0x....      BL       ??Subroutine13_0
+    833            }
+   \                     ??CrossCallReturnLabel_35:
+   \   0000002E   0xF100 0x0414      ADD      R4,R0,#+20
+   \   00000032   0xE003             B.N      ??Alarm_Regulate_1
+    834            else
+    835            {
+    836              Alarm_HH = Alarm_HH*10 + ReadDigit(TimeH_l, sAlarm.hour_l, 0x9, 0x0);
+   \                     ??Alarm_Regulate_0:
+   \   00000034   0x.... 0x....      BL       ?Subroutine13
+    837            }
+   \                     ??CrossCallReturnLabel_37:
+   \   00000038   0xFB06 0x0404      MLA      R4,R6,R4,R0
+    838            /* Read time minutes */
+    839            Alarm_MM = ReadDigit(TimeM_h, sAlarm.min_h, 0x5, 0x0);
+   \                     ??Alarm_Regulate_1:
+   \   0000003C   0x2300             MOVS     R3,#+0
+   \   0000003E   0x2205             MOVS     R2,#+5
+   \   00000040   0x78E9             LDRB     R1,[R5, #+3]
+   \   00000042   0x2033             MOVS     R0,#+51
+   \   00000044   0x.... 0x....      BL       ReadDigit
+   \   00000048   0x4607             MOV      R7,R0
+    840            Alarm_MM = Alarm_MM*10 + ReadDigit(TimeM_l, sAlarm.min_l, 0x9, 0x0);
+   \   0000004A   0x2300             MOVS     R3,#+0
+   \   0000004C   0x2209             MOVS     R2,#+9
+   \   0000004E   0x78A9             LDRB     R1,[R5, #+2]
+   \   00000050   0x2039             MOVS     R0,#+57
+   \   00000052   0x.... 0x....      BL       ReadDigit
+   \   00000056   0xFB06 0x0707      MLA      R7,R6,R7,R0
+    841            /* Read time seconds */
+    842            Alarm_SS = ReadDigit(TimeS_h, sAlarm.sec_h, 0x5, 0x0);
+   \   0000005A   0x2300             MOVS     R3,#+0
+   \   0000005C   0x2205             MOVS     R2,#+5
+   \   0000005E   0x7869             LDRB     R1,[R5, #+1]
+   \   00000060   0x2045             MOVS     R0,#+69
+   \   00000062   0x.... 0x....      BL       ReadDigit
+   \   00000066   0x4680             MOV      R8,R0
+    843            Alarm_SS = Alarm_SS*10 + ReadDigit(TimeS_l, sAlarm.sec_l, 0x9, 0x0);
+   \   00000068   0x2300             MOVS     R3,#+0
+   \   0000006A   0x2209             MOVS     R2,#+9
+   \   0000006C   0x7829             LDRB     R1,[R5, #+0]
+   \   0000006E   0x204B             MOVS     R0,#+75
+   \   00000070   0x.... 0x....      BL       ReadDigit
+   \   00000074   0xFB06 0x0008      MLA      R0,R6,R8,R0
+    844          
+    845            /* Save the Alarm value in the Backup register REG_02 */
+    846            MDR_BKP->REG_02 = Alarm_HH*3600 + Alarm_MM*60 + Alarm_SS;
+   \   00000078   0xF44F 0x6161      MOV      R1,#+3600
+   \   0000007C   0x223C             MOVS     R2,#+60
+   \   0000007E   0x437A             MULS     R2,R2,R7
+   \   00000080   0xFB01 0x2104      MLA      R1,R1,R4,R2
+   \   00000084   0x1840             ADDS     R0,R0,R1
+   \   00000086   0x....             LDR.N    R1,??DataTable35_10  ;; 0x400d8008
+   \   00000088   0x6008             STR      R0,[R1, #+0]
+    847          
+    848            /* Return the value to store in RTC alarm register */
+    849            return((Alarm_HH*3600 + Alarm_MM*60 + Alarm_SS));
+   \   0000008A   0xE8BD 0x81F0      POP      {R4-R8,PC}       ;; return
+    850          }
+    851          
+    852          /*******************************************************************************
+    853          * Function Name  : AlarmAdjustFunc
+    854          * Description    : Allows the user to set alarm event.
+    855          * Input          : None
+    856          * Output         : None
+    857          * Return         : None
+    858          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    859          void AlarmAdjustFunc(void)
+    860          {
+   \                     AlarmAdjustFunc:
+   \   00000000   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+    861            sFONT *OldFont = CurrentFont;
+   \   00000004   0x....             LDR.N    R4,??DataTable35_6
+   \   00000006   0x6825             LDR      R5,[R4, #+0]
+    862            LCD_Method OldMethod = CurrentMethod;
+   \   00000008   0x....             LDR.N    R6,??DataTable35_1
+   \   0000000A   0xF896 0x8000      LDRB     R8,[R6, #+0]
+    863          
+    864            /* Print header */
+    865            LCD_CLS();
+   \   0000000E   0x.... 0x....      BL       LCD_CLS
+    866            CurrentMethod = MET_AND;
+   \   00000012   0x.... 0x....      BL       ?Subroutine3
+    867            CurrentFont = &Font_6x8;
+    868            DisplayMenuTitle("Alarm adjust");
+   \                     ??CrossCallReturnLabel_4:
+   \   00000016   0x.... 0x....      ADR.W    R0,`?<Constant "Alarm adjust">`
+   \   0000001A   0x.... 0x....      BL       DisplayMenuTitle
+    869            WAIT_UNTIL_KEY_RELEASED(SEL);
+   \                     ??AlarmAdjustFunc_0:
+   \   0000001E   0x.... 0x....      BL       GetKey
+   \   00000022   0x2800             CMP      R0,#+0
+   \   00000024   0xD0FB             BEQ.N    ??AlarmAdjustFunc_0
+    870          
+    871            if((MDR_BKP->REG_00 != 0x1234) || (MDR_BKP->RTC_PRL != RTC_PRESCALER_VALUE))
+   \   00000026   0x....             LDR.N    R7,??DataTable35_3  ;; 0x400d8000
+   \   00000028   0x6838             LDR      R0,[R7, #+0]
+   \   0000002A   0xF241 0x2134      MOVW     R1,#+4660
+   \   0000002E   0x4288             CMP      R0,R1
+   \   00000030   0xBF04             ITT      EQ 
+   \   00000032   0x6CB8             LDREQ    R0,[R7, #+72]
+   \   00000034   0xF5B0 0x4F00      CMPEQ    R0,#+32768
+   \   00000038   0xD002             BEQ.N    ??AlarmAdjustFunc_1
+    872            {
+    873              RTCHelp();
+   \   0000003A   0x.... 0x....      BL       RTCHelp
+   \   0000003E   0xE013             B.N      ??AlarmAdjustFunc_2
+    874            }
+    875            else
+    876            {
+    877              LCD_PUTS(Time_Display_Column - DefaultFontWidth, LineTitle, "ALARM TIME");
+   \                     ??AlarmAdjustFunc_1:
+   \   00000040   0x.... 0x....      BL       ?Subroutine15
+    878          
+    879              /* Initialize the RTC Alarm register */
+    880              BKP_RTC_SetAlarm(MDR_BKP->REG_02);
+   \                     ??CrossCallReturnLabel_45:
+   \   00000044   0x68B8             LDR      R0,[R7, #+8]
+   \   00000046   0x.... 0x....      BL       BKP_RTC_SetAlarm
+    881          
+    882              /* Display the Alarm time */
+    883              Alarm_Display();
+   \   0000004A   0x.... 0x....      BL       Alarm_Display
+    884          
+    885              /* Change the current alarm time */
+    886              BKP_RTC_SetAlarm(Alarm_Regulate());
+   \   0000004E   0x.... 0x....      BL       Alarm_Regulate
+   \   00000052   0x.... 0x....      BL       BKP_RTC_SetAlarm
+    887              /* Wait until last write operation on RTC registers has finished */
+    888              BKP_RTC_WaitForUpdate();
+   \   00000056   0x.... 0x....      BL       BKP_RTC_WaitForUpdate
+    889              /* Enable the Alarm interrupt  */
+    890              BKP_RTC_ITConfig(BKP_RTC_IT_ALRF, ENABLE);
+   \   0000005A   0x2101             MOVS     R1,#+1
+   \   0000005C   0x2020             MOVS     R0,#+32
+   \   0000005E   0x.... 0x....      BL       BKP_RTC_ITConfig
+    891              AlarmSetStatus = 1;
+   \   00000062   0x....             LDR.N    R0,??DataTable35_11
+   \   00000064   0x2101             MOVS     R1,#+1
+   \   00000066   0x6001             STR      R1,[R0, #+0]
+    892            }
+    893            CurrentMethod = OldMethod;
+   \                     ??AlarmAdjustFunc_2:
+   \   00000068   0xF886 0x8000      STRB     R8,[R6, #+0]
+    894            CurrentFont = OldFont;
+   \   0000006C   0x6025             STR      R5,[R4, #+0]
+    895          
+    896            /* Display the menu */
+    897            DisplayMenu();
+   \   0000006E   0xE8BD 0x41F0      POP      {R4-R8,LR}
+   \   00000072   0x.... 0x....      B.W      DisplayMenu
+    898          }
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     ?Subroutine15:
+   \   00000000   0x.... 0x....      ADR.W    R2,`?<Constant "ALARM TIME">`
+   \   00000004   0x212A             MOVS     R1,#+42
+   \   00000006   0x201B             MOVS     R0,#+27
+   \   00000008   0x.... 0x....      B.W      LCD_PUTS
+    899          
+    900          /*******************************************************************************
+    901          * Function Name  : AlarmShowFunc
+    902          * Description    : Displays the alarm time (HH:MM:SS) on LCD.
+    903          * Input          : None
+    904          * Output         : None
+    905          * Return         : None
+    906          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    907          void AlarmShowFunc(void)
+    908          {
+   \                     AlarmShowFunc:
+   \   00000000   0xB5F8             PUSH     {R3-R7,LR}
+    909            sFONT *OldFont = CurrentFont;
+   \   00000002   0x.... 0x....      BL       ?Subroutine14
+    910            LCD_Method OldMethod = CurrentMethod;
+    911          
+    912            /* Print header */
+    913            LCD_CLS();
+    914            CurrentMethod = MET_AND;
+   \                     ??CrossCallReturnLabel_39:
+   \   00000006   0x.... 0x....      BL       ?Subroutine3
+    915            CurrentFont = &Font_6x8;
+    916            DisplayMenuTitle("Alarm show");
+   \                     ??CrossCallReturnLabel_5:
+   \   0000000A   0x.... 0x....      ADR.W    R0,`?<Constant "Alarm show">`
+   \   0000000E   0x.... 0x....      BL       DisplayMenuTitle
+    917            WAIT_UNTIL_KEY_RELEASED(SEL);
+   \                     ??AlarmShowFunc_0:
+   \   00000012   0x.... 0x....      BL       GetKey
+   \   00000016   0x2800             CMP      R0,#+0
+   \   00000018   0xD0FB             BEQ.N    ??AlarmShowFunc_0
+    918          
+    919            if((MDR_BKP->REG_00 != 0x1234) || (MDR_BKP->RTC_PRL != RTC_PRESCALER_VALUE))
+   \   0000001A   0x.... 0x....      BL       ?Subroutine16
+   \                     ??CrossCallReturnLabel_49:
+   \   0000001E   0xBF04             ITT      EQ 
+   \   00000020   0x6C80             LDREQ    R0,[R0, #+72]
+   \   00000022   0xF5B0 0x4F00      CMPEQ    R0,#+32768
+   \   00000026   0xD002             BEQ.N    ??AlarmShowFunc_1
+    920            {
+    921              RTCHelp();
+   \   00000028   0x.... 0x....      BL       RTCHelp
+   \   0000002C   0xE00B             B.N      ??AlarmShowFunc_2
+    922            }
+    923            else
+    924            {
+    925              LCD_PUTS(Time_Display_Column - DefaultFontWidth, LineTitle, "ALARM TIME");
+   \                     ??AlarmShowFunc_1:
+   \   0000002E   0x.... 0x....      BL       ?Subroutine15
+    926              /* Display the current alarm time */
+    927              Alarm_Display();
+   \                     ??CrossCallReturnLabel_44:
+   \   00000032   0x.... 0x....      BL       Alarm_Display
+    928              WAIT_UNTIL_KEY_PRESSED(SEL);
+   \                     ??AlarmShowFunc_3:
+   \   00000036   0x.... 0x....      BL       GetKey
+   \   0000003A   0x2800             CMP      R0,#+0
+   \   0000003C   0xD1FB             BNE.N    ??AlarmShowFunc_3
+    929              WAIT_UNTIL_KEY_RELEASED(SEL);
+   \                     ??AlarmShowFunc_4:
+   \   0000003E   0x.... 0x....      BL       GetKey
+   \   00000042   0x2800             CMP      R0,#+0
+   \   00000044   0xD0FB             BEQ.N    ??AlarmShowFunc_4
+    930            }
+    931          
+    932            CurrentMethod = OldMethod;
+   \                     ??AlarmShowFunc_2:
+   \   00000046   0x....             B.N      ?Subroutine1
+    933            CurrentFont = OldFont;
+    934          
+    935            /* Display the menu */
+    936            DisplayMenu();
+    937          }
+    938          
+    939          /*******************************************************************************
+    940          * Function Name  : Calendar_Init
+    941          * Description    : Allows the user to initialize time and date values.
+    942          * Input          : None
+    943          * Output         : None
+    944          * Return         : None
+    945          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+    946          void Calendar_Init(void)
+    947          {
+   \                     Calendar_Init:
+   \   00000000   0xB5F8             PUSH     {R3-R7,LR}
+    948            uint32_t tmp, i;
+    949            KeyCode key;
+    950          
+    951            /* Enables the HSE clock for BKP control */
+    952            RST_CLK_PCLKcmd(RST_CLK_PCLK_BKP,ENABLE);
+   \   00000002   0x2101             MOVS     R1,#+1
+   \   00000004   0xF04F 0x6000      MOV      R0,#+134217728
+   \   00000008   0x.... 0x....      BL       RST_CLK_PCLKcmd
+    953          
+    954            RTC_Configuration();
+   \   0000000C   0x.... 0x....      BL       RTC_Configuration
+    955          
+    956            if(MDR_BKP->REG_00 != 0x1234)
+   \   00000010   0x....             LDR.N    R4,??DataTable35_4
+   \   00000012   0x....             LDR.N    R5,??DataTable35_3  ;; 0x400d8000
+   \   00000014   0x6828             LDR      R0,[R5, #+0]
+   \   00000016   0xF241 0x2134      MOVW     R1,#+4660
+   \   0000001A   0x4288             CMP      R0,R1
+   \   0000001C   0xD032             BEQ.N    ??Calendar_Init_0
+    957            {
+    958              LCD_CLS();
+   \   0000001E   0x.... 0x....      BL       LCD_CLS
+    959              LCD_PUTS(0, LineMessage1, " To configuring Time ");
+   \   00000022   0x.... 0x....      ADR.W    R2,`?<Constant " To configuring Time ">`
+   \   00000026   0x210C             MOVS     R1,#+12
+   \   00000028   0x.... 0x....      BL       ??Subroutine4_1
+    960              LCD_PUTS(0, LineMessage2, " and Date press SEL, ");
+   \                     ??CrossCallReturnLabel_8:
+   \   0000002C   0x.... 0x....      ADR.W    R2,`?<Constant " and Date press SEL, ">`
+   \   00000030   0x2116             MOVS     R1,#+22
+   \   00000032   0x.... 0x....      BL       ??Subroutine4_1
+    961              LCD_PUTS(0, LineMessage3, " else press any key. ");
+   \                     ??CrossCallReturnLabel_7:
+   \   00000036   0x.... 0x....      ADR.W    R2,`?<Constant " else press any key. ">`
+   \   0000003A   0x2120             MOVS     R1,#+32
+   \   0000003C   0x.... 0x....      BL       ??Subroutine4_1
+    962          
+    963              for (key = NOKEY; key == NOKEY; key = GetKey())
+   \                     ??CrossCallReturnLabel_6:
+   \   00000040   0x.... 0x....      BL       GetKey
+   \   00000044   0x4606             MOV      R6,R0
+   \   00000046   0x2E05             CMP      R6,#+5
+   \   00000048   0xD0FA             BEQ.N    ??CrossCallReturnLabel_6
+    964              {
+    965              }
+    966              if (key == SEL)
+   \   0000004A   0xB946             CBNZ.N   R6,??Calendar_Init_1
+    967              {
+    968                WAIT_UNTIL_KEY_RELEASED(key);
+   \                     ??Calendar_Init_2:
+   \   0000004C   0x.... 0x....      BL       GetKey
+   \   00000050   0x42B0             CMP      R0,R6
+   \   00000052   0xD0FB             BEQ.N    ??Calendar_Init_2
+    969                TimePreAdjustFunc();
+   \   00000054   0x.... 0x....      BL       TimePreAdjustFunc
+    970                DatePreAdjustFunc();
+   \   00000058   0x.... 0x....      BL       DatePreAdjustFunc
+   \   0000005C   0xE00D             B.N      ??Calendar_Init_3
+    971              }
+    972              else
+    973              {
+    974                /* Initialize Date structure with default values */
+    975                sDate.day   = 1;
+   \                     ??Calendar_Init_1:
+   \   0000005E   0x2001             MOVS     R0,#+1
+   \   00000060   0x7020             STRB     R0,[R4, #+0]
+    976                sDate.month = 1;
+   \   00000062   0x7060             STRB     R0,[R4, #+1]
+    977                sDate.year  = 2010;
+   \   00000064   0xF240 0x70DA      MOVW     R0,#+2010
+   \   00000068   0x8060             STRH     R0,[R4, #+2]
+    978                MDR_BKP->REG_01 = sDate.year + (sDate.month << 16) + (sDate.day << 24);
+   \   0000006A   0x....             LDR.N    R0,??DataTable35_12  ;; 0x10107da
+   \   0000006C   0x6068             STR      R0,[R5, #+4]
+    979                /* Wait until last write operation on RTC registers has finished */
+    980                BKP_RTC_WaitForUpdate();
+   \   0000006E   0x.... 0x....      BL       BKP_RTC_WaitForUpdate
+    981                /* Initialize Alarm backup register */
+    982                MDR_BKP->REG_02 = 0;
+   \   00000072   0x2000             MOVS     R0,#+0
+   \   00000074   0x60A8             STR      R0,[R5, #+8]
+    983                /* Wait until last write operation on RTC registers has finished */
+    984                BKP_RTC_WaitForUpdate();
+   \   00000076   0x.... 0x....      BL       BKP_RTC_WaitForUpdate
+    985              }
+    986              WAIT_UNTIL_KEY_RELEASED(key);
+   \                     ??Calendar_Init_3:
+   \   0000007A   0x.... 0x....      BL       GetKey
+   \   0000007E   0x42B0             CMP      R0,R6
+   \   00000080   0xD0FB             BEQ.N    ??Calendar_Init_3
+   \   00000082   0xBDF1             POP      {R0,R4-R7,PC}
+    987            }
+    988            else
+    989            {
+    990              /* Initialize Date structure */
+    991              tmp = MDR_BKP->REG_01;
+   \                     ??Calendar_Init_0:
+   \   00000084   0x6868             LDR      R0,[R5, #+4]
+    992              sDate.day   = tmp >> 24;
+   \   00000086   0x.... 0x....      BL       ?Subroutine17
+    993              sDate.month = (tmp >> 16) & 0xFF;
+    994              sDate.year  = tmp & 0xFFFF;
+    995          
+    996              tmp = BKP_RTC_GetCounter();
+   \                     ??CrossCallReturnLabel_51:
+   \   0000008A   0x.... 0x....      BL       BKP_RTC_GetCounter
+   \   0000008E   0x4604             MOV      R4,R0
+    997              if(tmp / 86399 != 0)
+   \   00000090   0x....             LDR.N    R5,??DataTable35_13  ;; 0x1517f
+   \   00000092   0xFBB4 0xF6F5      UDIV     R6,R4,R5
+   \   00000096   0xB156             CBZ.N    R6,??Calendar_Init_4
+    998              {
+    999                for(i = 0; i < (tmp / 86399); i++)
+   \   00000098   0x4637             MOV      R7,R6
+   1000                {
+   1001                  Date_Update();
+   \                     ??Calendar_Init_5:
+   \   0000009A   0x.... 0x....      BL       Date_Update
+   1002                }
+   \   0000009E   0x1E7F             SUBS     R7,R7,#+1
+   \   000000A0   0xD1FB             BNE.N    ??Calendar_Init_5
+   1003                BKP_RTC_SetCounter(tmp % 86399);
+   \   000000A2   0xFB05 0x4016      MLS      R0,R5,R6,R4
+   \   000000A6   0xE8BD 0x40F2      POP      {R1,R4-R7,LR}
+   \   000000AA   0x.... 0x....      B.W      BKP_RTC_SetCounter
+   1004              }
+   1005            }
+   1006          }
+   \                     ??Calendar_Init_4:
+   \   000000AE   0xBDF1             POP      {R0,R4-R7,PC}    ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable35:
+   \   00000000   0xE000E100         DC32     0xe000e100
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable35_1:
+   \   00000000   0x........         DC32     CurrentMethod
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable35_2:
+   \   00000000   0x........         DC32     sTime
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable35_3:
+   \   00000000   0x400D8000         DC32     0x400d8000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable35_4:
+   \   00000000   0x........         DC32     sDate
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable35_5:
+   \   00000000   0x400D8004         DC32     0x400d8004
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable35_6:
+   \   00000000   0x........         DC32     CurrentFont
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable35_7:
+   \   00000000   0x........         DC32     Font_6x8
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable35_8:
+   \   00000000   0x400D804C         DC32     0x400d804c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable35_9:
+   \   00000000   0x........         DC32     sAlarm
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable35_10:
+   \   00000000   0x400D8008         DC32     0x400d8008
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable35_11:
+   \   00000000   0x........         DC32     AlarmSetStatus
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable35_12:
+   \   00000000   0x010107DA         DC32     0x10107da
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable35_13:
+   \   00000000   0x0001517F         DC32     0x1517f
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "RTC is not configured">`:
+   \   00000000   0x52 0x54          DC8 "RTC is not configured"
+   \              0x43 0x20    
+   \              0x69 0x73    
+   \              0x20 0x6E    
+   \              0x6F 0x74    
+   \              0x20 0x63    
+   \              0x6F 0x6E    
+   \              0x66 0x69    
+   \              0x67 0x75    
+   \              0x72 0x65    
+   \              0x64 0x00    
+   \   00000016   0x00 0x00          DC8 0, 0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "Please, use the ">`:
+   \   00000000   0x50 0x6C          DC8 "Please, use the "
+   \              0x65 0x61    
+   \              0x73 0x65    
+   \              0x2C 0x20    
+   \              0x75 0x73    
+   \              0x65 0x20    
+   \              0x74 0x68    
+   \              0x65 0x20    
+   \              0x00         
+   \   00000011   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "Time Adjust menu.    ">`:
+   \   00000000   0x54 0x69          DC8 "Time Adjust menu.    "
+   \              0x6D 0x65    
+   \              0x20 0x41    
+   \              0x64 0x6A    
+   \              0x75 0x73    
+   \              0x74 0x20    
+   \              0x6D 0x65    
+   \              0x6E 0x75    
+   \              0x2E 0x20    
+   \              0x20 0x20    
+   \              0x20 0x00    
+   \   00000016   0x00 0x00          DC8 0, 0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "Time adjust">`:
+   \   00000000   0x54 0x69          DC8 "Time adjust"
+   \              0x6D 0x65    
+   \              0x20 0x61    
+   \              0x64 0x6A    
+   \              0x75 0x73    
+   \              0x74 0x00    
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "RTC is configured...">`:
+   \   00000000   0x52 0x54          DC8 "RTC is configured..."
+   \              0x43 0x20    
+   \              0x69 0x73    
+   \              0x20 0x63    
+   \              0x6F 0x6E    
+   \              0x66 0x69    
+   \              0x67 0x75    
+   \              0x72 0x65    
+   \              0x64 0x2E    
+   \              0x2E 0x2E    
+   \              0x00         
+   \   00000015   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "        TIME        ">`:
+   \   00000000   0x20 0x20          DC8 "        TIME        "
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x54 0x49    
+   \              0x4D 0x45    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x00         
+   \   00000015   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "Time show">`:
+   \   00000000   0x54 0x69          DC8 "Time show"
+   \              0x6D 0x65    
+   \              0x20 0x73    
+   \              0x68 0x6F    
+   \              0x77 0x00    
+   \   0000000A   0x00 0x00          DC8 0, 0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "   Invalid date.">`:
+   \   00000000   0x20 0x20          DC8 "   Invalid date."
+   \              0x20 0x49    
+   \              0x6E 0x76    
+   \              0x61 0x6C    
+   \              0x69 0x64    
+   \              0x20 0x64    
+   \              0x61 0x74    
+   \              0x65 0x2E    
+   \              0x00         
+   \   00000011   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "   Repeat, please.">`:
+   \   00000000   0x20 0x20          DC8 "   Repeat, please."
+   \              0x20 0x52    
+   \              0x65 0x70    
+   \              0x65 0x61    
+   \              0x74 0x2C    
+   \              0x20 0x70    
+   \              0x6C 0x65    
+   \              0x61 0x73    
+   \              0x65 0x2E    
+   \              0x00         
+   \   00000013   0x00               DC8 0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "                ">`:
+   \   00000000   0x20 0x20          DC8 "                "
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x00         
+   \   00000011   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "                  ">`:
+   \   00000000   0x20 0x20          DC8 "                  "
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x00         
+   \   00000013   0x00               DC8 0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "Date adjust">`:
+   \   00000000   0x44 0x61          DC8 "Date adjust"
+   \              0x74 0x65    
+   \              0x20 0x61    
+   \              0x64 0x6A    
+   \              0x75 0x73    
+   \              0x74 0x00    
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "DATE  DD.MM.YYYY">`:
+   \   00000000   0x44 0x41          DC8 "DATE  DD.MM.YYYY"
+   \              0x54 0x45    
+   \              0x20 0x20    
+   \              0x44 0x44    
+   \              0x2E 0x4D    
+   \              0x4D 0x2E    
+   \              0x59 0x59    
+   \              0x59 0x59    
+   \              0x00         
+   \   00000011   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "Date show">`:
+   \   00000000   0x44 0x61          DC8 "Date show"
+   \              0x74 0x65    
+   \              0x20 0x73    
+   \              0x68 0x6F    
+   \              0x77 0x00    
+   \   0000000A   0x00 0x00          DC8 0, 0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "  :  :">`:
+   \   00000000   0x20 0x20          DC8 "  :  :"
+   \              0x3A 0x20    
+   \              0x20 0x3A    
+   \              0x00         
+   \   00000007   0x00               DC8 0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "Alarm adjust">`:
+   \   00000000   0x41 0x6C          DC8 "Alarm adjust"
+   \              0x61 0x72    
+   \              0x6D 0x20    
+   \              0x61 0x64    
+   \              0x6A 0x75    
+   \              0x73 0x74    
+   \              0x00         
+   \   0000000D   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "ALARM TIME">`:
+   \   00000000   0x41 0x4C          DC8 "ALARM TIME"
+   \              0x41 0x52    
+   \              0x4D 0x20    
+   \              0x54 0x49    
+   \              0x4D 0x45    
+   \              0x00         
+   \   0000000B   0x00               DC8 0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "Alarm show">`:
+   \   00000000   0x41 0x6C          DC8 "Alarm show"
+   \              0x61 0x72    
+   \              0x6D 0x20    
+   \              0x73 0x68    
+   \              0x6F 0x77    
+   \              0x00         
+   \   0000000B   0x00               DC8 0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant " To configuring Time ">`:
+   \   00000000   0x20 0x54          DC8 " To configuring Time "
+   \              0x6F 0x20    
+   \              0x63 0x6F    
+   \              0x6E 0x66    
+   \              0x69 0x67    
+   \              0x75 0x72    
+   \              0x69 0x6E    
+   \              0x67 0x20    
+   \              0x54 0x69    
+   \              0x6D 0x65    
+   \              0x20 0x00    
+   \   00000016   0x00 0x00          DC8 0, 0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant " and Date press SEL, ">`:
+   \   00000000   0x20 0x61          DC8 " and Date press SEL, "
+   \              0x6E 0x64    
+   \              0x20 0x44    
+   \              0x61 0x74    
+   \              0x65 0x20    
+   \              0x70 0x72    
+   \              0x65 0x73    
+   \              0x73 0x20    
+   \              0x53 0x45    
+   \              0x4C 0x2C    
+   \              0x20 0x00    
+   \   00000016   0x00 0x00          DC8 0, 0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant " else press any key. ">`:
+   \   00000000   0x20 0x65          DC8 " else press any key. "
+   \              0x6C 0x73    
+   \              0x65 0x20    
+   \              0x70 0x72    
+   \              0x65 0x73    
+   \              0x73 0x20    
+   \              0x61 0x6E    
+   \              0x79 0x20    
+   \              0x6B 0x65    
+   \              0x79 0x2E    
+   \              0x20 0x00    
+   \   00000016   0x00 0x00          DC8 0, 0
+   1007          
+   1008          /** @} */ /* End of group Menu_TIME_Private_Functions */
+   1009          
+   1010          /** @} */ /* End of group Menu_TIME */
+   1011          
+   1012          /** @} */ /* End of group Menu */
+   1013          
+   1014          /** @} */ /* End of group __MDR32F9Qx_Eval_Demo */
+   1015          
+   1016          /******************* (C) COPYRIGHT 2010 Phyton *******************
+   1017          *
+   1018          * END OF FILE Menu_time.c */
+   1019          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       24  AlarmAdjustFunc
+             24 -> Alarm_Display
+             24 -> Alarm_Regulate
+             24 -> BKP_RTC_ITConfig
+             24 -> BKP_RTC_SetAlarm
+             24 -> BKP_RTC_WaitForUpdate
+              0 -> DisplayMenu
+             24 -> DisplayMenuTitle
+             24 -> GetKey
+             24 -> LCD_CLS
+             24 -> LCD_PUTS
+             24 -> RTCHelp
+       24  AlarmShowFunc
+             24 -> Alarm_Display
+              0 -> DisplayMenu
+             24 -> DisplayMenuTitle
+             24 -> GetKey
+             24 -> LCD_CLS
+             24 -> LCD_PUTS
+             24 -> RTCHelp
+       32  Alarm_Display
+              0 -> LCD_PUTC
+             32 -> LCD_PUTC
+             32 -> LCD_PUTS
+       24  Alarm_Regulate
+             24 -> ReadDigit
+       24  Calendar_Init
+             24 -> BKP_RTC_GetCounter
+              0 -> BKP_RTC_SetCounter
+             24 -> BKP_RTC_WaitForUpdate
+             24 -> DatePreAdjustFunc
+             24 -> Date_Update
+             24 -> GetKey
+             24 -> LCD_CLS
+             24 -> LCD_PUTS
+             24 -> RST_CLK_PCLKcmd
+             24 -> RTC_Configuration
+             24 -> TimePreAdjustFunc
+        8  DateAdjustFunc
+              8 -> DatePreAdjustFunc
+              0 -> DisplayMenu
+       24  DatePreAdjustFunc
+             24 -> Date_Display
+             24 -> Date_Regulate
+             24 -> DisplayMenuTitle
+             24 -> GetKey
+             24 -> LCD_CLS
+             24 -> LCD_PUTS
+             24 -> RTCHelp
+       24  DateShowFunc
+             24 -> Date_Display
+              0 -> DisplayMenu
+             24 -> DisplayMenuTitle
+             24 -> GetKey
+             24 -> LCD_CLS
+             24 -> LCD_PUTS
+             24 -> RTCHelp
+       16  Date_Display
+              0 -> LCD_PUTC
+             16 -> LCD_PUTC
+       40  Date_Regulate
+              0 -> BKP_RTC_WaitForUpdate
+             40 -> IsValidDate
+             40 -> LCD_PUTS
+             40 -> ReadDigit
+             40 -> SysTickDelay
+       16  Date_Update
+              0 -> BKP_RTC_WaitForUpdate
+             16 -> IsLeapYear
+        0  IsLeapYear
+        8  IsValidDate
+              8 -> IsLeapYear
+        8  RTCHelp
+              8 -> GetKey
+              8 -> LCD_PUTS
+        8  RTC_Configuration
+              8 -> BKP_RTC_Calibration
+              8 -> BKP_RTC_Enable
+              8 -> BKP_RTC_ITConfig
+              8 -> BKP_RTC_SetPrescaler
+              8 -> BKP_RTC_WaitForUpdate
+              8 -> BKP_RTCclkSource
+              8 -> RST_CLK_LSEconfig
+              8 -> RST_CLK_LSEstatus
+       32  ReadDigit
+             32 -> GetKey
+             32 -> LCD_PUTC
+             32 -> ShowSelDigit
+       24  ShowSelDigit
+             24 -> LCD_PUTC
+        8  TimeAdjustFunc
+              0 -> DisplayMenu
+              8 -> TimePreAdjustFunc
+       32  TimePreAdjustFunc
+             32 -> BKP_RTC_Reset
+             32 -> BKP_RTC_SetCounter
+             32 -> BKP_RTC_WaitForUpdate
+             32 -> DisplayMenuTitle
+             32 -> GetKey
+             32 -> LCD_CLS
+             32 -> LCD_PUTS
+             32 -> RTC_Configuration
+             32 -> Time_Display
+             32 -> Time_Regulate
+       24  TimeShowFunc
+              0 -> DisplayMenu
+             24 -> DisplayMenuTitle
+             24 -> GetKey
+             24 -> LCD_CLS
+             24 -> LCD_PUTS
+             24 -> RTCHelp
+             24 -> Time_Display
+       32  Time_Display
+             32 -> BKP_RTC_GetCounter
+              0 -> LCD_PUTC
+             32 -> LCD_PUTC
+       24  Time_Regulate
+             24 -> ReadDigit
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      20  ?<Constant "                  ">
+      20  ?<Constant "                ">
+      24  ?<Constant "        TIME        ">
+      20  ?<Constant "   Invalid date.">
+      20  ?<Constant "   Repeat, please.">
+       8  ?<Constant "  :  :">
+      24  ?<Constant " To configuring Time ">
+      24  ?<Constant " and Date press SEL, ">
+      24  ?<Constant " else press any key. ">
+      12  ?<Constant "ALARM TIME">
+      16  ?<Constant "Alarm adjust">
+      12  ?<Constant "Alarm show">
+      20  ?<Constant "DATE  DD.MM.YYYY">
+      12  ?<Constant "Date adjust">
+      12  ?<Constant "Date show">
+      20  ?<Constant "Please, use the ">
+      24  ?<Constant "RTC is configured...">
+      24  ?<Constant "RTC is not configured">
+      24  ?<Constant "Time Adjust menu.    ">
+      12  ?<Constant "Time adjust">
+      12  ?<Constant "Time show">
+       4  ??DataTable35
+       4  ??DataTable35_1
+       4  ??DataTable35_10
+       4  ??DataTable35_11
+       4  ??DataTable35_12
+       4  ??DataTable35_13
+       4  ??DataTable35_2
+       4  ??DataTable35_3
+       4  ??DataTable35_4
+       4  ??DataTable35_5
+       4  ??DataTable35_6
+       4  ??DataTable35_7
+       4  ??DataTable35_8
+       4  ??DataTable35_9
+      10  ??Subroutine18_0
+      50  ?Subroutine0
+      12  ?Subroutine1
+       8  ?Subroutine10
+      16  ?Subroutine11
+      14  ?Subroutine12
+       8  ?Subroutine13
+      14  ?Subroutine14
+      12  ?Subroutine15
+      12  ?Subroutine16
+      12  ?Subroutine17
+       8  ?Subroutine2
+      10  ?Subroutine3
+      12  ?Subroutine4
+      16  ?Subroutine5
+      26  ?Subroutine6
+      26  ?Subroutine7
+      36  ?Subroutine8
+      20  ?Subroutine9
+     118  AlarmAdjustFunc
+      72  AlarmShowFunc
+      48  Alarm_Display
+     142  Alarm_Regulate
+     176  Calendar_Init
+       6  DateAdjustFunc
+      64  DatePreAdjustFunc
+      72  DateShowFunc
+     164  Date_Display
+     290  Date_Regulate
+     142  Date_Update
+      46  IsLeapYear
+      94  IsValidDate
+      50  RTCHelp
+      74  RTC_Configuration
+     124  ReadDigit
+      48  ShowSelDigit
+       8  TimeAdjustFunc
+     150  TimePreAdjustFunc
+      78  TimeShowFunc
+      60  Time_Display
+     140  Time_Regulate
+       8  sAlarm
+       4  sDate
+       8  sTime
+
+ 
+    20 bytes in section .bss
+ 2 928 bytes in section .text
+ 
+ 2 928 bytes of CODE memory
+    20 bytes of DATA memory
+
+Errors: none
+Warnings: none

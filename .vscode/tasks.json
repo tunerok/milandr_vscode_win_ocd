@@ -1,0 +1,90 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Make Build",
+			"type": "shell",
+			"command": "make -j 10 all",
+			"options": {
+				"cwd": "${workspaceRoot}",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": ["/C"]
+				}
+            }, 
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "Make Clean",
+			"type": "shell",
+			"command": "make clean",
+			"options": {
+				"cwd": "${workspaceRoot}",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": ["/C"]
+				}
+            }, 
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+            "problemMatcher": []
+		},
+		  {
+			  "label": "Start OpenOCD",
+			  "type": "shell",
+			  "command":"openocd.exe -f ${workspaceRoot}/OpenOCD_data/open_ocd_flash.cfg -s C:/openocd/share/openocd/scripts",
+			  "options": {
+				"cwd": "${workspaceRoot}",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": ["/C"]
+				}
+			}, 
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		  },
+		  {
+			  "label": "write hex via OpenOCD",
+			  "type": "shell",
+			  "command":"openocd.exe -f \"${workspaceRoot}/OpenOCD_data/open_ocd_flash.cfg\" -c \"program C:<FULL PATH TO PROJECTS' FOLDER>/milandr_vscode_win_openocd/build/milandr_vscode_test.elf verify reset exit\"",
+			  "options": {
+				"cwd": "${workspaceRoot}",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": ["/C"]
+				}
+			}, 
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		  },
+		  {
+			  "label": "connect to GDB",
+			  "type": "shell",
+			  "command":"arm-none-eabi-gdb ./build/milandr_vscode_test.elf",
+			  "options": {
+				"cwd": "${workspaceRoot}",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": ["/C"]
+				}
+			}, 
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		  }
+
+	]
+}

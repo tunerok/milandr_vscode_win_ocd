@@ -1,0 +1,17 @@
+.\Debug\Exe\lcd_mdr1986ve3.o: ..\..\src\lcd_MDR1986VE3.c
+.\Debug\Exe\lcd_mdr1986ve3.o: ..\..\Inc\lcd.h
+.\Debug\Exe\lcd_mdr1986ve3.o: ..\..\Config\MDR32F9Qx_config.h
+.\Debug\Exe\lcd_mdr1986ve3.o: ..\..\Config\MDR32F9Qx_board.h
+.\Debug\Exe\lcd_mdr1986ve3.o: ..\..\..\..\Libraries\MDR32F9Qx_StdPeriph_Driver\inc\MDR32F9Qx_lib.h
+.\Debug\Exe\lcd_mdr1986ve3.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\Debug\Exe\lcd_mdr1986ve3.o: ..\..\..\..\Libraries\CMSIS\CM1\DeviceSupport\MDR1986VE3\inc\MDR1986VE3.h
+.\Debug\Exe\lcd_mdr1986ve3.o: ..\..\Config\MDR32F9Qx_config.h
+.\Debug\Exe\lcd_mdr1986ve3.o: ..\..\..\..\Libraries\CMSIS\CM1\CoreSupport\core_cm1.h
+.\Debug\Exe\lcd_mdr1986ve3.o: ..\..\..\..\Libraries\CMSIS\CM1\CoreSupport\core_cmInstr.h
+.\Debug\Exe\lcd_mdr1986ve3.o: ..\..\..\..\Libraries\CMSIS\CM1\CoreSupport\core_cmFunc.h
+.\Debug\Exe\lcd_mdr1986ve3.o: ..\..\..\..\Libraries\CMSIS\CM1\DeviceSupport\MDR1986VE3\startup\arm\system_MDR1986VE3.h
+.\Debug\Exe\lcd_mdr1986ve3.o: ..\..\..\..\Libraries\MDR32F9Qx_StdPeriph_Driver\inc\MDR32F9Qx_port.h
+.\Debug\Exe\lcd_mdr1986ve3.o: ..\..\..\..\Libraries\MDR32F9Qx_StdPeriph_Driver\inc\MDR32F9Qx_rst_clk.h
+.\Debug\Exe\lcd_mdr1986ve3.o: ..\..\Inc\types.h
+.\Debug\Exe\lcd_mdr1986ve3.o: ..\..\Inc\lcd_MDR1986VE3.h
+.\Debug\Exe\lcd_mdr1986ve3.o: ..\..\Inc\lcd.h

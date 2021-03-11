@@ -1,0 +1,345 @@
+###############################################################################
+#                                                                             #
+# IAR ANSI C/C++ Compiler V6.40.2.53884/W32 for ARM     22/Sep/2015  17:26:03 #
+# Copyright 1999-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Libraries\CMSIS\CM3\De #
+#                    viceSupport\MDR32F9Qx\startup\iar\system_MDR32F9Qx.c     #
+#    Command line =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Libraries\CMSIS\CM3\De #
+#                    viceSupport\MDR32F9Qx\startup\iar\system_MDR32F9Qx.c     #
+#                    --preprocess C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_P #
+#                    rojects\MDR1986VE91_Eval\Demo\IAR_Systems\Debug\List\    #
+#                    -lCN C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\ #
+#                    MDR1986VE91_Eval\Demo\IAR_Systems\Debug\List\ -lB        #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -o              #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\ --debug          #
+#                    --endian=little --cpu=Cortex-M3 -e --fpu=None            #
+#                    --dlib_config "C:\Program Files (x86)\IAR                #
+#                    Systems\Embedded Workbench 6.4\arm\INC\c\DLib_Config_Nor #
+#                    mal.h" -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Proj #
+#                    ects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\config\ -I  #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\ -I                            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\USB_Library\ -I                #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CMSIS #
+#                    \CM3\CoreSupport\ -I C:\WORK\Milandr.MDR1986BExx.1.4.0\E #
+#                    xample_Projects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\ #
+#                    ..\..\Libraries\CMSIS\CM3\DeviceSupport\MDR32F9Qx\inc\   #
+#                    -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MD #
+#                    R1986VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CM #
+#                    SIS\CM3\DeviceSupport\MDR32F9Qx\startup\iar\ -I          #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Example_Project #
+#                    s\MDR1986VE91_Eval\inc\ -Ohz                             #
+#    List file    =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\system_MDR32F9Qx #
+#                    .lst                                                     #
+#    Object file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\system_MDR32F9Qx. #
+#                    o                                                        #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\WORK\Milandr.MDR1986BExx.1.4.0\Libraries\CMSIS\CM3\DeviceSupport\MDR32F9Qx\startup\iar\system_MDR32F9Qx.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    system_MDR32F9Qx.c
+      4            * @author  Phyton Application Team
+      5            * @version V1.4.0
+      6            * @date    11/06/2010
+      7            * @brief   CMSIS Cortex-M3 Device Peripheral Access Layer System Source File.
+      8            ******************************************************************************
+      9            * <br><br>
+     10            *
+     11            * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+     12            * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+     13            * TIME. AS A RESULT, PHYTON SHALL NOT BE HELD LIABLE FOR ANY DIRECT, INDIRECT
+     14            * OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+     15            * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+     16            * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+     17            *
+     18            * <h2><center>&copy; COPYRIGHT 2010 Phyton</center></h2>
+     19            ******************************************************************************
+     20            * FILE system_MDR32F9Qx.c
+     21            */
+     22          
+     23          
+     24          /** @addtogroup __CMSIS CMSIS
+     25            * @{
+     26            */
+     27          
+     28          /** @defgroup MDR1986VE9x
+     29            *  @{
+     30            */
+     31          
+     32          /** @addtogroup __MDR32F9QX MDR32F9QX System
+     33            * @{
+     34            */
+     35          
+     36          /** @addtogroup System_Private_Includes System Private Includes
+     37            * @{
+     38            */
+     39          
+     40          #include "MDR32Fx.h"
+     41          #include "MDR32F9Qx_config.h"
+     42          
+     43          /** @} */ /* End of group System_Private_Includes */
+     44          
+     45          /** @addtogroup __MDR32F9QX_System_Private_Variables MDR32F9QX System Private Variables
+     46            * @{
+     47            */
+     48          
+     49          /*******************************************************************************
+     50          *  Clock Definitions
+     51          *******************************************************************************/
+
+   \                                 In section .data, align 4
+     52            uint32_t SystemCoreClock = (uint32_t)8000000;         /*!< System Clock Frequency (Core Clock)
+   \                     SystemCoreClock:
+   \   00000000   0x007A1200         DC32 8000000
+     53                                                                   *   default value */
+     54          
+     55          /** @} */ /* End of group __MDR32F9QX_System_Private_Variables */
+     56          
+     57          /** @addtogroup __MDR32F9QX_System_Private_Functions MDR32F9QX System Private Functions
+     58            * @{
+     59            */
+     60          
+     61          /**
+     62            * @brief  Update SystemCoreClock according to Clock Register Values
+     63            * @note   None
+     64            * @param  None
+     65            * @retval None
+     66            */
+
+   \                                 In section .text, align 2, keep-with-next
+     67          void SystemCoreClockUpdate (void)
+     68          {
+     69            uint32_t cpu_c1_freq, cpu_c2_freq, cpu_c3_freq;
+     70            uint32_t pll_mul;
+     71          
+     72            /* Compute CPU_CLK frequency */
+     73          
+     74            /* Determine CPU_C1 frequency */
+     75            if ((MDR_RST_CLK->CPU_CLOCK & (uint32_t)0x00000002) == (uint32_t)0x00000002)
+   \                     SystemCoreClockUpdate:
+   \   00000000   0x....             LDR.N    R0,??DataTable1  ;; 0x40020004
+   \   00000002   0x....             LDR.N    R1,??DataTable1_1  ;; 0x7a1200
+   \   00000004   0x6882             LDR      R2,[R0, #+8]
+   \   00000006   0x460A             MOV      R2,R1
+     76            {
+     77              cpu_c1_freq = HSE_Value;
+     78            }
+     79            else
+     80            {
+     81              cpu_c1_freq = HSI_Value;
+     82            }
+     83          
+     84            if ((MDR_RST_CLK->CPU_CLOCK & (uint32_t)0x00000001) == (uint32_t)0x00000001)
+   \   00000008   0x6883             LDR      R3,[R0, #+8]
+   \   0000000A   0x07DB             LSLS     R3,R3,#+31
+   \   0000000C   0xBF48             IT       MI 
+   \   0000000E   0x....             LDRMI.N  R2,??DataTable1_2  ;; 0x3d0900
+     85            {
+     86              cpu_c1_freq /= 2;
+     87            }
+     88          
+     89            /* Determine CPU_C2 frequency */
+     90            cpu_c2_freq = cpu_c1_freq;
+     91          
+     92            if ((MDR_RST_CLK->CPU_CLOCK & (uint32_t)0x00000004) == (uint32_t)0x00000004)
+   \   00000010   0x6883             LDR      R3,[R0, #+8]
+   \   00000012   0x075B             LSLS     R3,R3,#+29
+   \   00000014   0xD504             BPL.N    ??SystemCoreClockUpdate_0
+     93            {
+     94              /* Determine CPU PLL output frequency */
+     95              pll_mul = ((MDR_RST_CLK->PLL_CONTROL >> 8) & (uint32_t)0x0F) + 1;
+   \   00000016   0x6803             LDR      R3,[R0, #+0]
+     96              cpu_c2_freq *= pll_mul;
+   \   00000018   0xF3C3 0x2303      UBFX     R3,R3,#+8,#+4
+   \   0000001C   0x1C5B             ADDS     R3,R3,#+1
+   \   0000001E   0x435A             MULS     R2,R3,R2
+     97            }
+     98          
+     99            /*Select CPU_CLK from HSI, CPU_C3, LSE, LSI cases */
+    100            switch ((MDR_RST_CLK->CPU_CLOCK >> 8) & (uint32_t)0x03)
+   \                     ??SystemCoreClockUpdate_0:
+   \   00000020   0x6883             LDR      R3,[R0, #+8]
+   \   00000022   0x0A1B             LSRS     R3,R3,#+8
+   \   00000024   0xF013 0x0303      ANDS     R3,R3,#0x3
+   \   00000028   0xD00E             BEQ.N    ??SystemCoreClockUpdate_1
+   \   0000002A   0x2B02             CMP      R3,#+2
+   \   0000002C   0xD007             BEQ.N    ??SystemCoreClockUpdate_2
+   \   0000002E   0xD209             BCS.N    ??SystemCoreClockUpdate_3
+    101            {
+    102              case 0 :
+    103                /* HSI */
+    104                SystemCoreClock = HSI_Value;
+    105                break;
+    106              case 1 :
+    107                /* CPU_C3 */
+    108                /* Determine CPU_C3 frequency */
+    109                cpu_c3_freq = cpu_c2_freq / ((MDR_RST_CLK->CPU_CLOCK >> 4 & (uint32_t)0x0F) + 1);
+   \   00000030   0x6880             LDR      R0,[R0, #+8]
+    110                SystemCoreClock = cpu_c3_freq;
+   \   00000032   0xF3C0 0x1003      UBFX     R0,R0,#+4,#+4
+   \   00000036   0x1C40             ADDS     R0,R0,#+1
+   \   00000038   0xFBB2 0xF1F0      UDIV     R1,R2,R0
+    111                break;
+   \   0000003C   0xE004             B.N      ??SystemCoreClockUpdate_1
+    112              case 2 :
+    113                /* LSE */
+    114                SystemCoreClock = LSE_Value;
+   \                     ??SystemCoreClockUpdate_2:
+   \   0000003E   0xF44F 0x4100      MOV      R1,#+32768
+    115                break;
+   \   00000042   0xE001             B.N      ??SystemCoreClockUpdate_1
+    116              default : /* case 3 */
+    117                /* LSI */
+    118                SystemCoreClock = LSI_Value;
+   \                     ??SystemCoreClockUpdate_3:
+   \   00000044   0xF649 0x4140      MOVW     R1,#+40000
+    119                break;
+   \                     ??SystemCoreClockUpdate_1:
+   \   00000048   0x....             LDR.N    R0,??DataTable1_3
+   \   0000004A   0x6001             STR      R1,[R0, #+0]
+    120            }
+    121          }
+   \   0000004C   0x4770             BX       LR               ;; return
+    122          
+    123          /**
+    124            * @brief  Setup the microcontroller system
+    125            *         RST clock configuration to the default reset state
+    126            *         Setup SystemCoreClock variable.
+    127            * @note   This function should be used only after reset.
+    128            * @param  None
+    129            * @retval None
+    130            */
+
+   \                                 In section .text, align 2, keep-with-next
+    131          void SystemInit (void)
+    132          {
+    133            SCB->VTOR = 0x08000000;
+   \                     SystemInit:
+   \   00000000   0x....             LDR.N    R0,??DataTable1_4  ;; 0xe000ed08
+   \   00000002   0xF04F 0x6100      MOV      R1,#+134217728
+   \   00000006   0x6001             STR      R1,[R0, #+0]
+    134            /* Reset the RST clock configuration to the default reset state */
+    135          
+    136            /* Reset all clock but RST_CLK & BKP_CLC bits */
+    137            MDR_RST_CLK->PER_CLOCK   = (uint32_t)0x8000010;
+   \   00000008   0x....             LDR.N    R0,??DataTable1  ;; 0x40020004
+   \   0000000A   0x....             LDR.N    R1,??DataTable1_5  ;; 0x8000010
+   \   0000000C   0x6181             STR      R1,[R0, #+24]
+    138          
+    139            /* Reset CPU_CLOCK bits */
+    140            MDR_RST_CLK->CPU_CLOCK   &= (uint32_t)0x00000000;
+   \   0000000E   0x6881             LDR      R1,[R0, #+8]
+   \   00000010   0x2100             MOVS     R1,#+0
+   \   00000012   0x6081             STR      R1,[R0, #+8]
+    141          
+    142            /* Reset PLL_CONTROL bits */
+    143            MDR_RST_CLK->PLL_CONTROL &= (uint32_t)0x00000000;
+   \   00000014   0x6801             LDR      R1,[R0, #+0]
+   \   00000016   0x2100             MOVS     R1,#+0
+   \   00000018   0x6001             STR      R1,[R0, #+0]
+    144          
+    145            /* Reset HSEON and HSEBYP bits */
+    146            MDR_RST_CLK->HS_CONTROL  &= (uint32_t)0x00000000;
+   \   0000001A   0x6841             LDR      R1,[R0, #+4]
+   \   0000001C   0x2100             MOVS     R1,#+0
+   \   0000001E   0x6041             STR      R1,[R0, #+4]
+    147          
+    148            /* Reset USB_CLOCK bits */
+    149            MDR_RST_CLK->USB_CLOCK   &= (uint32_t)0x00000000;
+   \   00000020   0x68C1             LDR      R1,[R0, #+12]
+   \   00000022   0x2100             MOVS     R1,#+0
+   \   00000024   0x60C1             STR      R1,[R0, #+12]
+    150          
+    151            /* Reset ADC_MCO_CLOCK bits */
+    152            MDR_RST_CLK->ADC_MCO_CLOCK   &= (uint32_t)0x00000000;
+   \   00000026   0x6901             LDR      R1,[R0, #+16]
+   \   00000028   0x2100             MOVS     R1,#+0
+   \   0000002A   0x6101             STR      R1,[R0, #+16]
+    153          
+    154            SystemCoreClockUpdate();
+   \   0000002C   0x....             B.N      SystemCoreClockUpdate
+    155          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1:
+   \   00000000   0x40020004         DC32     0x40020004
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_1:
+   \   00000000   0x007A1200         DC32     0x7a1200
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_2:
+   \   00000000   0x003D0900         DC32     0x3d0900
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_3:
+   \   00000000   0x........         DC32     SystemCoreClock
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_4:
+   \   00000000   0xE000ED08         DC32     0xe000ed08
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_5:
+   \   00000000   0x08000010         DC32     0x8000010
+    156          
+    157          /** @} */ /* End of group __MDR32F9QX_System_Private_Functions */
+    158          
+    159          /** @} */ /* End of group __MDR32F9QX */
+    160          
+    161          /** @} */ /* End of group MDR1986VE9x */
+    162          
+    163          /** @} */ /* End of group __CMSIS */
+    164          
+    165          /******************* (C) COPYRIGHT 2010 Phyton *********************************
+    166          *
+    167          * END OF FILE system_MDR32F9Qx.c */
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+        0  SystemCoreClockUpdate
+        0  SystemInit
+             0 -> SystemCoreClockUpdate
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable1
+       4  ??DataTable1_1
+       4  ??DataTable1_2
+       4  ??DataTable1_3
+       4  ??DataTable1_4
+       4  ??DataTable1_5
+       4  SystemCoreClock
+      78  SystemCoreClockUpdate
+      46  SystemInit
+
+ 
+   4 bytes in section .data
+ 148 bytes in section .text
+ 
+ 148 bytes of CODE memory
+   4 bytes of DATA memory
+
+Errors: none
+Warnings: none

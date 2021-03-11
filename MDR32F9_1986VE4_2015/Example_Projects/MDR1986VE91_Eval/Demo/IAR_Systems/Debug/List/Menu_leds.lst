@@ -1,0 +1,319 @@
+###############################################################################
+#                                                                             #
+# IAR ANSI C/C++ Compiler V6.40.2.53884/W32 for ARM     22/Sep/2015  17:26:00 #
+# Copyright 1999-2012 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\src\Menu_leds.c                              #
+#    Command line =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\src\Menu_leds.c --preprocess                 #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lCN            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -lB             #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\ -o              #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\ --debug          #
+#                    --endian=little --cpu=Cortex-M3 -e --fpu=None            #
+#                    --dlib_config "C:\Program Files (x86)\IAR                #
+#                    Systems\Embedded Workbench 6.4\arm\INC\c\DLib_Config_Nor #
+#                    mal.h" -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Proj #
+#                    ects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\config\ -I  #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\ -I                            #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR32 #
+#                    F9Qx_StdPeriph_Driver\inc\USB_Library\ -I                #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CMSIS #
+#                    \CM3\CoreSupport\ -I C:\WORK\Milandr.MDR1986BExx.1.4.0\E #
+#                    xample_Projects\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\ #
+#                    ..\..\Libraries\CMSIS\CM3\DeviceSupport\MDR32F9Qx\inc\   #
+#                    -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MD #
+#                    R1986VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CM #
+#                    SIS\CM3\DeviceSupport\MDR32F9Qx\startup\iar\ -I          #
+#                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\..\..\..\..\Example_Project #
+#                    s\MDR1986VE91_Eval\inc\ -Ohz                             #
+#    List file    =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\List\Menu_leds.lst    #
+#    Object file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR19 #
+#                    86VE91_Eval\Demo\IAR_Systems\Debug\Obj\Menu_leds.o       #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1986VE91_Eval\src\Menu_leds.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    Menu_leds.c
+      4            * @author  Phyton Application Team
+      5            * @version V3.0.0
+      6            * @date    10.09.2011
+      7            * @brief   This file contains all the "LEDs" menu handlers
+      8            ******************************************************************************
+      9            * <br><br>
+     10            * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+     11            * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+     12            * TIME. AS A RESULT, PHYTON SHALL NOT BE HELD LIABLE FOR ANY
+     13            * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+     14            * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+     15            * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+     16            *
+     17            * <h2><center>&copy; COPYRIGHT 2011 Phyton</center></h2>
+     18            */
+     19          
+     20          /* Includes ------------------------------------------------------------------*/
+     21          
+     22          #include <MDR32F9Qx_port.h>
+     23          #include "Menu.h"
+     24          #include "Menu_items.h"
+     25          #include "leds.h"
+     26          #include "lcd.h"
+     27          #include "text.h"
+     28          #include "joystick.h"
+     29          
+     30          /** @addtogroup __MDR32F9Qx_Eval_Demo MDR32F9Qx Demonstration Example
+     31            * @{
+     32            */
+     33          
+     34          /** @addtogroup Menu Menu
+     35            * @{
+     36            */
+     37          
+     38          /** @addtogroup Menu_LEDs Menu LEDs
+     39            * @{
+     40            */
+     41          
+     42          /** @defgroup Menu_LEDs_Private_Constants Menu LEDs Private Constants
+     43            * @{
+     44            */
+     45          
+     46          #if defined (USE_MDR32F9Q1_Rev0) || defined (USE_MDR32F9Q1_Rev1)
+     47          #define LED_PATTERN                      0xFDF05380
+     48          #define LED_DELAY                        35000
+     49          #elif defined (USE_MDR32F9Q2_Rev0) || defined (USE_MDR32F9Q2_Rev1) || \
+     50                defined (USE_MDR32F9Q3_Rev0) || defined (USE_MDR32F9Q3_Rev1)
+     51          #define LED_PATTERN                      0xAAAAAAAA
+     52          #define LED_DELAY                        35000
+     53          #endif
+     54          
+     55          /** @} */ /* End of group Menu_LEDs_Private_Constants */
+     56          
+     57          /** @defgroup Menu_LEDs_Private_Functions Menu LEDs Private Functions
+     58            * @{
+     59            */
+     60          
+     61          
+     62          /*******************************************************************************
+     63          * Function Name  : LightsOnFunc
+     64          * Description    : Enables or disables LEDs toggling.
+     65          * Input          : None
+     66          * Output         : None
+     67          * Return         : None
+     68          *******************************************************************************/
+
+   \                                 In section .text, align 2, keep-with-next
+     69          void LightsOnFunc(void)
+     70          {
+   \                     LightsOnFunc:
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+     71            uint32_t tck, tck_led;
+     72          #if defined (USE_MDR32F9Q2_Rev0) || defined (USE_MDR32F9Q2_Rev1) || \
+     73              defined (USE_MDR32F9Q3_Rev0) || defined (USE_MDR32F9Q3_Rev1)
+     74            uint32_t saveport;
+     75          #endif
+     76          
+     77            /* Display hint on the screen and wait for key up */
+     78            LCD_CLS();
+   \   00000002   0x.... 0x....      BL       LCD_CLS
+     79            CurrentMethod = MET_AND;
+   \   00000006   0x....             LDR.N    R0,??DataTable2
+   \   00000008   0x2104             MOVS     R1,#+4
+   \   0000000A   0x7001             STRB     R1,[R0, #+0]
+     80            CurrentFont = &Font_6x8;
+   \   0000000C   0x....             LDR.N    R4,??DataTable2_1
+   \   0000000E   0x....             LDR.N    R0,??DataTable2_2
+   \   00000010   0x6020             STR      R0,[R4, #+0]
+     81            LCD_PUTS(0, 0,                       "   Press SEL      ");
+   \   00000012   0x.... 0x....      ADR.W    R2,`?<Constant "   Press SEL      ">`
+   \   00000016   0x2100             MOVS     R1,#+0
+   \   00000018   0x2000             MOVS     R0,#+0
+   \   0000001A   0x.... 0x....      BL       LCD_PUTS
+     82            LCD_PUTS(0, CurrentFont->Height + 2, "   for return     ");
+   \   0000001E   0x.... 0x....      ADR.W    R2,`?<Constant "   for return     ">`
+   \   00000022   0x6820             LDR      R0,[R4, #+0]
+   \   00000024   0x6800             LDR      R0,[R0, #+0]
+   \   00000026   0x1C81             ADDS     R1,R0,#+2
+   \   00000028   0xB2C9             UXTB     R1,R1
+   \   0000002A   0x2000             MOVS     R0,#+0
+   \   0000002C   0x.... 0x....      BL       LCD_PUTS
+     83            WAIT_UNTIL_KEY_RELEASED(SEL);
+   \                     ??LightsOnFunc_0:
+   \   00000030   0x.... 0x....      BL       GetKey
+   \   00000034   0x2800             CMP      R0,#+0
+   \   00000036   0xD0FB             BEQ.N    ??LightsOnFunc_0
+     84          
+     85          #if defined (USE_MDR32F9Q2_Rev0) || defined (USE_MDR32F9Q2_Rev1) || \
+     86              defined (USE_MDR32F9Q3_Rev0) || defined (USE_MDR32F9Q3_Rev1)
+     87          
+     88            /* Save LEDs_PORT port current state, because LEDs pins are also used
+     89             * for LCD control */
+     90            saveport = PORT_ReadInputData(LEDs_PORT);
+     91          #endif
+     92          
+     93            /* All LEDs switch off */
+     94            PORT_ResetBits(LEDs_PORT, LEDs_PINs);
+   \   00000038   0xF44F 0x41F8      MOV      R1,#+31744
+   \   0000003C   0x....             LDR.N    R0,??DataTable2_3  ;; 0x400c0000
+   \   0000003E   0x.... 0x....      BL       PORT_ResetBits
+     95          
+     96            /* Invoke "special effect" */
+     97            CurrentLights = __SHLC(LED_PATTERN, LEDs_OFS);
+   \   00000042   0x....             LDR.N    R4,??DataTable2_4
+   \   00000044   0x....             LDR.N    R0,??DataTable2_5  ;; 0xc14e03f7
+   \   00000046   0x6020             STR      R0,[R4, #+0]
+     98            for (tck = 0, tck_led = 0; !KEY_PRESSED(SEL); tck++)
+   \   00000048   0x2500             MOVS     R5,#+0
+   \   0000004A   0x2600             MOVS     R6,#+0
+   \   0000004C   0xE007             B.N      ??LightsOnFunc_1
+     99            {
+    100              if (tck == tck_led)
+   \                     ??LightsOnFunc_2:
+   \   0000004E   0x42B5             CMP      R5,R6
+   \   00000050   0xD104             BNE.N    ??LightsOnFunc_3
+    101              {
+    102                tck_led += LED_DELAY;
+   \   00000052   0xF506 0x4608      ADD      R6,R6,#+34816
+   \   00000056   0x36B8             ADDS     R6,R6,#+184
+    103                ShiftLights();
+   \   00000058   0x.... 0x....      BL       ShiftLights
+    104              }
+    105            }
+   \                     ??LightsOnFunc_3:
+   \   0000005C   0x1C6D             ADDS     R5,R5,#+1
+   \                     ??LightsOnFunc_1:
+   \   0000005E   0x.... 0x....      BL       GetKey
+   \   00000062   0x2800             CMP      R0,#+0
+   \   00000064   0xD1F3             BNE.N    ??LightsOnFunc_2
+    106            /* SEL is pressed - turn leds off and return to the menu */
+    107            CurrentLights = 0x0;
+   \   00000066   0x6020             STR      R0,[R4, #+0]
+    108            ShiftLights();
+   \   00000068   0x.... 0x....      BL       ShiftLights
+    109          
+    110          #if defined (USE_MDR32F9Q2_Rev0) || defined (USE_MDR32F9Q2_Rev1) || \
+    111              defined (USE_MDR32F9Q3_Rev0) || defined (USE_MDR32F9Q3_Rev1)
+    112          
+    113            /* Restore LEDs_PORT port state */
+    114            PORT_Write(LEDs_PORT, saveport);
+    115          #endif
+    116          
+    117            DisplayMenu();
+   \   0000006C   0xE8BD 0x4070      POP      {R4-R6,LR}
+   \   00000070   0x.... 0x....      B.W      DisplayMenu
+    118          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \   00000000   0x........         DC32     CurrentMethod
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \   00000000   0x........         DC32     CurrentFont
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_2:
+   \   00000000   0x........         DC32     Font_6x8
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_3:
+   \   00000000   0x400C0000         DC32     0x400c0000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_4:
+   \   00000000   0x........         DC32     CurrentLights
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_5:
+   \   00000000   0xC14E03F7         DC32     0xc14e03f7
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "   Press SEL      ">`:
+   \   00000000   0x20 0x20          DC8 "   Press SEL      "
+   \              0x20 0x50    
+   \              0x72 0x65    
+   \              0x73 0x73    
+   \              0x20 0x53    
+   \              0x45 0x4C    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x00         
+   \   00000013   0x00               DC8 0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     `?<Constant "   for return     ">`:
+   \   00000000   0x20 0x20          DC8 "   for return     "
+   \              0x20 0x66    
+   \              0x6F 0x72    
+   \              0x20 0x72    
+   \              0x65 0x74    
+   \              0x75 0x72    
+   \              0x6E 0x20    
+   \              0x20 0x20    
+   \              0x20 0x20    
+   \              0x00         
+   \   00000013   0x00               DC8 0
+    119          
+    120          /** @} */ /* End of group Menu_LEDs_Private_Functions */
+    121          
+    122          /** @} */ /* End of group Menu_LEDs */
+    123          
+    124          /** @} */ /* End of group Menu */
+    125          
+    126          /** @} */ /* End of group __MDR32F9Qx_Eval_Demo */
+    127          
+    128          /******************* (C) COPYRIGHT 2011 Phyton *********************************
+    129          *
+    130          * END OF FILE Menu_leds.c */
+    131          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       16  LightsOnFunc
+              0 -> DisplayMenu
+             16 -> GetKey
+             16 -> LCD_CLS
+             16 -> LCD_PUTS
+             16 -> PORT_ResetBits
+             16 -> ShiftLights
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      20  ?<Constant "   Press SEL      ">
+      20  ?<Constant "   for return     ">
+       4  ??DataTable2
+       4  ??DataTable2_1
+       4  ??DataTable2_2
+       4  ??DataTable2_3
+       4  ??DataTable2_4
+       4  ??DataTable2_5
+     116  LightsOnFunc
+
+ 
+ 180 bytes in section .text
+ 
+ 180 bytes of CODE memory
+
+Errors: none
+Warnings: none

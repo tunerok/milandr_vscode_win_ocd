@@ -1,0 +1,281 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR ANSI C/C++ Compiler V6.40.2.53884/W32 for ARM    22/Sep/2015  17:25:55 /
+// Copyright 1999-2012 IAR Systems AB.                                        /
+//                                                                            /
+//    Cpu mode     =  thumb                                                   /
+//    Endian       =  little                                                  /
+//    Source file  =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1 /
+//                    986VE91_Eval\src\Demo_Init_MDR32F9Qx.c                  /
+//    Command line =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1 /
+//                    986VE91_Eval\src\Demo_Init_MDR32F9Qx.c --preprocess     /
+//                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1 /
+//                    986VE91_Eval\Demo\IAR_Systems\Debug\List\ -lCN          /
+//                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1 /
+//                    986VE91_Eval\Demo\IAR_Systems\Debug\List\ -lB           /
+//                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1 /
+//                    986VE91_Eval\Demo\IAR_Systems\Debug\List\ -o            /
+//                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1 /
+//                    986VE91_Eval\Demo\IAR_Systems\Debug\Obj\ --debug        /
+//                    --endian=little --cpu=Cortex-M3 -e --fpu=None           /
+//                    --dlib_config "C:\Program Files (x86)\IAR               /
+//                    Systems\Embedded Workbench                              /
+//                    6.4\arm\INC\c\DLib_Config_Normal.h" -I                  /
+//                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1 /
+//                    986VE91_Eval\Demo\IAR_Systems\..\..\config\ -I          /
+//                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1 /
+//                    986VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR /
+//                    32F9Qx_StdPeriph_Driver\inc\ -I                         /
+//                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1 /
+//                    986VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\MDR /
+//                    32F9Qx_StdPeriph_Driver\inc\USB_Library\ -I             /
+//                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1 /
+//                    986VE91_Eval\Demo\IAR_Systems\..\..\..\..\Libraries\CMS /
+//                    IS\CM3\CoreSupport\ -I C:\WORK\Milandr.MDR1986BExx.1.4. /
+//                    0\Example_Projects\MDR1986VE91_Eval\Demo\IAR_Systems\.. /
+//                    \..\..\..\Libraries\CMSIS\CM3\DeviceSupport\MDR32F9Qx\i /
+//                    nc\ -I C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projec /
+//                    ts\MDR1986VE91_Eval\Demo\IAR_Systems\..\..\..\..\Librar /
+//                    ies\CMSIS\CM3\DeviceSupport\MDR32F9Qx\startup\iar\ -I   /
+//                    C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1 /
+//                    986VE91_Eval\Demo\IAR_Systems\..\..\..\..\Example_Proje /
+//                    cts\MDR1986VE91_Eval\inc\ -Ohz                          /
+//    List file    =  C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1 /
+//                    986VE91_Eval\Demo\IAR_Systems\Debug\List\Demo_Init_MDR3 /
+//                    2F9Qx.s                                                 /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME Demo_Init_MDR32F9Qx
+
+        #define SHT_PROGBITS 0x1
+
+
+
+        SECTION `.iar_vfe_header`:DATA:REORDER:NOALLOC:NOROOT(2)
+        SECTION_TYPE SHT_PROGBITS, 0
+        DATA
+        DC32 0
+
+        SECTION __DLIB_PERTHREAD:DATA:REORDER:NOROOT(0)
+        SECTION_TYPE SHT_PROGBITS, 0
+
+        SECTION __DLIB_PERTHREAD_init:DATA:REORDER:NOROOT(0)
+        SECTION_TYPE SHT_PROGBITS, 0
+
+        END
+// C:\WORK\Milandr.MDR1986BExx.1.4.0\Example_Projects\MDR1986VE91_Eval\src\Demo_Init_MDR32F9Qx.c
+//    1 /**
+//    2   ******************************************************************************
+//    3   * @file    Demo_Init_MDR32F9Qx.c
+//    4   * @author  Phyton Application Team
+//    5   * @version V3.0.0
+//    6   * @date    09.09.2011
+//    7   * @brief   Initializes the demonstration application for MDR32F9Q2_Rev0,
+//    8   *          MDR32F9Q2_Rev1, MDR32F9Q3_Rev0 and MDR32F9Q3_Rev1 evaluation boards.
+//    9   ******************************************************************************
+//   10   * <br><br>
+//   11   * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+//   12   * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+//   13   * TIME. AS A RESULT, PHYTON SHALL NOT BE HELD LIABLE FOR ANY
+//   14   * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+//   15   * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+//   16   * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+//   17   *
+//   18   * <h2><center>&copy; COPYRIGHT 2011 Phyton</center></h2>
+//   19   */
+//   20 
+//   21 /* Includes ------------------------------------------------------------------*/
+//   22 #include "MDR32F9Qx_config.h"
+//   23 #include <MDR32Fx.h>
+//   24 #include <MDR32F9Qx_port.h>
+//   25 #include <MDR32F9Qx_rst_clk.h>
+//   26 #include <MDR32F9Qx_uart.h>
+//   27 #include "MDR32F9Qx_board.h"
+//   28 #include "lcd.h"
+//   29 #include "joystick.h"
+//   30 #include "leds.h"
+//   31 #include "demo_init.h"
+//   32 
+//   33 #if defined (USE_MDR32F9Q2_Rev0) || defined (USE_MDR32F9Q2_Rev1) || \ 
+//   34     defined (USE_MDR32F9Q3_Rev0) || defined (USE_MDR32F9Q3_Rev1)
+//   35 
+//   36 /** @addtogroup __MDR32F9Qx_Eval_Demo MDR32F9Qx Demonstration Example
+//   37   * @{
+//   38   */
+//   39 
+//   40 /** @addtogroup Demo_Setup Demo Setup
+//   41   * @{
+//   42   */
+//   43 
+//   44 /** @defgroup __MDR32F9Qx_Demo_Setup MDR32F9Qx evaluation boards specific
+//   45   * @{
+//   46   */
+//   47 
+//   48 /** @defgroup __MDR32F9Qx_Demo_Setup_Private_Constants MDR32F9Qx Demo Setup Private Constants
+//   49   * @{
+//   50   */
+//   51 
+//   52 #define ALL_PORTS_CLK   (RST_CLK_PCLK_PORTA | RST_CLK_PCLK_PORTB | \ 
+//   53                          RST_CLK_PCLK_PORTC | RST_CLK_PCLK_PORTD | \ 
+//   54                          RST_CLK_PCLK_PORTE | RST_CLK_PCLK_PORTF)
+//   55 
+//   56 /** @} */ /* End of group __MDR32F9Qx_Demo_Setup_Private_Constants */
+//   57 
+//   58 /** @defgroup __MDR32F9Qx_Demo_Setup_Private_Variables MDR32F9Qx Demo Setup Private Variables
+//   59   * @{
+//   60   */
+//   61 
+//   62 /** @} */ /* End of group __MDR32F9Qx_Demo_Setup_Private_Variables */
+//   63 
+//   64 /** @defgroup __MDR32F9Qx_Demo_Setup_Private_Functions MDR32F9Qx Demo Setup Private Functions
+//   65   * @{
+//   66   */
+//   67 
+//   68 /*******************************************************************************
+//   69 * Function Name  : ClockConfigure
+//   70 * Description    : Configures the CPU_PLL and RTCHSE clock.
+//   71 * Input          : None
+//   72 * Output         : None
+//   73 * Return         : None
+//   74 *******************************************************************************/
+//   75 void ClockConfigure(void)
+//   76 {
+//   77   /* Configure CPU_PLL clock */
+//   78   RST_CLK_CPU_PLLconfig (RST_CLK_CPU_PLLsrcHSIdiv1,0);
+//   79 
+//   80   /* Enables the RTCHSE clock on all ports */
+//   81   RST_CLK_PCLKcmd(ALL_PORTS_CLK, ENABLE);
+//   82 }
+//   83 
+//   84 /*******************************************************************************
+//   85 * Function Name  : Demo_Init
+//   86 * Description    : Initializes the demonstration application
+//   87 * Input          : None
+//   88 * Output         : None
+//   89 * Return         : None
+//   90 *******************************************************************************/
+//   91 void Demo_Init(void)
+//   92 {
+//   93   ClockConfigure();
+//   94 
+//   95 /************************ LCD Initialization *************************/
+//   96 
+//   97   /* Configure LCD_DATA_PORT for data transfer to/from LCD */
+//   98   PortInitStructure.PORT_Pin = LCD_DATA_BUS_8;
+//   99   PortInitStructure.PORT_FUNC = PORT_FUNC_PORT;
+//  100   PortInitStructure.PORT_OE = PORT_OE_IN;
+//  101   PortInitStructure.PORT_SPEED = PORT_SPEED_SLOW;
+//  102   PortInitStructure.PORT_MODE = PORT_MODE_DIGITAL;
+//  103 
+//  104   PORT_Init(LCD_DATA_PORT, &PortInitStructure);
+//  105 
+//  106   /* Configure LCD_RD_WR_PORT for read/write control */
+//  107   /* Switch LCD into data output mode */
+//  108   PORT_SetBits(LCD_RD_WR_PORT, LCD_RD_WR_PIN);
+//  109 
+//  110   PortInitStructure.PORT_Pin = LCD_RD_WR_PIN;
+//  111   PortInitStructure.PORT_OE = PORT_OE_OUT;
+//  112 
+//  113   PORT_Init(LCD_RD_WR_PORT, &PortInitStructure);
+//  114 
+//  115   /* Configure LCD_CLOCK_PORT for CLOCK signal control*/
+//  116   /* Set LCD CLOCK signal to its initial value (0) */
+//  117   PORT_ResetBits(LCD_CLOCK_PORT, LCD_CLOCK_PIN);
+//  118 
+//  119   PortInitStructure.PORT_Pin = LCD_CLOCK_PIN;
+//  120   PortInitStructure.PORT_SPEED = PORT_SPEED_FAST;
+//  121 
+//  122   PORT_Init(LCD_CLOCK_PORT, &PortInitStructure);
+//  123 
+//  124   /* Configure LCD_CRYSTAL_PORT for LCD crystal control */
+//  125   /* De-select both LCD crystals*/
+//  126   PORT_ResetBits(LCD_CRYSTAL_PORT, LCD_CRYSTAL_PINs);
+//  127 
+//  128   PortInitStructure.PORT_Pin = LCD_CRYSTAL_PINs;
+//  129   PortInitStructure.PORT_SPEED = PORT_SPEED_SLOW;
+//  130 
+//  131   PORT_Init(LCD_CRYSTAL_PORT, &PortInitStructure);
+//  132 
+//  133   /* Configure LCD_CMD_DATA_PORT for data/command mode switching */
+//  134   PortInitStructure.PORT_Pin = LCD_CMD_DATA_PIN;
+//  135 
+//  136   PORT_Init(LCD_CMD_DATA_PORT, &PortInitStructure);
+//  137 
+//  138   /* Configure LCD_RESET_PORT for RESET signal control */
+//  139   /* Zeroing LCD RES signal (initial state) */
+//  140   PORT_ResetBits(LCD_RESET_PORT, LCD_RESET_PIN);
+//  141 
+//  142   PortInitStructure.PORT_Pin = LCD_RESET_PIN;
+//  143   PortInitStructure.PORT_SPEED = PORT_SPEED_FAST;
+//  144 
+//  145   PORT_Init(LCD_RESET_PORT, &PortInitStructure);
+//  146 
+//  147   LCD_INIT();
+//  148 
+//  149 /************************ Joystick Initialization *************************/
+//  150 
+//  151   /* Configure SEL_PORT for input to handle joystick event SEL */
+//  152   PortInitStructure.PORT_Pin   = SEL_PIN;
+//  153   PortInitStructure.PORT_OE    = PORT_OE_IN;
+//  154   PortInitStructure.PORT_FUNC  = PORT_FUNC_PORT;
+//  155   PortInitStructure.PORT_SPEED = PORT_SPEED_SLOW;
+//  156 
+//  157   PORT_Init(SEL_PORT, &PortInitStructure);
+//  158 
+//  159   /* Configure UP_PORT for input to handle joystick event UP */
+//  160   PortInitStructure.PORT_Pin   = UP_PIN;
+//  161 
+//  162   PORT_Init(UP_PORT, &PortInitStructure);
+//  163 
+//  164   /* Configure DOWN_PORT for input to handle joystick event DOWN */
+//  165   PortInitStructure.PORT_Pin   = DOWN_PIN;
+//  166 
+//  167   PORT_Init(DOWN_PORT, &PortInitStructure);
+//  168 
+//  169   /* Configure LEFT_PORT for input to handle joystick event LEFT */
+//  170   PortInitStructure.PORT_Pin   = LEFT_PIN;
+//  171 
+//  172   PORT_Init(LEFT_PORT, &PortInitStructure);
+//  173 
+//  174   /* Configure RIGHT_PORT for input to handle joystick event RIGHT */
+//  175   PortInitStructure.PORT_Pin   = RIGHT_PIN;
+//  176 
+//  177   PORT_Init(RIGHT_PORT, &PortInitStructure);
+//  178 
+//  179 /************************ LEDs Initialization *************************/
+//  180 
+//  181   /* Configure LEDs_PORT for output to switch LEDs on/off */
+//  182   PortInitStructure.PORT_Pin   = LEDs_PINs;
+//  183   PortInitStructure.PORT_OE    = PORT_OE_OUT;
+//  184   PortInitStructure.PORT_FUNC  = PORT_FUNC_PORT;
+//  185 
+//  186   PORT_Init(LEDs_PORT, &PortInitStructure);
+//  187 
+//  188   /* All LEDs switch off */
+//  189   PORT_ResetBits(LEDs_PORT, LEDs_PINs);
+//  190 }
+//  191 
+//  192 /** @} */ /* End of group __MDR32F9Qx_Demo_Setup_Private_Functions */
+//  193 
+//  194 /** @} */ /* End of group __MDR32F9Qx_Demo_Setup */
+//  195 
+//  196 /** @} */ /* End of group Demo_Setup */
+//  197 
+//  198 /** @} */ /* End of group __MDR32F9Qx_Eval_Demo */
+//  199 
+//  200 #endif /* USE_MDR32F9Q2_Rev0 || USE_MDR32F9Q2_Rev1 ||
+//  201         * USE_MDR32F9Q3_Rev0 || USE_MDR32F9Q3_Rev1 */
+//  202 
+//  203 /******************* (C) COPYRIGHT 2011 Phyton *******************
+//  204 *
+//  205 * END OF FILE Demo_Init_MDR32F9Qx.c */
+//  206 
+// 
+//
+// 
+//
+//
+//Errors: none
+//Warnings: none

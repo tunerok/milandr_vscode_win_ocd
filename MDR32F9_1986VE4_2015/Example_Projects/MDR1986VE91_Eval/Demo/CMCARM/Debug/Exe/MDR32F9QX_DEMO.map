@@ -1,0 +1,689 @@
+*******************************************************************************
+*                                                                             *
+*              UNIVERSAL CROSS LINKER Version 1.13.130827 Demo                *
+*                    Copyright (C) 2004-2012 Phyton, Inc.                     *
+*                                                                             *
+*******************************************************************************
+
+                 * * *  O P T I O N S   A T   S T A R T  * * *
+
+    -O C:\Program Files (x86)\Phyton CodeMaster-ARM Demo\2_40_00\CMC-ARM\Lib
+    -E Debug\Exe\MDR32F9QX_DEMO
+    -M 10
+    -M 20
+    -M 21
+    -M 60
+    -M 80
+    -F MIE
+    -m
+    -t
+    -A (code)CODE(08000000H-0801FFFFH)
+    -A (data)DATA(020000000H-020007FFFH)
+    -Z CSTACK(4096)
+
+            * * *  A D D I N G   P R O G R A M   M O D U L E S  * * *
+
+  Module:                ?STARTUP_DEVICE                         
+
+  Module:                MAIN                                    
+
+  Module:                MDR32F9QX_BKP                           
+
+  Module:                MDR32F9QX_CAN                           
+
+  Module:                MDR32F9QX_COMP                          
+
+  Module:                MDR32F9QX_DAC                           
+
+  Module:                MDR32F9QX_DMA                           
+
+  Module:                MDR32F9QX_EBC                           
+
+  Module:                MDR32F9QX_EEPROM                        
+
+  Module:                MDR32F9QX_I2C                           
+
+  Module:                MDR32F9QX_IWDG                          
+
+  Module:                MDR32F9QX_PORT                          
+
+  Module:                MDR32F9QX_POWER                         
+
+  Module:                MDR32F9QX_RST_CLK                       
+
+  Module:                MDR32F9QX_SSP                           
+
+  Module:                MDR32F9QX_TIMER                         
+
+  Module:                MDR32F9QX_UART                          
+
+  Module:                MDR32F9QX_USB                           
+
+  Module:                MDR32F9QX_WWDG                          
+
+  Module:                MDR32F9QX_ADC                           
+
+            * * *  A D D I N G   L I B R A R Y   M O D U L E S  * * *
+
+  Module:                ?RESET_HANDLER           low-priority   
+
+  Module:                ?NMI_HANDLER             low-priority   
+
+  Module:                ?HARDFAULT_HANDLER       low-priority   
+
+  Module:                ?MEMMANAGE_HANDLER       low-priority   
+
+  Module:                ?BUSFAULT_HANDLER        low-priority   
+
+  Module:                ?USAGEFAULT_HANDLER      low-priority   
+
+  Module:                ?SVC_HANDLER             low-priority   
+
+  Module:                ?DEBUGMON_HANDLER        low-priority   
+
+  Module:                ?PENDSV_HANDLER          low-priority   
+
+  Module:                ?SYSTICK_HANDLER         low-priority   
+
+  Module:                ?CAN1_IRQHANDLER         low-priority   
+
+  Module:                ?CAN2_IRQHANDLER         low-priority   
+
+  Module:                ?USB_IRQHANDLER          low-priority   
+
+  Module:                ?DMA_IRQHANDLER          low-priority   
+
+  Module:                ?UART1_IRQHANDLER        low-priority   
+
+  Module:                ?UART2_IRQHANDLER        low-priority   
+
+  Module:                ?SSP1_IRQHANDLER         low-priority   
+
+  Module:                ?I2C_IRQHANDLER          low-priority   
+
+  Module:                ?POWER_IRQHANDLER        low-priority   
+
+  Module:                ?WWDG_IRQHANDLER         low-priority   
+
+  Module:                ?TIMER1_IRQHANDLER       low-priority   
+
+  Module:                ?TIMER2_IRQHANDLER       low-priority   
+
+  Module:                ?TIMER3_IRQHANDLER       low-priority   
+
+  Module:                ?ADC_IRQHANDLER          low-priority   
+
+  Module:                ?COMPARATOR_IRQHANDLER   low-priority   
+
+  Module:                ?SSP2_IRQHANDLER         low-priority   
+
+  Module:                ?BACKUP_IRQHANDLER       low-priority   
+
+  Module:                ?EXT_INT1_IRQHANDLER     low-priority   
+
+  Module:                ?EXT_INT2_IRQHANDLER     low-priority   
+
+  Module:                ?EXT_INT3_IRQHANDLER     low-priority   
+
+  Module:                ?EXT_INT4_IRQHANDLER     low-priority   
+
+  Module:                ??SYSTEMINIT             low-priority   
+
+  Module:                ??CSTARTUP               low-priority   
+
+  Module:                ??CEXIT                  low-priority   
+
+  Module:                _CMSIS_CM3_COREDEBUGINTERFACElow-priority   
+
+              * * *  F U L L   S E T   O F   O P T I O N S  * * *
+
+    -O C:\Program Files (x86)\Phyton CodeMaster-ARM Demo\2_40_00\CMC-ARM\Lib
+    -E Debug\Exe\MDR32F9QX_DEMO
+    -M 10
+    -M 20
+    -M 21
+    -M 60
+    -M 80
+    -F MIE
+    -m
+    -t
+    -A (code)CODE(08000000H-0801FFFFH)
+    -A (data)DATA(020000000H-020007FFFH)
+    -Z CSTACK(4096)
+    -K code(8000000H-80000BFH)
+    -K data(20000000h-200003FFh)
+
+               * * *  B U I L D I N G   S E G M E N T S  * * *
+
+  Segment: ??CODE_CLIB                             code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  ??SYSTEMINIT              00000002        01        00000000
+  ??CSTARTUP                00000070        02        00000004
+  ??CEXIT                   00000002        01        00000074
+  ============================================================
+  Total:                    00000076        02
+
+
+  Segment: ??DATA_SEGMENT_ADDRESSES                code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MAIN                      00000008        02        00000000
+  ============================================================
+  Total:                    00000008        02
+
+
+  Segment: ??DEFAULT_HANDLERS                      code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  ?RESET_HANDLER            00000010        02        00000000
+  ?NMI_HANDLER              00000002        01        00000010
+  ?HARDFAULT_HANDLER        00000002        01        00000012
+  ?MEMMANAGE_HANDLER        00000002        01        00000014
+  ?BUSFAULT_HANDLER         00000002        01        00000016
+  ?USAGEFAULT_HANDLER       00000002        01        00000018
+  ?SVC_HANDLER              00000002        01        0000001A
+  ?DEBUGMON_HANDLER         00000002        01        0000001C
+  ?PENDSV_HANDLER           00000002        01        0000001E
+  ?SYSTICK_HANDLER          00000002        01        00000020
+  ?CAN1_IRQHANDLER          00000002        01        00000022
+  ?CAN2_IRQHANDLER          00000002        01        00000024
+  ?USB_IRQHANDLER           00000002        01        00000026
+  ?DMA_IRQHANDLER           00000002        01        00000028
+  ?UART1_IRQHANDLER         00000002        01        0000002A
+  ?UART2_IRQHANDLER         00000002        01        0000002C
+  ?SSP1_IRQHANDLER          00000002        01        0000002E
+  ?I2C_IRQHANDLER           00000002        01        00000030
+  ?POWER_IRQHANDLER         00000002        01        00000032
+  ?WWDG_IRQHANDLER          00000002        01        00000034
+  ?TIMER1_IRQHANDLER        00000002        01        00000036
+  ?TIMER2_IRQHANDLER        00000002        01        00000038
+  ?TIMER3_IRQHANDLER        00000002        01        0000003A
+  ?ADC_IRQHANDLER           00000002        01        0000003C
+  ?COMPARATOR_IRQHANDLER    00000002        01        0000003E
+  ?SSP2_IRQHANDLER          00000002        01        00000040
+  ?BACKUP_IRQHANDLER        00000002        01        00000042
+  ?EXT_INT1_IRQHANDLER      00000002        01        00000044
+  ?EXT_INT2_IRQHANDLER      00000002        01        00000046
+  ?EXT_INT3_IRQHANDLER      00000002        01        00000048
+  ?EXT_INT4_IRQHANDLER      00000002        01        0000004A
+  ============================================================
+  Total:                    0000004C        02
+
+
+  Segment: ??INIT_DATA_SEGMENT_ADDRESSES           code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_EEPROM          0000000C        02        00000000
+  _CMSIS_CM3_COREDEBUGINTERFACE 0000000C        02        0000000C
+  ============================================================
+  Total:                    00000018        02
+
+
+  Segment: CSTACK                                  data    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  ============================================================
+  Total:        (increased) 00001000        03
+
+
+  Segment: FUN_CODE__MAIN                          code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MAIN                      000000E8        02        00000000
+  ============================================================
+  Total:                    000000E8        02
+
+
+  Segment: FUN_CODE__MDR32F9QX_ADC                 code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_ADC             000003F0        02        00000000
+  ============================================================
+  Total:                    000003F0        02
+
+
+  Segment: FUN_CODE__MDR32F9QX_BKP                 code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_BKP             00000124        02        00000000
+  ============================================================
+  Total:                    00000124        02
+
+
+  Segment: FUN_CODE__MDR32F9QX_CAN                 code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_CAN             00000392        02        00000000
+  ============================================================
+  Total:                    00000392        02
+
+
+  Segment: FUN_CODE__MDR32F9QX_COMP                code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_COMP            00000130        02        00000000
+  ============================================================
+  Total:                    00000130        02
+
+
+  Segment: FUN_CODE__MDR32F9QX_DAC                 code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_DAC             0000009C        02        00000000
+  ============================================================
+  Total:                    0000009C        02
+
+
+  Segment: FUN_CODE__MDR32F9QX_DMA                 code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_DMA             0000038C        02        00000000
+  ============================================================
+  Total:                    0000038C        02
+
+
+  Segment: FUN_CODE__MDR32F9QX_EBC                 code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_EBC             000000E4        02        00000000
+  ============================================================
+  Total:                    000000E4        02
+
+
+  Segment: FUN_CODE__MDR32F9QX_EEPROM              code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_EEPROM          0000000C        02        00000000
+  ============================================================
+  Total:                    0000000C        02
+
+
+  Segment: FUN_CODE__MDR32F9QX_I2C                 code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_I2C             000000FA        02        00000000
+  ============================================================
+  Total:                    000000FA        02
+
+
+  Segment: FUN_CODE__MDR32F9QX_IWDG                code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_IWDG            00000054        02        00000000
+  ============================================================
+  Total:                    00000054        02
+
+
+  Segment: FUN_CODE__MDR32F9QX_PORT                code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_PORT            00000214        02        00000000
+  ============================================================
+  Total:                    00000214        02
+
+
+  Segment: FUN_CODE__MDR32F9QX_POWER               code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_POWER           00000144        02        00000000
+  ============================================================
+  Total:                    00000144        02
+
+
+  Segment: FUN_CODE__MDR32F9QX_RST_CLK             code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_RST_CLK         00000564        02        00000000
+  ============================================================
+  Total:                    00000564        02
+
+
+  Segment: FUN_CODE__MDR32F9QX_SSP                 code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_SSP             00000108        02        00000000
+  ============================================================
+  Total:                    00000108        02
+
+
+  Segment: FUN_CODE__MDR32F9QX_TIMER               code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_TIMER           000004C0        02        00000000
+  ============================================================
+  Total:                    000004C0        02
+
+
+  Segment: FUN_CODE__MDR32F9QX_UART                code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_UART            000001EC        02        00000000
+  ============================================================
+  Total:                    000001EC        02
+
+
+  Segment: FUN_CODE__MDR32F9QX_USB                 code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_USB             00000360        02        00000000
+  ============================================================
+  Total:                    00000360        02
+
+
+  Segment: FUN_CODE__MDR32F9QX_WWDG                code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_WWDG            00000088        02        00000000
+  ============================================================
+  Total:                    00000088        02
+
+
+  Segment: IDATA_INI___CMSIS_CM3_COREDEBUGINTERFACE code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  _CMSIS_CM3_COREDEBUGINTERFACE 00000004        00        00000000
+  ============================================================
+  Total:                    00000004        00
+
+
+  Segment: IDATA___CMSIS_CM3_COREDEBUGINTERFACE    data    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  _CMSIS_CM3_COREDEBUGINTERFACE 00000004        02        00000000
+  ============================================================
+  Total:                    00000004        02
+
+
+  Segment: INTVEC                                  code    ABS
+  ------------------------------------------------------------
+  Module                     Start         End          Size  
+  ============================================================
+  ?STARTUP_DEVICE           00000000     080000BF     080000C0
+  ============================================================
+  Total:                min:00000000 max:080000BF     080000C0
+
+
+  Segment: RAM_CODE_INI__MDR32F9QX_EEPROM          code    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_EEPROM          0000031C        02        00000000
+  ============================================================
+  Total:                    0000031C        02
+
+
+  Segment: RAM_CODE__MDR32F9QX_EEPROM              data    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MDR32F9QX_EEPROM          0000031C        02        00000000
+  ============================================================
+  Total:                    0000031C        02
+
+
+  Segment: UDATA__MAIN                             data    REL
+  ------------------------------------------------------------
+  Module                      Size        Align        Offset 
+  ============================================================
+  MAIN                      00000028        02        00000000
+  ============================================================
+  Total:                    00000028        02
+
+         * * *  A D D R E S S   A R E A S   D E F I N I T I O N  * * *
+
+  Name:                          CODE
+  Allocation:                    code
+  Ranges:                        080000C0 0801FFFF
+  Reserved for abs segments:     08000000 080000BF
+
+  Name:                          DATA
+  Allocation:                    data
+  Ranges:                        20000400 20007FFF
+  Reserved for abs segments:     20000000 200003FF
+
+     * * *  P L A C I N G   R E L O C A T A B L E   S E G M E N T S  * * *
+
+  Segment:                       ??CODE_CLIB
+  Allocation:                    code
+  Size:                          00000076
+  Align:                         02
+  Address area:                  CODE
+  Border:                        >00000000
+  Placed at:                     080000C0
+  Ends at:                       08000135
+
+
+  Segment:                       ??DEFAULT_HANDLERS
+  Allocation:                    code
+  Size:                          0000004C
+  Align:                         02
+  Address area:                  CODE
+  Border:                        >00000000
+  Placed at:                     08000138
+  Ends at:                       08000183
+
+
+  Segment:                       IDATA_INI___CMSIS_CM3_COREDEBUGINTERFACE
+  Allocation:                    code
+  Size:                          00000004
+  Align:                         00
+  Address area:                  CODE
+  Border:                        >00000000
+  Placed at:                     08000184
+  Ends at:                       08000187
+
+
+  Segment:                       ??DATA_SEGMENT_ADDRESSES
+  Allocation:                    code
+  Size:                          00000008
+  Align:                         02
+  Address area:                  CODE
+  Border:                        >00000000
+  Placed at:                     08000188
+  Ends at:                       0800018F
+
+
+  Segment:                       ??INIT_DATA_SEGMENT_ADDRESSES
+  Allocation:                    code
+  Size:                          0000000C
+  Align:                         02
+  Address area:                  CODE
+  Border:                        >00000000
+  Placed at:                     08000190
+  Ends at:                       0800019B
+
+
+  Segment:                       FUN_CODE__MAIN
+  Allocation:                    code
+  Size:                          000000E8
+  Align:                         02
+  Address area:                  CODE
+  Border:                        >00000000
+  Placed at:                     0800019C
+  Ends at:                       08000283
+
+
+  Segment:                       FUN_CODE__MDR32F9QX_PORT
+  Allocation:                    code
+  Size:                          000001C4
+  Align:                         02
+  Address area:                  CODE
+  Border:                        >00000000
+  Placed at:                     08000284
+  Ends at:                       08000447
+
+
+  Segment:                       FUN_CODE__MDR32F9QX_RST_CLK
+  Allocation:                    code
+  Size:                          00000020
+  Align:                         02
+  Address area:                  CODE
+  Border:                        >00000000
+  Placed at:                     08000448
+  Ends at:                       08000467
+
+
+  Segment:                       IDATA___CMSIS_CM3_COREDEBUGINTERFACE
+  Allocation:                    data
+  Size:                          00000004
+  Align:                         02
+  Address area:                  DATA
+  Border:                        >00000000
+  Placed at:                     20000400
+  Ends at:                       20000403
+
+
+  Segment:                       CSTACK
+  Allocation:                    data
+  Size:                          00001000
+  Align:                         03
+  Address area:                  DATA
+  Border:                        >00000000
+  Placed at:                     20000408
+  Ends at:                       20001407
+
+
+  Segment:                       UDATA__MAIN
+  Allocation:                    data
+  Size:                          00000028
+  Align:                         02
+  Address area:                  DATA
+  Border:                        >00000000
+  Placed at:                     20001408
+  Ends at:                       2000142F
+
+                * * *  A D D R E S S   A R E A S   M A P  * * *
+
+  Address area: CODE
+  ----------------------------------------------------------------------------
+  Segment                       Align  Starts at   Ends at   Size(hex)   (dec)
+  ----------------------------------------------------------------------------
+  *** RESERVED ***               -     08000000    080000BF  000000C0    192
+  ??CODE_CLIB                    2     080000C0    08000135  00000076    118
+  *** GAP ***                    -     08000136    08000137  00000002    2
+  ??DEFAULT_HANDLERS             2     08000138    08000183  0000004C    76
+  IDATA_INI___CMSIS_CM3_COREDEB  0     08000184    08000187  00000004    4
+  ??DATA_SEGMENT_ADDRESSES       2     08000188    0800018F  00000008    8
+  ??INIT_DATA_SEGMENT_ADDRESSES  2     08000190    0800019B  0000000C    12
+  FUN_CODE__MAIN                 2     0800019C    08000283  000000E8    232
+  FUN_CODE__MDR32F9QX_PORT       2     08000284    08000447  000001C4    452
+  FUN_CODE__MDR32F9QX_RST_CLK    2     08000448    08000467  00000020    32
+  *** GAP ***                    -     08000468    0801FFFF  0001FB98    129944
+
+
+  Address area: DATA
+  ----------------------------------------------------------------------------
+  Segment                       Align  Starts at   Ends at   Size(hex)   (dec)
+  ----------------------------------------------------------------------------
+  *** RESERVED ***               -     20000000    200003FF  00000400    1024
+  IDATA___CMSIS_CM3_COREDEBUGIN  2     20000400    20000403  00000004    4
+  *** GAP ***                    -     20000404    20000407  00000004    4
+  CSTACK                         3     20000408    20001407  00001000    4096
+  UDATA__MAIN                    2     20001408    2000142F  00000028    40
+  *** GAP ***                    -     20001430    20007FFF  00006BD0    27600
+
+                     * * *  S Y M B O L   T A B L E  * * *
+
+  Name                           Segment          Value       Type info
+
+  ?cstart                        ??CODE_CLIB     080000C4 *** <function>
+  ?start                         ??CODE_CLIB     080000C5     n/a
+  ADC_IRQHandler                 ??DEFAULT_HANDL 08000175     <function>
+  BACKUP_IRQHandler              ??DEFAULT_HANDL 0800017B     <function>
+  BusFault_Handler               ??DEFAULT_HANDL 0800014F     <function>
+  CAN1_IRQHandler                ??DEFAULT_HANDL 0800015B     <function>
+  CAN2_IRQHandler                ??DEFAULT_HANDL 0800015D     <function>
+  COMPARATOR_IRQHandler          ??DEFAULT_HANDL 08000177     <function>
+  DMA_ControlTable               ??ABS_DATA      20000000 *** <array>
+  DMA_IRQHandler                 ??DEFAULT_HANDL 08000161     <function>
+  DebugMon_Handler               ??DEFAULT_HANDL 08000155     <function>
+  EXT_INT1_IRQHandler            ??DEFAULT_HANDL 0800017D     <function>
+  EXT_INT2_IRQHandler            ??DEFAULT_HANDL 0800017F     <function>
+  EXT_INT3_IRQHandler            ??DEFAULT_HANDL 08000181     <function>
+  EXT_INT4_IRQHandler            ??DEFAULT_HANDL 08000183     <function>
+  HardFault_Handler              ??DEFAULT_HANDL 0800014B     <function>
+  I2C_IRQHandler                 ??DEFAULT_HANDL 08000169     <function>
+  ITM_RxBuffer                   IDATA___CMSIS_C 20000400     int
+  Init_All_Ports                 FUN_CODE__MAIN  0800019D *** <function>
+  Init_All_Ports??T              FUN_CODE__MAIN  0800019C *** <function>
+  MemManage_Handler              ??DEFAULT_HANDL 0800014D     <function>
+  NMI_Handler                    ??DEFAULT_HANDL 08000149     <function>
+  PORT_Init                      FUN_CODE__MDR32 08000285     <function>
+  PORT_Init??T                   FUN_CODE__MDR32 08000284 *** <function>
+  PORT_InitStructure             UDATA__MAIN     20001408 *** <struct>
+  PORT_ReadInputDataBit          FUN_CODE__MDR32 08000401     <function>
+  PORT_ReadInputDataBit??T       FUN_CODE__MDR32 08000400 *** <function>
+  PORT_ResetBits                 FUN_CODE__MDR32 08000429     <function>
+  PORT_ResetBits??T              FUN_CODE__MDR32 08000428 *** <function>
+  PORT_SetBits                   FUN_CODE__MDR32 0800040D     <function>
+  PORT_SetBits??T                FUN_CODE__MDR32 0800040C *** <function>
+  PORT_StructInit                FUN_CODE__MDR32 080003E5     <function>
+  PORT_StructInit??T             FUN_CODE__MDR32 080003E4 *** <function>
+  POWER_IRQHandler               ??DEFAULT_HANDL 0800016B     <function>
+  PendSV_Handler                 ??DEFAULT_HANDL 08000157     <function>
+  RST_CLK_PCLKcmd                FUN_CODE__MDR32 08000449     <function>
+  RST_CLK_PCLKcmd??T             FUN_CODE__MDR32 08000448 *** <function>
+  Reset_Handler                  ??DEFAULT_HANDL 08000139     <function>
+  SSP1_IRQHandler                ??DEFAULT_HANDL 08000167     <function>
+  SSP2_IRQHandler                ??DEFAULT_HANDL 08000179     <function>
+  SVC_Handler                    ??DEFAULT_HANDL 08000153     <function>
+  SysTick_Handler                ??DEFAULT_HANDL 08000159     <function>
+  SystemInit                     ??CODE_CLIB     080000C1     <function>
+  Timer1_IRQHandler              ??DEFAULT_HANDL 0800016F     <function>
+  Timer2_IRQHandler              ??DEFAULT_HANDL 08000171     <function>
+  Timer3_IRQHandler              ??DEFAULT_HANDL 08000173     <function>
+  UART1_IRQHandler               ??DEFAULT_HANDL 08000163     <function>
+  UART2_IRQHandler               ??DEFAULT_HANDL 08000165     <function>
+  USB_IRQHandler                 ??DEFAULT_HANDL 0800015F     <function>
+  UsageFault_Handler             ??DEFAULT_HANDL 08000151     <function>
+  WWDG_IRQHandler                ??DEFAULT_HANDL 0800016D     <function>
+  exit                           ??CODE_CLIB     08000135 *** <function>
+  exit??T                        ??CODE_CLIB     08000134 *** n/a
+  main                           FUN_CODE__MAIN  080001FD     <function>
+  main??T                        FUN_CODE__MAIN  080001FC *** <function>
+
+  ***  These symbols do not resolve any external reference
+
+
+                     * * *  O U T P U T   F I L E S  * * *
+
+  Phyton/MicroCOSM format:
+    Debug\Exe\MDR32F9QX_DEMO.mce
+
+  Intel Extended HEX format:
+    Debug\Exe\MDR32F9QX_DEMO.HEX    for Address Area CODE
+
+  ELF format:
+    Debug\Exe\MDR32F9QX_DEMO.elf
+
+  Generated code is suitable for:  Cortex-M3
+
+  934 bytes of CODE memory (+192 absolute)
+  4140 bytes of DATA memory (+1024 absolute)
