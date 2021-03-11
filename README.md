@@ -19,7 +19,7 @@
 
 Код VS:
 * [Cortex-Debug](https://marketplace.visualstudio.com/items?itemName=marus25.cortex-debug) расширение
-* Для корректной работы IntelliSense и определения .h файлов из [makefile](https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools)
+* Для корректной работы IntelliSense и определения .h файлов из makefile [это расширение](https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools)
 
 Не забудьте изменить пути до исполняемых файлов и папок библиотек в tasks.json и launch.json
 
