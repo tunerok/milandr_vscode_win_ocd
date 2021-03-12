@@ -63,9 +63,18 @@ MDR32F9_1986VE4_2015/Libraries/MDR32F9Qx_StdPeriph_Driver/src/MDR32F9Qx_timer.c 
 MDR32F9_1986VE4_2015/Libraries/MDR32F9Qx_StdPeriph_Driver/src/MDR32F9Qx_uart.c \
 MDR32F9_1986VE4_2015/Libraries/MDR32F9Qx_StdPeriph_Driver/src/MDR32F9Qx_usb.c \
 MDR32F9_1986VE4_2015/Libraries/MDR32F9Qx_StdPeriph_Driver/src/MDR32F9Qx_wwdg.c \
-MDR32F9_1986VE4_2015/Libraries/CMSIS/CM3/DeviceSupport/MDR32F9Qx/startup/gcc/system_MDR32F9Qx.c 
-
-
+MDR32F9_1986VE4_2015/Libraries/CMSIS/CM3/DeviceSupport/MDR32F9Qx/startup/gcc/system_MDR32F9Qx.c \
+FreeRTOS/croutine.c \
+FreeRTOS/event_groups.c \
+FreeRTOS/list.c \
+FreeRTOS/queue.c \
+FreeRTOS/stream_buffer.c \
+FreeRTOS/tasks.c \
+FreeRTOS/timers.c \
+FreeRTOS/portable/MemMang/heap_4.c \
+FreeRTOS/portable/GCC/ARM_CM3/port.c \
+Core/Src/MDR32F9Qx_it.c
+  
 # ASM sources
 ASM_SOURCES =  \
 MDR32F9_1986VE4_2015/Libraries/CMSIS/CM3/DeviceSupport/MDR32F9Qx/startup/gcc/startup_MDR32F9Qx.s
@@ -138,6 +147,8 @@ C_INCLUDES =  \
 -IMDR32F9_1986VE4_2015/Libraries/CMSIS/CM3/CoreSupport \
 -IMDR32F9_1986VE4_2015/Config \
 -IMDR32F9_1986VE4_2015/Libraries/CMSIS/CM3/DeviceSupport/MDR32F9Qx/startup/gcc \
+-IFreeRTOS/include \
+-IFreeRTOS/portable/GCC/ARM_CM3 
 
 
 EXTRA_DATA = -Wextra -Wshadow -Wredundant-decls -Wno-missing-field-initializers -Wconversion -Wno-packed-bitfield-compat -pipe

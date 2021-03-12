@@ -5,9 +5,10 @@
 #include "MDR32F9Qx_rst_clk.h"
 
 #define LED_PORT MDR_PORTC
-#define LED_PIN PORT_Pin_0
+#define LED_0_PIN PORT_Pin_0
+#define LED_1_PIN PORT_Pin_1
 
-void init_led();
-void write_LED(int state);
+void init_leds();
+void write_LED(uint16_t PORT_Pin, FunctionalState state);
 
 #endif

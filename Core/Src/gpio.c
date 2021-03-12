@@ -1,21 +1,6 @@
 #include "gpio.h"
 
-void init_led(){
-    //clk defi
-    RST_CLK_DeInit();
-	RST_CLK_HSEconfig(RST_CLK_HSE_ON);
-	for(int i = 0; i < 1000; i++){}  //wait
-	if (RST_CLK_HSEstatus() == ERROR)
-		while (1);
-	RST_CLK_CPU_PLLconfig(RST_CLK_CPU_PLLsrcHSEdiv1, RST_CLK_CPU_PLLmul2);
-	RST_CLK_CPU_PLLcmd(ENABLE);
-	for(int i = 0; i < 1000; i++){}
-	RST_CLK_CPU_PLLuse(ENABLE);
-	if (RST_CLK_CPU_PLLstatus() == ERROR)
-		while (1);
-	
-	RST_CLK_CPUclkSelection(RST_CLK_CPUclkCPU_C3 );
-
+void init_leds(){
     // Структура для инициализации портов
     PORT_InitTypeDef gpio_led_port;
 
@@ -25,7 +10,7 @@ void init_led(){
     //Выставить настройки структуры в дефолтное состояние
     PORT_StructInit (&gpio_led_port);
 
-    gpio_led_port.PORT_Pin   = LED_PIN;
+    gpio_led_port.PORT_Pin   = LED_0_PIN | LED_1_PIN;
     gpio_led_port.PORT_MODE  = PORT_MODE_DIGITAL;
     gpio_led_port.PORT_FUNC  = PORT_FUNC_PORT;
     gpio_led_port.PORT_OE    = PORT_OE_OUT;
@@ -37,11 +22,11 @@ void init_led(){
 
 }
 
-void write_LED(int state){
+void write_LED(uint16_t PORT_Pin, FunctionalState state){
     if(state){
-            PORT_ResetBits(LED_PORT, LED_PIN);
+            PORT_ResetBits(LED_PORT, PORT_Pin);
         }
         else{
-            PORT_SetBits(LED_PORT, LED_PIN);
+            PORT_SetBits(LED_PORT, PORT_Pin);
         }
 }
