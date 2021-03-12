@@ -19,7 +19,7 @@ static void vBlink_0_Task( void *pvParameters)
 {
     for( ;; )
     {
-		write_LED(LED_0_PIN, ENABLE);
+    write_LED(LED_0_PIN, ENABLE);
     vTaskDelay( 500 );
     write_LED(LED_0_PIN, DISABLE);
     vTaskDelay( 2500 );
@@ -31,7 +31,7 @@ static void vBlink_1_Task( void *pvParameters)
 {
     for( ;; )
     {
-		write_LED(LED_1_PIN, ENABLE);
+    write_LED(LED_1_PIN, ENABLE);
     vTaskDelay( 500 );
     write_LED(LED_1_PIN, DISABLE);
     vTaskDelay( 500 );
@@ -51,7 +51,7 @@ static void vBlink_1_Task( void *pvParameters)
 
 void init_clk(void){
    //clk defi
-  RST_CLK_DeInit();
+	RST_CLK_DeInit();
 	RST_CLK_HSEconfig(RST_CLK_HSE_ON);
 	for(int i = 0; i < 1000; i++){}  //wait
 	if (RST_CLK_HSEstatus() == ERROR)
