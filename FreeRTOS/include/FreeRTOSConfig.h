@@ -45,7 +45,17 @@
 
 extern uint32_t SystemCoreClock;
 
-#define configCPU_CLOCK_HZ                    (SystemCoreClock)
+/**
+ * @brief configCPU_CLOCK_HZ - частота тактирования внутреннего ядра микроконтроллера в Гц.
+ *      На основе этой частоты аппаратный таймер будет генерировать прерывание тика.
+ *      Обычно эта та же самая частота, на которой работает CPU. Это значение необходимо
+ *      для корректного конфигурирования периферийных устройств таймера.
+ * 
+ * @note значение configCPU_CLOCK_HZ совпадает со значением переменной SystemCoreClock
+ *       из библиотеки драйверов SPL MDR32FxQI.
+ */
+#define configCPU_CLOCK_HZ                    ( ( uint32_t ) 8000000 ) // MCU speed 8 MHz
+
 #define configTICK_RATE_HZ                    ((TickType_t)1000)
 #define configTOTAL_HEAP_SIZE                 ((size_t)(10 * 1024))
 #define configMINIMAL_STACK_SIZE              ((unsigned short)130)
